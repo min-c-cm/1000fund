@@ -201,18 +201,21 @@ body{
 .portfolio-card__details{ max-height:0; overflow:hidden; transition:max-height .35s ease; }
 .portfolio-card__details.is-expanded{ max-height:2000px; }
 .portfolio-card__details-inner{ display:flex; flex-direction:column; gap:12px; padding-top:16px; }
-.pd-fund-card{ display:flex; flex-direction:column; gap:12px; background:var(--white); border:1px solid rgba(38,38,38,.07); border-radius:12px; padding:16px; text-decoration:none; color:inherit; }
-.pd-fund-card__meta{ display:flex; align-items:center; gap:8px; color:#666; font-weight:500; font-size:14px; }
-.pd-fund-card__meta .sep{ width:1px; height:16px; background:#d9d9d9; flex:none; }
-.pd-fund-card__name{ margin:0; color:var(--text-primary); font-weight:600; font-size:16px; line-height:24px; }
-.pd-fund-card__perf{ display:flex; gap:16px; border-top:1px solid #f0eef0; padding-top:8px; }
-.pd-perf-item{ display:flex; flex-direction:column; gap:2px; flex:1; }
-.pd-perf-item__label{ margin:0; color:#959595; font-weight:600; font-size:12px; line-height:16px; letter-spacing:0.024px; }
-.pd-perf-item__value{ margin:0; color:var(--primary-basic); font-weight:500; font-size:16px; line-height:24px; letter-spacing:0.032px; }
+
+.fund-group-card{ display:flex; flex-direction:column; gap:8px; background:var(--white); border:1px solid rgba(38,38,38,.07); border-radius:12px; padding:16px; width:100%; }
+.fund-group-row{ display:flex; align-items:center; gap:8px; width:100%; text-decoration:none; color:inherit; }
+.fund-group-row__info{ display:flex; flex-direction:column; flex:1; min-width:0; }
+.fund-group-row__meta{ display:flex; align-items:center; gap:8px; color:#666; font-weight:500; font-size:14px; line-height:20px; letter-spacing:0.028px; }
+.fund-group-row__meta .sep{ width:1px; height:16px; background:#d9d9d9; flex:none; }
+.fund-group-row__name{ margin:0; color:var(--text-primary); font-weight:600; font-size:16px; line-height:24px; letter-spacing:0.032px; }
+.fund-group-row__change{ display:flex; flex-direction:column; align-items:flex-end; flex:none; color:var(--primary-basic); font-weight:500; white-space:nowrap; }
+.fund-group-row__change-label{ margin:0; font-size:12px; line-height:16px; letter-spacing:0.048px; }
+.fund-group-row__change-value{ margin:0; font-size:16px; line-height:24px; letter-spacing:0.032px; }
+.fund-group-divider{ height:1px; background:#f0eef0; width:100%; flex:none; }
 .portfolio-card__cart-btn{ display:flex; gap:8px; align-items:center; justify-content:center; width:100%; background:var(--primary-basic); color:var(--white); border:1px solid var(--primary-basic); border-radius:12px; padding:12px 16px; font-family:inherit; font-weight:500; font-size:16px; line-height:24px; letter-spacing:0.032px; cursor:pointer; }
 .portfolio-card__cart-btn img{ width:20px; height:20px; }
-.portfolio-card__cart-btn.is-added{ background:var(--white); color:var(--primary-basic); }
-.portfolio-card__cart-btn.is-added img{ filter:invert(23%) sepia(89%) saturate(2000%) hue-rotate(340deg) brightness(95%) contrast(95%); }
+.portfolio-card__cart-btn.is-added{ background:var(--divider-2); border-color:var(--divider-2); color:#959595; cursor:not-allowed; }
+.portfolio-card__cart-btn.is-added img{ opacity:0.5; }
 
 /* ---------- Why choose us ---------- */
 .why-section{ position:relative; background:var(--primary-light) url('assets/aboutus.png') top center / 100% auto no-repeat; overflow:hidden; padding-bottom:40px; }
@@ -1827,16 +1830,19 @@ body {
   position:fixed; left:50%; bottom:0; transform:translateX(-50%) translateY(100%);
   width:100%; max-width:var(--content-width); box-sizing:border-box;
   display:flex; align-items:center; gap:16px; padding:12px 16px;
-  background:linear-gradient(180deg, #FCE9EA 0%, #FFCBCE 100%);
+  background:var(--primary-display);
   z-index:40; transition:transform .25s ease;
 }
 .sticky-cta.is-visible{ transform:translateX(-50%) translateY(0); }
-.sticky-cta__text{ margin:0; flex:1; color:var(--primary-display); font-weight:600; font-size:18px; line-height:24px; letter-spacing:0.036px; }
+.sticky-cta__text{ flex:1; color:var(--white); }
+.sticky-cta__line1{ margin:0; font-weight:600; font-size:16px; line-height:24px; letter-spacing:0.032px; }
+.sticky-cta__line1 strong{ font-size:18px; letter-spacing:0.036px; font-weight:600; }
+.sticky-cta__line2{ margin:0; font-weight:400; font-size:16px; line-height:24px; letter-spacing:0.032px; }
 .sticky-cta__btn{
-  flex:none; width:140px; height:48px; box-sizing:border-box;
+  flex:none; width:120px; height:48px; box-sizing:border-box;
   display:flex; align-items:center; justify-content:center;
-  background:var(--primary-basic); border:1px solid var(--primary-basic); border-radius:12px;
-  color:var(--white); font-weight:600; font-size:16px; line-height:24px; letter-spacing:0.032px;
+  background:var(--white); border:0; border-radius:12px;
+  color:var(--primary-basic); font-weight:600; font-size:16px; line-height:24px; letter-spacing:0.032px;
   text-decoration:none;
 }
 
@@ -2065,33 +2071,40 @@ body {
           </div>
           <div class="portfolio-card__details">
             <div class="portfolio-card__details-inner">
-              <a href="fund-detail.html" class="pd-fund-card">
-                <div class="pd-fund-card__meta"><span>股票型</span><span class="sep"></span><span>RR4</span></div>
-                <p class="pd-fund-card__name">復華全球物聯網科技基金-台幣</p>
-                <div class="pd-fund-card__perf">
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">三個月</p><p class="pd-perf-item__value">16.17%</p></div>
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">六個月</p><p class="pd-perf-item__value">25.70%</p></div>
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">一年</p><p class="pd-perf-item__value">72.42%</p></div>
-                </div>
-              </a>
-              <a href="fund-detail.html" class="pd-fund-card">
-                <div class="pd-fund-card__meta"><span>平衡型</span><span class="sep"></span><span>RR4</span></div>
-                <p class="pd-fund-card__name">野村全球平衡科技基金</p>
-                <div class="pd-fund-card__perf">
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">三個月</p><p class="pd-perf-item__value">16.17%</p></div>
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">六個月</p><p class="pd-perf-item__value">25.70%</p></div>
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">一年</p><p class="pd-perf-item__value">72.42%</p></div>
-                </div>
-              </a>
-              <a href="fund-detail.html" class="pd-fund-card">
-                <div class="pd-fund-card__meta"><span>債券型</span><span class="sep"></span><span>RR3</span></div>
-                <p class="pd-fund-card__name">安聯收益成長多重資產基金</p>
-                <div class="pd-fund-card__perf">
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">三個月</p><p class="pd-perf-item__value">16.17%</p></div>
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">六個月</p><p class="pd-perf-item__value">25.70%</p></div>
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">一年</p><p class="pd-perf-item__value">72.42%</p></div>
-                </div>
-              </a>
+              <div class="fund-group-card">
+                <a href="fund-detail.html" class="fund-group-row">
+                  <div class="fund-group-row__info">
+                    <div class="fund-group-row__meta"><span>股票型</span><span class="sep"></span><span>RR4</span></div>
+                    <p class="fund-group-row__name">復華全球物聯網科技基金-台幣</p>
+                  </div>
+                  <div class="fund-group-row__change">
+                    <p class="fund-group-row__change-label">漲跌幅</p>
+                    <p class="fund-group-row__change-value">▲0.34%</p>
+                  </div>
+                </a>
+                <div class="fund-group-divider"></div>
+                <a href="fund-detail.html" class="fund-group-row">
+                  <div class="fund-group-row__info">
+                    <div class="fund-group-row__meta"><span>平衡型</span><span class="sep"></span><span>RR4</span></div>
+                    <p class="fund-group-row__name">野村全球平衡科技基金</p>
+                  </div>
+                  <div class="fund-group-row__change">
+                    <p class="fund-group-row__change-label">漲跌幅</p>
+                    <p class="fund-group-row__change-value">▲0.34%</p>
+                  </div>
+                </a>
+                <div class="fund-group-divider"></div>
+                <a href="fund-detail.html" class="fund-group-row">
+                  <div class="fund-group-row__info">
+                    <div class="fund-group-row__meta"><span>債券型</span><span class="sep"></span><span>RR3</span></div>
+                    <p class="fund-group-row__name">安聯收益成長多重資產基金</p>
+                  </div>
+                  <div class="fund-group-row__change">
+                    <p class="fund-group-row__change-label">漲跌幅</p>
+                    <p class="fund-group-row__change-value">▲0.34%</p>
+                  </div>
+                </a>
+              </div>
               <button type="button" class="portfolio-card__cart-btn js-add-to-cart" data-fund-count="3">
                 <img src="assets/shopping-cart.svg" alt="" aria-hidden="true">
                 <span>一鍵加入購物車</span>
@@ -2099,7 +2112,7 @@ body {
             </div>
           </div>
         </div>
-        
+
         <div class="portfolio-card">
           <div>
             <p class="portfolio-card__title">小資穩健入門組合</p>
@@ -2125,33 +2138,40 @@ body {
           </div>
           <div class="portfolio-card__details">
             <div class="portfolio-card__details-inner">
-              <a href="fund-detail.html" class="pd-fund-card">
-                <div class="pd-fund-card__meta"><span>股票型</span><span class="sep"></span><span>RR4</span></div>
-                <p class="pd-fund-card__name">復華全球物聯網科技基金-台幣</p>
-                <div class="pd-fund-card__perf">
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">三個月</p><p class="pd-perf-item__value">16.17%</p></div>
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">六個月</p><p class="pd-perf-item__value">25.70%</p></div>
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">一年</p><p class="pd-perf-item__value">72.42%</p></div>
-                </div>
-              </a>
-              <a href="fund-detail.html" class="pd-fund-card">
-                <div class="pd-fund-card__meta"><span>平衡型</span><span class="sep"></span><span>RR4</span></div>
-                <p class="pd-fund-card__name">安聯收益成長多重資產</p>
-                <div class="pd-fund-card__perf">
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">三個月</p><p class="pd-perf-item__value">16.17%</p></div>
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">六個月</p><p class="pd-perf-item__value">25.70%</p></div>
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">一年</p><p class="pd-perf-item__value">72.42%</p></div>
-                </div>
-              </a>
-              <a href="fund-detail.html" class="pd-fund-card">
-                <div class="pd-fund-card__meta"><span>債券型</span><span class="sep"></span><span>RR3</span></div>
-                <p class="pd-fund-card__name">鋒裕匯理美元高收益債</p>
-                <div class="pd-fund-card__perf">
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">三個月</p><p class="pd-perf-item__value">16.17%</p></div>
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">六個月</p><p class="pd-perf-item__value">25.70%</p></div>
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">一年</p><p class="pd-perf-item__value">72.42%</p></div>
-                </div>
-              </a>
+              <div class="fund-group-card">
+                <a href="fund-detail.html" class="fund-group-row">
+                  <div class="fund-group-row__info">
+                    <div class="fund-group-row__meta"><span>股票型</span><span class="sep"></span><span>RR4</span></div>
+                    <p class="fund-group-row__name">復華全球物聯網科技基金-台幣</p>
+                  </div>
+                  <div class="fund-group-row__change">
+                    <p class="fund-group-row__change-label">漲跌幅</p>
+                    <p class="fund-group-row__change-value">▲0.34%</p>
+                  </div>
+                </a>
+                <div class="fund-group-divider"></div>
+                <a href="fund-detail.html" class="fund-group-row">
+                  <div class="fund-group-row__info">
+                    <div class="fund-group-row__meta"><span>平衡型</span><span class="sep"></span><span>RR4</span></div>
+                    <p class="fund-group-row__name">安聯收益成長多重資產</p>
+                  </div>
+                  <div class="fund-group-row__change">
+                    <p class="fund-group-row__change-label">漲跌幅</p>
+                    <p class="fund-group-row__change-value">▲0.34%</p>
+                  </div>
+                </a>
+                <div class="fund-group-divider"></div>
+                <a href="fund-detail.html" class="fund-group-row">
+                  <div class="fund-group-row__info">
+                    <div class="fund-group-row__meta"><span>債券型</span><span class="sep"></span><span>RR3</span></div>
+                    <p class="fund-group-row__name">鋒裕匯理美元高收益債</p>
+                  </div>
+                  <div class="fund-group-row__change">
+                    <p class="fund-group-row__change-label">漲跌幅</p>
+                    <p class="fund-group-row__change-value">▲0.34%</p>
+                  </div>
+                </a>
+              </div>
               <button type="button" class="portfolio-card__cart-btn js-add-to-cart" data-fund-count="3">
                 <img src="assets/shopping-cart.svg" alt="" aria-hidden="true">
                 <span>一鍵加入購物車</span>
@@ -2159,7 +2179,7 @@ body {
             </div>
           </div>
         </div>
-        
+
         <div class="portfolio-card">
           <div>
             <p class="portfolio-card__title">全球多元分散組合</p>
@@ -2185,33 +2205,40 @@ body {
           </div>
           <div class="portfolio-card__details">
             <div class="portfolio-card__details-inner">
-              <a href="fund-detail.html" class="pd-fund-card">
-                <div class="pd-fund-card__meta"><span>股票型</span><span class="sep"></span><span>RR4</span></div>
-                <p class="pd-fund-card__name">貝萊德世界礦業基金</p>
-                <div class="pd-fund-card__perf">
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">三個月</p><p class="pd-perf-item__value">16.17%</p></div>
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">六個月</p><p class="pd-perf-item__value">25.70%</p></div>
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">一年</p><p class="pd-perf-item__value">72.42%</p></div>
-                </div>
-              </a>
-              <a href="fund-detail.html" class="pd-fund-card">
-                <div class="pd-fund-card__meta"><span>平衡型</span><span class="sep"></span><span>RR4</span></div>
-                <p class="pd-fund-card__name">摩根士丹利環球機會基金</p>
-                <div class="pd-fund-card__perf">
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">三個月</p><p class="pd-perf-item__value">16.17%</p></div>
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">六個月</p><p class="pd-perf-item__value">25.70%</p></div>
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">一年</p><p class="pd-perf-item__value">72.42%</p></div>
-                </div>
-              </a>
-              <a href="fund-detail.html" class="pd-fund-card">
-                <div class="pd-fund-card__meta"><span>債券型</span><span class="sep"></span><span>RR3</span></div>
-                <p class="pd-fund-card__name">富蘭克林坦伯頓全球債券基金</p>
-                <div class="pd-fund-card__perf">
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">三個月</p><p class="pd-perf-item__value">16.17%</p></div>
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">六個月</p><p class="pd-perf-item__value">25.70%</p></div>
-                  <div class="pd-perf-item"><p class="pd-perf-item__label">一年</p><p class="pd-perf-item__value">72.42%</p></div>
-                </div>
-              </a>
+              <div class="fund-group-card">
+                <a href="fund-detail.html" class="fund-group-row">
+                  <div class="fund-group-row__info">
+                    <div class="fund-group-row__meta"><span>股票型</span><span class="sep"></span><span>RR4</span></div>
+                    <p class="fund-group-row__name">貝萊德世界礦業基金</p>
+                  </div>
+                  <div class="fund-group-row__change">
+                    <p class="fund-group-row__change-label">漲跌幅</p>
+                    <p class="fund-group-row__change-value">▲0.34%</p>
+                  </div>
+                </a>
+                <div class="fund-group-divider"></div>
+                <a href="fund-detail.html" class="fund-group-row">
+                  <div class="fund-group-row__info">
+                    <div class="fund-group-row__meta"><span>平衡型</span><span class="sep"></span><span>RR4</span></div>
+                    <p class="fund-group-row__name">摩根士丹利環球機會基金</p>
+                  </div>
+                  <div class="fund-group-row__change">
+                    <p class="fund-group-row__change-label">漲跌幅</p>
+                    <p class="fund-group-row__change-value">▲0.34%</p>
+                  </div>
+                </a>
+                <div class="fund-group-divider"></div>
+                <a href="fund-detail.html" class="fund-group-row">
+                  <div class="fund-group-row__info">
+                    <div class="fund-group-row__meta"><span>債券型</span><span class="sep"></span><span>RR3</span></div>
+                    <p class="fund-group-row__name">富蘭克林坦伯頓全球債券基金</p>
+                  </div>
+                  <div class="fund-group-row__change">
+                    <p class="fund-group-row__change-label">漲跌幅</p>
+                    <p class="fund-group-row__change-value">▲0.34%</p>
+                  </div>
+                </a>
+              </div>
               <button type="button" class="portfolio-card__cart-btn js-add-to-cart" data-fund-count="3">
                 <img src="assets/shopping-cart.svg" alt="" aria-hidden="true">
                 <span>一鍵加入購物車</span>
@@ -2220,7 +2247,7 @@ body {
           </div>
         </div>
       </div>
-      <a href="fund-overview-performance.html?filter=under1000" class="btn btn-primary">瀏覽更多千元基金</a>
+      <a href="fund-overview-performance.html?filter=under1000" class="btn btn-outline">瀏覽更多千元基金</a>
     </section>
 
     <!-- Why choose us -->
@@ -2340,7 +2367,9 @@ body {
     </footer>
 
     <div class="sticky-cta">
-      <p class="sticky-cta__text" id="sticky-cta-text">準備好開始投資了嗎？</p>
+      <div class="sticky-cta__text" id="sticky-cta-text">
+        <p class="sticky-cta__line1">準備好開始投資了嗎？</p>
+      </div>
       <a href="#" class="sticky-cta__btn js-open-account">立即開戶</a>
     </div>
 
@@ -2697,19 +2726,21 @@ body {
   var stickyCtaText = document.getElementById('sticky-cta-text');
   var navCartBadge = document.getElementById('nav-cart-badge');
   function updateStickyCtaText() {
-    stickyCtaText.textContent = selectedCount > 0
-      ? '您已選擇 ' + selectedCount + ' 個組合（' + (selectedCount * 3) + '檔基金）！'
-      : '準備好開始投資了嗎？';
+    stickyCtaText.innerHTML = selectedCount > 0
+      ? '<p class="sticky-cta__line1">您已選擇 <strong>' + selectedCount + '</strong> 個基金組合</p>' +
+        '<p class="sticky-cta__line2">共 ' + (selectedCount * 3) + ' 檔基金</p>'
+      : '<p class="sticky-cta__line1">準備好開始投資了嗎？</p>';
   }
   function updateNavCartBadge() {
     navCartBadge.classList.toggle('is-visible', selectedCount > 0);
   }
   document.querySelectorAll('.js-add-to-cart').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      var span = btn.querySelector('span');
-      var nowAdded = btn.classList.toggle('is-added');
-      selectedCount += nowAdded ? 1 : -1;
-      span.textContent = nowAdded ? '已加入購物車' : '一鍵加入購物車';
+      if (btn.disabled) return;
+      btn.classList.add('is-added');
+      btn.disabled = true;
+      btn.querySelector('span').textContent = '已加入';
+      selectedCount += 1;
       updateStickyCtaText();
       updateStickyCtaVisibility();
       updateNavCartBadge();
