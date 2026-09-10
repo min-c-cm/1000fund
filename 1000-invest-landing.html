@@ -1863,17 +1863,17 @@ body {
       <div class="hero__stats-block">
         <div class="hero-stats">
           <div class="hero-stats__item">
-            <p class="hero-stats__value">1,000+</p>
+            <p class="hero-stats__value js-count" data-count-to="1000" data-suffix="+" data-format="comma">0+</p>
             <p class="hero-stats__label">檔基金選擇</p>
           </div>
           <div class="hero-stats__divider"></div>
           <div class="hero-stats__item">
-            <p class="hero-stats__value">NT$1000</p>
+            <p class="hero-stats__value js-count" data-count-to="1000" data-prefix="NT$">NT$0</p>
             <p class="hero-stats__label">最低申購金額</p>
           </div>
           <div class="hero-stats__divider"></div>
           <div class="hero-stats__item">
-            <p class="hero-stats__value">10 分鐘</p>
+            <p class="hero-stats__value js-count" data-count-to="10" data-suffix=" 分鐘">0 分鐘</p>
             <p class="hero-stats__label">完成線上開戶</p>
           </div>
         </div>
@@ -2248,6 +2248,45 @@ body {
     observer.observe(calcSection);
   } else {
     render(1000);
+  }
+
+  // ---- Hero stats: count-up animation ----
+  function animateCountUp(el) {
+    var target = parseFloat(el.getAttribute('data-count-to'), 10);
+    var prefix = el.getAttribute('data-prefix') || '';
+    var suffix = el.getAttribute('data-suffix') || '';
+    var useComma = el.getAttribute('data-format') === 'comma';
+    var duration = 1200;
+    var startTime = null;
+    function formatNumber(n) {
+      return useComma ? n.toLocaleString('en-US') : String(n);
+    }
+    function step(timestamp) {
+      if (startTime === null) startTime = timestamp;
+      var progress = Math.min((timestamp - startTime) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var value = Math.round(target * eased);
+      el.textContent = prefix + formatNumber(value) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  var countEls = document.querySelectorAll('.js-count');
+  if (countEls.length) {
+    if ('IntersectionObserver' in window) {
+      var countObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            animateCountUp(entry.target);
+            countObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      countEls.forEach(function (el) { countObserver.observe(el); });
+    } else {
+      countEls.forEach(animateCountUp);
+    }
   }
 
   // ---- FAQ: only one open at a time (optional nicety, matches accordion feel) ----
