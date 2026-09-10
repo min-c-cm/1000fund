@@ -104,6 +104,8 @@ body{
 .hero-stats__value{ margin:0; color:var(--primary-basic); font-weight:600; font-size:20px; line-height:28px; letter-spacing:0.04px; white-space:nowrap; }
 .hero-stats__label{ margin:4px 0 0; color:var(--text-secondary); font-weight:500; font-size:14px; line-height:20px; letter-spacing:0.028px; white-space:nowrap; }
 .hero-stats__divider{ width:1px; height:32px; background:var(--divider-2); flex:none; }
+.hero-stats__note{ margin:12px 0 0; text-align:center; color:var(--text-secondary); font-weight:400; font-size:12px; line-height:16px; letter-spacing:0.048px; }
+.hero-stats__note a{ color:var(--primary-display); text-decoration:underline; }
 .hero__buttons{ display:flex; flex-direction:column; gap:12px; margin-top:26px; }
 
 /* ---------- Buttons ---------- */
@@ -135,6 +137,7 @@ body{
   display:flex; flex-direction:column; gap:24px;
 }
 .calc-card__label{ margin:0; font-weight:600; font-size:20px; line-height:28px; letter-spacing:0.04px; }
+.calc-card__label--sub{ font-size:18px; line-height:24px; letter-spacing:0.036px; }
 .amount-row{ display:flex; gap:8px; height:40px; }
 .amount-btn{
   flex:1; border-radius:24px; border:1px solid var(--divider-2); background:var(--white);
@@ -142,6 +145,7 @@ body{
   cursor:pointer;
 }
 .amount-btn.is-active{ background:var(--primary-basic); border-color:var(--primary-basic); color:var(--white); }
+.calc-form-group{ display:flex; flex-direction:column; gap:16px; }
 
 .estimate-box{ background:var(--primary-light); border-radius:12px; padding:20px; display:flex; flex-direction:column; gap:12px; }
 .estimate-box__label{ margin:0; font-weight:500; font-size:14px; line-height:20px; letter-spacing:0.028px; }
@@ -150,9 +154,9 @@ body{
 .estimate-box__breakdown .principal{ color:var(--text-secondary); }
 .estimate-box__breakdown .gain{ color:var(--primary-basic); }
 .estimate-box__dot{ width:4px; height:4px; border-radius:2px; background:var(--primary-basic); }
+.estimate-box__divider{ height:1px; background:#F8C9CB; width:100%; flex:none; }
 
-.chart-title{ margin:0 0 10px; font-weight:600; font-size:16px; line-height:24px; letter-spacing:0.032px; }
-.bars-row{ display:flex; align-items:flex-end; justify-content:space-between; height: 148px;}
+.bars-row{ display:flex; align-items:flex-end; justify-content:space-between; height: 188px; margin-top:4px;}
 .bar-col{ display:flex; flex-direction:column; align-items:center; gap:6px; width:48px; justify-content:flex-end;}
 .bar-figure{ text-align:center; font-weight:500; font-size:12px; line-height:16px; letter-spacing:0.048px; color:var(--text-primary); white-space:nowrap;}
 .bar-figure.is-final{ color:var(--primary-basic); }
@@ -186,8 +190,24 @@ body{
 .yield-row{ background:var(--primary-light); color:var(--primary-basic); border-radius:8px; padding:4px 12px; display:flex; gap:12px; align-items:center; }
 .yield-row__label{ margin:0; font-weight:500; font-size:14px; line-height:20px; letter-spacing:0.028px; }
 .yield-row__value{ margin:0; font-weight:600; font-size:16px; line-height:24px; letter-spacing:0.032px; }
-.view-portfolio{ display:flex; align-items:center; gap:4px; color:var(--primary-basic); font-weight:500; font-size:16px; line-height:24px; letter-spacing:0.032px; cursor:pointer; text-decoration:none; }
+.view-portfolio{ display:flex; align-items:center; gap:4px; color:var(--primary-basic); font-weight:500; font-size:16px; line-height:24px; letter-spacing:0.032px; cursor:pointer; text-decoration:none; background:transparent; border:0; padding:0; font-family:inherit; }
 .view-portfolio img{ width:20px; height:20px; }
+.view-portfolio .chevron{ transition:transform .2s ease; }
+.view-portfolio.is-expanded .chevron{ transform:rotate(-90deg); }
+
+.portfolio-card__details{ max-height:0; overflow:hidden; transition:max-height .35s ease; }
+.portfolio-card__details.is-expanded{ max-height:2000px; }
+.portfolio-card__details-inner{ display:flex; flex-direction:column; gap:12px; padding-top:16px; }
+.pd-fund-card{ display:flex; flex-direction:column; gap:12px; background:var(--white); border:1px solid rgba(38,38,38,.07); border-radius:12px; padding:16px; text-decoration:none; color:inherit; }
+.pd-fund-card__meta{ display:flex; align-items:center; gap:8px; color:#666; font-weight:500; font-size:14px; }
+.pd-fund-card__meta .sep{ width:1px; height:16px; background:#d9d9d9; flex:none; }
+.pd-fund-card__name{ margin:0; color:var(--text-primary); font-weight:600; font-size:16px; line-height:24px; }
+.pd-fund-card__perf{ display:flex; gap:16px; border-top:1px solid #f0eef0; padding-top:8px; }
+.pd-perf-item{ display:flex; flex-direction:column; gap:2px; flex:1; }
+.pd-perf-item__label{ margin:0; color:#959595; font-weight:600; font-size:12px; line-height:16px; letter-spacing:0.024px; }
+.pd-perf-item__value{ margin:0; color:var(--primary-basic); font-weight:500; font-size:16px; line-height:24px; letter-spacing:0.032px; }
+.portfolio-card__cart-btn{ display:flex; gap:8px; align-items:center; justify-content:center; width:100%; background:var(--primary-basic); color:var(--white); border:0; border-radius:12px; padding:12px 16px; font-family:inherit; font-weight:500; font-size:16px; line-height:24px; letter-spacing:0.032px; cursor:pointer; }
+.portfolio-card__cart-btn img{ width:20px; height:20px; }
 
 /* ---------- Why choose us ---------- */
 .why-section{ position:relative; background:var(--primary-light) url('assets/aboutus.png') top center / 100% auto no-repeat; overflow:hidden; padding-bottom:40px; }
@@ -1787,6 +1807,72 @@ body {
   text-decoration: underline;
 }
 
+/* ---------- Sticky bottom CTA (mobile) ---------- */
+.cmf-footer{ padding-bottom:calc(2.5rem + 72px); }
+.sticky-cta{
+  position:fixed; left:50%; bottom:0; transform:translateX(-50%);
+  width:100%; max-width:var(--content-width); box-sizing:border-box;
+  display:flex; align-items:center; gap:16px; padding:12px 16px;
+  background:linear-gradient(180deg, #FCE9EA 0%, #FFCBCE 100%);
+  z-index:40;
+}
+.sticky-cta__text{ margin:0; flex:1; color:var(--primary-display); font-weight:600; font-size:18px; line-height:24px; letter-spacing:0.036px; }
+.sticky-cta__btn{
+  flex:none; width:140px; height:48px; box-sizing:border-box;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--primary-basic); border:1px solid var(--primary-basic); border-radius:12px;
+  color:var(--white); font-weight:600; font-size:16px; line-height:24px; letter-spacing:0.032px;
+  text-decoration:none;
+}
+
+/* ---------- Quick account-opening modal ---------- */
+.account-modal-overlay{
+  position:fixed; inset:0; background:rgba(38,38,38,0.5); z-index:70;
+  display:flex; align-items:center; justify-content:center; padding:16px;
+}
+.account-modal-overlay[hidden]{ display:none; }
+.account-modal{
+  background:var(--white); border-radius:24px; width:100%; max-width:358px;
+  max-height:calc(100vh - 32px); overflow-y:auto;
+  padding:24px; display:flex; flex-direction:column; gap:24px;
+}
+.account-modal__header{ display:flex; align-items:center; justify-content:space-between; }
+.account-modal__title{ margin:0; color:var(--text-primary); font-weight:600; font-size:20px; line-height:28px; letter-spacing:0.04px; }
+.account-modal__close{ background:transparent; border:0; padding:4px; margin:-4px; cursor:pointer; line-height:0; color:var(--text-secondary); flex:none; }
+.account-modal__form{ display:flex; flex-direction:column; gap:20px; }
+.account-modal__field{ display:flex; flex-direction:column; gap:8px; }
+.account-modal__label{ margin:0; color:var(--text-primary); font-weight:600; font-size:16px; line-height:24px; letter-spacing:0.032px; }
+.account-modal__input{
+  width:100%; height:48px; border:1px solid var(--divider-2); border-radius:12px; padding:0 16px;
+  font-family:inherit; font-size:16px; color:var(--text-primary); background:var(--white);
+}
+.account-modal__input::placeholder{ color:#BFBFBF; }
+.account-modal__input:focus{ outline:none; border-color:var(--primary-basic); }
+.account-modal__otp-row{ display:flex; gap:8px; }
+.account-modal__otp-row .account-modal__input{ flex:1; min-width:0; }
+.account-modal__otp-btn{
+  flex:none; width:120px; height:48px; border-radius:12px; border:1px solid var(--divider-2);
+  background:var(--surface-bg); color:var(--text-secondary); font-family:inherit; font-weight:500; font-size:14px;
+  cursor:pointer;
+}
+.account-modal__otp-btn:disabled{ cursor:not-allowed; opacity:0.6; }
+.account-modal__otp-btn:not(:disabled){ background:var(--primary-light); border-color:var(--primary-basic); color:var(--primary-basic); }
+.account-modal__terms{
+  display:flex; align-items:center; gap:4px; width:100%; background:var(--surface-bg); border:0; border-radius:12px;
+  padding:16px; font-family:inherit; font-size:15px; line-height:22px; color:var(--text-primary); text-align:left; cursor:pointer;
+}
+.account-modal__terms span{ flex:1; }
+.account-modal__terms strong{ color:var(--primary-basic); font-weight:600; }
+.account-modal__terms svg{ width:20px; height:20px; flex:none; }
+.account-modal__checkbox-row{ display:flex; align-items:flex-start; gap:8px; font-size:15px; line-height:22px; color:var(--text-primary); cursor:pointer; }
+.account-modal__checkbox-row input{ width:20px; height:20px; margin:0; flex:none; accent-color:var(--primary-basic); }
+.account-modal__submit{
+  width:100%; height:52px; border:0; border-radius:12px; font-family:inherit; font-weight:600; font-size:16px;
+  letter-spacing:0.032px; cursor:pointer; background:var(--surface-bg); color:#BFBFBF;
+}
+.account-modal__submit:not(:disabled){ background:var(--primary-basic); color:var(--white); cursor:pointer; }
+.account-modal__submit:disabled{ cursor:not-allowed; }
+
 </style>
 </head>
 <body>
@@ -1873,12 +1959,13 @@ body {
           </div>
           <div class="hero-stats__divider"></div>
           <div class="hero-stats__item">
-            <p class="hero-stats__value js-count" data-count-to="10" data-suffix=" 分鐘">0 分鐘</p>
-            <p class="hero-stats__label">完成線上開戶</p>
+            <p class="hero-stats__value js-count" data-count-to="0" data-suffix="元">0元</p>
+            <p class="hero-stats__label">申購手續費</p>
           </div>
         </div>
+        <p class="hero-stats__note">＊千元申購金額僅適用指定基金，完整清單以 <a href="fund-overview-performance.html?filter=under1000">基金總覽</a> 公告為準</p>
         <div class="hero__buttons">
-          <a href="open-account.html" class="btn btn-primary">立即開戶</a>
+          <a href="#" class="btn btn-primary js-open-account">立即開戶</a>
           <a href="#calculator" class="btn btn-outline">小額投資試算</a>
         </div>
       </div>
@@ -1894,12 +1981,20 @@ body {
         <img src="assets/section1.png" alt="" aria-hidden="true">
       </div>
       <div class="calc-card">
-        <div>
+        <div class="calc-form-group">
           <p class="calc-card__label">每月固定投入金額</p>
           <div class="amount-row" id="amount-row">
             <button type="button" class="amount-btn is-active" data-amount="1000">NT$ 1,000</button>
             <button type="button" class="amount-btn" data-amount="3000">NT$ 3,000</button>
             <button type="button" class="amount-btn" data-amount="5000">NT$ 5,000</button>
+          </div>
+        </div>
+        <div class="calc-form-group">
+          <p class="calc-card__label calc-card__label--sub">假設年化報酬率</p>
+          <div class="amount-row" id="rate-row">
+            <button type="button" class="amount-btn" data-rate="0">0%</button>
+            <button type="button" class="amount-btn" data-rate="3">3%</button>
+            <button type="button" class="amount-btn is-active" data-rate="6">6%</button>
           </div>
         </div>
         <div class="estimate-box">
@@ -1912,14 +2007,12 @@ body {
               <span class="gain" id="estimate-gain">預估報酬 +NT$ 44,699</span>
             </div>
           </div>
-        </div>
-        <div>
-          <p class="chart-title">各年份累積資產趨勢</p>
+          <div class="estimate-box__divider"></div>
           <div class="bars-row" id="bars-row"></div>
         </div>
         <div class="alert-note">
           <span style="display:inline-block;width:20px;height:20px;flex:none;"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true" style="display:block;width:100%;height:100%;"><circle cx="10" cy="10" r="8" stroke="#959595" stroke-width="1.5"/><path d="M10 9v5M10 6.5v.01" stroke="#959595" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-          <p>預設試算假設年化報酬率為 6%，實際回報依市場表現而異。</p>
+          <p>0%／3%／6%為假設情境，非任何基金之預測、保證或歷史報酬；未計入費用與稅負，實際報酬可能為負、本金可能虧損，申購前請詳閱公開說明書。</p>
         </div>
       </div>
     </section>
@@ -1950,10 +2043,45 @@ body {
               <p class="yield-row__label">預估年化報酬率</p>
               <p class="yield-row__value">15%</p>
             </div>
-            <a href="portfolio-global-tech.html" class="view-portfolio">
+            <button type="button" class="view-portfolio js-portfolio-toggle" aria-expanded="false">
               <span>查看組合</span>
-              <span style="display:inline-block;width:20px;height:20px;"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true" style="display:block;width:100%;height:100%;"><path d="M7.5 4.5L13 10l-5.5 5.5" stroke="#E21E28" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            </a>
+              <span class="chevron" style="display:inline-block;width:20px;height:20px;"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true" style="display:block;width:100%;height:100%;"><path d="M7.5 4.5L13 10l-5.5 5.5" stroke="#E21E28" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </button>
+          </div>
+          <div class="portfolio-card__details">
+            <div class="portfolio-card__details-inner">
+              <a href="fund-detail.html" class="pd-fund-card">
+                <div class="pd-fund-card__meta"><span>股票型</span><span class="sep"></span><span>RR4</span></div>
+                <p class="pd-fund-card__name">復華全球物聯網科技基金-台幣</p>
+                <div class="pd-fund-card__perf">
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">三個月</p><p class="pd-perf-item__value">16.17%</p></div>
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">六個月</p><p class="pd-perf-item__value">25.70%</p></div>
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">一年</p><p class="pd-perf-item__value">72.42%</p></div>
+                </div>
+              </a>
+              <a href="fund-detail.html" class="pd-fund-card">
+                <div class="pd-fund-card__meta"><span>平衡型</span><span class="sep"></span><span>RR4</span></div>
+                <p class="pd-fund-card__name">野村全球平衡科技基金</p>
+                <div class="pd-fund-card__perf">
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">三個月</p><p class="pd-perf-item__value">16.17%</p></div>
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">六個月</p><p class="pd-perf-item__value">25.70%</p></div>
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">一年</p><p class="pd-perf-item__value">72.42%</p></div>
+                </div>
+              </a>
+              <a href="fund-detail.html" class="pd-fund-card">
+                <div class="pd-fund-card__meta"><span>債券型</span><span class="sep"></span><span>RR3</span></div>
+                <p class="pd-fund-card__name">安聯收益成長多重資產基金</p>
+                <div class="pd-fund-card__perf">
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">三個月</p><p class="pd-perf-item__value">16.17%</p></div>
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">六個月</p><p class="pd-perf-item__value">25.70%</p></div>
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">一年</p><p class="pd-perf-item__value">72.42%</p></div>
+                </div>
+              </a>
+              <button type="button" class="portfolio-card__cart-btn">
+                <img src="assets/shopping-cart.svg" alt="" aria-hidden="true">
+                <span>一鍵加入購物車</span>
+              </button>
+            </div>
           </div>
         </div>
         
@@ -1975,10 +2103,45 @@ body {
               <p class="yield-row__label">預估年化報酬率</p>
               <p class="yield-row__value">15%</p>
             </div>
-            <a href="portfolio-small-balance.html" class="view-portfolio">
+            <button type="button" class="view-portfolio js-portfolio-toggle" aria-expanded="false">
               <span>查看組合</span>
-              <span style="display:inline-block;width:20px;height:20px;"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true" style="display:block;width:100%;height:100%;"><path d="M7.5 4.5L13 10l-5.5 5.5" stroke="#E21E28" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            </a>
+              <span class="chevron" style="display:inline-block;width:20px;height:20px;"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true" style="display:block;width:100%;height:100%;"><path d="M7.5 4.5L13 10l-5.5 5.5" stroke="#E21E28" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </button>
+          </div>
+          <div class="portfolio-card__details">
+            <div class="portfolio-card__details-inner">
+              <a href="fund-detail.html" class="pd-fund-card">
+                <div class="pd-fund-card__meta"><span>股票型</span><span class="sep"></span><span>RR4</span></div>
+                <p class="pd-fund-card__name">復華全球物聯網科技基金-台幣</p>
+                <div class="pd-fund-card__perf">
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">三個月</p><p class="pd-perf-item__value">16.17%</p></div>
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">六個月</p><p class="pd-perf-item__value">25.70%</p></div>
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">一年</p><p class="pd-perf-item__value">72.42%</p></div>
+                </div>
+              </a>
+              <a href="fund-detail.html" class="pd-fund-card">
+                <div class="pd-fund-card__meta"><span>平衡型</span><span class="sep"></span><span>RR4</span></div>
+                <p class="pd-fund-card__name">安聯收益成長多重資產</p>
+                <div class="pd-fund-card__perf">
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">三個月</p><p class="pd-perf-item__value">16.17%</p></div>
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">六個月</p><p class="pd-perf-item__value">25.70%</p></div>
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">一年</p><p class="pd-perf-item__value">72.42%</p></div>
+                </div>
+              </a>
+              <a href="fund-detail.html" class="pd-fund-card">
+                <div class="pd-fund-card__meta"><span>債券型</span><span class="sep"></span><span>RR3</span></div>
+                <p class="pd-fund-card__name">鋒裕匯理美元高收益債</p>
+                <div class="pd-fund-card__perf">
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">三個月</p><p class="pd-perf-item__value">16.17%</p></div>
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">六個月</p><p class="pd-perf-item__value">25.70%</p></div>
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">一年</p><p class="pd-perf-item__value">72.42%</p></div>
+                </div>
+              </a>
+              <button type="button" class="portfolio-card__cart-btn">
+                <img src="assets/shopping-cart.svg" alt="" aria-hidden="true">
+                <span>一鍵加入購物車</span>
+              </button>
+            </div>
           </div>
         </div>
         
@@ -2000,10 +2163,45 @@ body {
               <p class="yield-row__label">預估年化報酬率</p>
               <p class="yield-row__value">15%</p>
             </div>
-            <a href="portfolio-global-diversified.html" class="view-portfolio">
+            <button type="button" class="view-portfolio js-portfolio-toggle" aria-expanded="false">
               <span>查看組合</span>
-              <span style="display:inline-block;width:20px;height:20px;"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true" style="display:block;width:100%;height:100%;"><path d="M7.5 4.5L13 10l-5.5 5.5" stroke="#E21E28" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            </a>
+              <span class="chevron" style="display:inline-block;width:20px;height:20px;"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true" style="display:block;width:100%;height:100%;"><path d="M7.5 4.5L13 10l-5.5 5.5" stroke="#E21E28" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </button>
+          </div>
+          <div class="portfolio-card__details">
+            <div class="portfolio-card__details-inner">
+              <a href="fund-detail.html" class="pd-fund-card">
+                <div class="pd-fund-card__meta"><span>股票型</span><span class="sep"></span><span>RR4</span></div>
+                <p class="pd-fund-card__name">貝萊德世界礦業基金</p>
+                <div class="pd-fund-card__perf">
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">三個月</p><p class="pd-perf-item__value">16.17%</p></div>
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">六個月</p><p class="pd-perf-item__value">25.70%</p></div>
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">一年</p><p class="pd-perf-item__value">72.42%</p></div>
+                </div>
+              </a>
+              <a href="fund-detail.html" class="pd-fund-card">
+                <div class="pd-fund-card__meta"><span>平衡型</span><span class="sep"></span><span>RR4</span></div>
+                <p class="pd-fund-card__name">摩根士丹利環球機會基金</p>
+                <div class="pd-fund-card__perf">
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">三個月</p><p class="pd-perf-item__value">16.17%</p></div>
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">六個月</p><p class="pd-perf-item__value">25.70%</p></div>
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">一年</p><p class="pd-perf-item__value">72.42%</p></div>
+                </div>
+              </a>
+              <a href="fund-detail.html" class="pd-fund-card">
+                <div class="pd-fund-card__meta"><span>債券型</span><span class="sep"></span><span>RR3</span></div>
+                <p class="pd-fund-card__name">富蘭克林坦伯頓全球債券基金</p>
+                <div class="pd-fund-card__perf">
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">三個月</p><p class="pd-perf-item__value">16.17%</p></div>
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">六個月</p><p class="pd-perf-item__value">25.70%</p></div>
+                  <div class="pd-perf-item"><p class="pd-perf-item__label">一年</p><p class="pd-perf-item__value">72.42%</p></div>
+                </div>
+              </a>
+              <button type="button" class="portfolio-card__cart-btn">
+                <img src="assets/shopping-cart.svg" alt="" aria-hidden="true">
+                <span>一鍵加入購物車</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -2049,7 +2247,7 @@ body {
             </div>
           </div>
         </div>
-        <a href="open-account.html" class="btn btn-primary">立即開戶</a>
+        <a href="#" class="btn btn-primary js-open-account">立即開戶</a>
       </div>
     </section>
 
@@ -2126,6 +2324,48 @@ body {
       </div>
     </footer>
 
+    <div class="sticky-cta">
+      <p class="sticky-cta__text">準備好開始投資了嗎？</p>
+      <a href="#" class="sticky-cta__btn js-open-account">立即開戶</a>
+    </div>
+
+    <div class="account-modal-overlay" id="account-modal-overlay" hidden>
+      <div class="account-modal" role="dialog" aria-modal="true" aria-labelledby="account-modal-title">
+        <div class="account-modal__header">
+          <p class="account-modal__title" id="account-modal-title">口袋基金快速開戶</p>
+          <button type="button" class="account-modal__close" id="account-modal-close" aria-label="關閉">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+        <form class="account-modal__form" id="account-modal-form">
+          <div class="account-modal__field">
+            <label class="account-modal__label" for="am-id">身分證字號</label>
+            <input class="account-modal__input" id="am-id" type="text" placeholder="請輸入您的身分證字號" autocomplete="off">
+          </div>
+          <div class="account-modal__field">
+            <label class="account-modal__label" for="am-phone">手機號碼</label>
+            <input class="account-modal__input" id="am-phone" type="tel" placeholder="範例：0912345678" autocomplete="off">
+          </div>
+          <div class="account-modal__field">
+            <label class="account-modal__label">簡訊驗證碼</label>
+            <div class="account-modal__otp-row">
+              <button type="button" class="account-modal__otp-btn" id="am-send-code" disabled>發送驗證碼</button>
+              <input class="account-modal__input" id="am-otp" type="text" placeholder="請輸入簡訊驗證碼" autocomplete="off">
+            </div>
+          </div>
+          <button type="button" class="account-modal__terms" id="am-terms-btn">
+            <span>點擊查看 <strong>個人資料告知暨授權同意條款</strong></span>
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7.5 4.5L13 10l-5.5 5.5" stroke="#959595" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <label class="account-modal__checkbox-row">
+            <input type="checkbox" id="am-agree">
+            <span>本人同意個人資料告知暨同意書之內容</span>
+          </label>
+          <button type="submit" class="account-modal__submit" id="am-submit" disabled>下一步</button>
+        </form>
+      </div>
+    </div>
+
 </div>
 
 <script>
@@ -2174,6 +2414,24 @@ body {
     10:{ principal: 120000, total: 164699 }
   };
 
+  // Future value of a fixed monthly contribution (ordinary annuity), used to
+  // derive the 0%/3% tables. The 6% table keeps the exact figures above.
+  function annuityTotal(monthlyAmount, annualRatePct, months) {
+    if (annualRatePct === 0) return monthlyAmount * months;
+    var r = annualRatePct / 100 / 12;
+    return monthlyAmount * ((Math.pow(1 + r, months) - 1) / r);
+  }
+
+  var RATE_TABLES = { 6: BASE };
+  [0, 3].forEach(function (ratePct) {
+    var table = {};
+    YEARS.forEach(function (y) {
+      var months = y * 12;
+      table[y] = { principal: 1000 * months, total: annuityTotal(1000, ratePct, months) };
+    });
+    RATE_TABLES[ratePct] = table;
+  });
+
   function fmt(n) {
     return 'NT$ ' + Math.round(n).toLocaleString('en-US');
   }
@@ -2183,15 +2441,16 @@ body {
   var principalEl = document.getElementById('estimate-principal');
   var gainEl = document.getElementById('estimate-gain');
 
-  function render(amount) {
+  function render(amount, ratePct) {
+    var table = RATE_TABLES[ratePct];
     var scale = amount / 1000;
-    var maxVal = BASE[10].total * scale;
+    var maxVal = table[10].total * scale;
     var maxBarPx = 120;
 
     barsRow.innerHTML = '';
     var barEls = [];
     YEARS.forEach(function (y) {
-      var total = BASE[y].total * scale;
+      var total = table[y].total * scale;
       var isFinal = y === 10;
       var barHeight = Math.max(8, Math.round((total / maxVal) * maxBarPx));
       var col = document.createElement('div');
@@ -2215,19 +2474,35 @@ body {
       });
     });
 
-    var finalTotal = BASE[10].total * scale;
-    var finalPrincipal = BASE[10].principal * scale;
+    var finalTotal = table[10].total * scale;
+    var finalPrincipal = table[10].principal * scale;
     var finalGain = finalTotal - finalPrincipal;
     totalEl.textContent = fmt(finalTotal);
     principalEl.textContent = '本金 ' + fmt(finalPrincipal);
     gainEl.textContent = '預估報酬 +' + fmt(finalGain);
   }
 
-  document.querySelectorAll('.amount-btn').forEach(function (b) {
+  function currentAmount() {
+    var activeBtn = document.querySelector('#amount-row .amount-btn.is-active');
+    return activeBtn ? parseInt(activeBtn.getAttribute('data-amount'), 10) : 1000;
+  }
+  function currentRate() {
+    var activeBtn = document.querySelector('#rate-row .amount-btn.is-active');
+    return activeBtn ? parseInt(activeBtn.getAttribute('data-rate'), 10) : 6;
+  }
+
+  document.querySelectorAll('#amount-row .amount-btn').forEach(function (b) {
     b.addEventListener('click', function () {
-      document.querySelectorAll('.amount-btn').forEach(function (x) { x.classList.remove('is-active'); });
+      document.querySelectorAll('#amount-row .amount-btn').forEach(function (x) { x.classList.remove('is-active'); });
       b.classList.add('is-active');
-      render(parseInt(b.getAttribute('data-amount'), 10));
+      render(currentAmount(), currentRate());
+    });
+  });
+  document.querySelectorAll('#rate-row .amount-btn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('#rate-row .amount-btn').forEach(function (x) { x.classList.remove('is-active'); });
+      b.classList.add('is-active');
+      render(currentAmount(), currentRate());
     });
   });
 
@@ -2240,14 +2515,13 @@ body {
       entries.forEach(function (entry) {
         if (entry.isIntersecting && !hasAnimated) {
           hasAnimated = true;
-          var activeBtn = document.querySelector('.amount-btn.is-active');
-          render(activeBtn ? parseInt(activeBtn.getAttribute('data-amount'), 10) : 1000);
+          render(currentAmount(), currentRate());
         }
       });
     }, { threshold: 0.3 });
     observer.observe(calcSection);
   } else {
-    render(1000);
+    render(currentAmount(), currentRate());
   }
 
   // ---- Hero stats: count-up animation ----
@@ -2289,6 +2563,24 @@ body {
     }
   }
 
+  // ---- Portfolio cards: expand "查看組合" to show fund details (accordion, one at a time) ----
+  document.querySelectorAll('.js-portfolio-toggle').forEach(function (btn) {
+    var details = btn.closest('.portfolio-card').querySelector('.portfolio-card__details');
+    btn.addEventListener('click', function () {
+      var isExpanded = btn.classList.contains('is-expanded');
+      document.querySelectorAll('.js-portfolio-toggle.is-expanded').forEach(function (otherBtn) {
+        if (otherBtn !== btn) {
+          otherBtn.classList.remove('is-expanded');
+          otherBtn.setAttribute('aria-expanded', 'false');
+          otherBtn.closest('.portfolio-card').querySelector('.portfolio-card__details').classList.remove('is-expanded');
+        }
+      });
+      btn.classList.toggle('is-expanded', !isExpanded);
+      btn.setAttribute('aria-expanded', String(!isExpanded));
+      details.classList.toggle('is-expanded', !isExpanded);
+    });
+  });
+
   // ---- FAQ: only one open at a time (optional nicety, matches accordion feel) ----
   document.querySelectorAll('.faq-item').forEach(function (item) {
     item.addEventListener('toggle', function () {
@@ -2298,6 +2590,65 @@ body {
         });
       }
     });
+  });
+
+  // ---- Quick account-opening modal ----
+  var accountOverlay = document.getElementById('account-modal-overlay');
+  var accountForm = document.getElementById('account-modal-form');
+  var idInput = document.getElementById('am-id');
+  var phoneInput = document.getElementById('am-phone');
+  var otpInput = document.getElementById('am-otp');
+  var agreeCheckbox = document.getElementById('am-agree');
+  var sendCodeBtn = document.getElementById('am-send-code');
+  var submitBtn = document.getElementById('am-submit');
+
+  function openAccountModal() {
+    accountOverlay.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+  function closeAccountModal() {
+    accountOverlay.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.js-open-account').forEach(function (trigger) {
+    trigger.addEventListener('click', function (e) {
+      e.preventDefault();
+      openAccountModal();
+    });
+  });
+  document.getElementById('account-modal-close').addEventListener('click', closeAccountModal);
+  accountOverlay.addEventListener('click', function (e) {
+    if (e.target === accountOverlay) closeAccountModal();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !accountOverlay.hidden) closeAccountModal();
+  });
+
+  function isValidPhone(v) { return /^09\d{8}$/.test(v.trim()); }
+
+  function updateFormState() {
+    sendCodeBtn.disabled = !isValidPhone(phoneInput.value);
+    submitBtn.disabled = !(
+      idInput.value.trim() &&
+      isValidPhone(phoneInput.value) &&
+      otpInput.value.trim() &&
+      agreeCheckbox.checked
+    );
+  }
+  [idInput, phoneInput, otpInput].forEach(function (input) {
+    input.addEventListener('input', updateFormState);
+  });
+  agreeCheckbox.addEventListener('change', updateFormState);
+
+  sendCodeBtn.addEventListener('click', function () {
+    if (sendCodeBtn.disabled) return;
+    sendCodeBtn.textContent = '已發送';
+    setTimeout(function () { sendCodeBtn.textContent = '發送驗證碼'; }, 3000);
+  });
+
+  accountForm.addEventListener('submit', function (e) {
+    e.preventDefault();
   });
 })();
 </script>
