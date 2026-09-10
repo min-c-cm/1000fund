@@ -1,0 +1,2654 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>全球多元分散組合｜口袋基金 CMoneyFund</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --white:#FFFFFF;
+  --text-primary:#262626;
+  --text-secondary:#595959;
+  --text-inverse:#FFFFFF;
+  --primary-display:#C01A22;
+  --primary-basic:#E21E28;
+  --primary-light:#FCE9EA;
+  --primary-border:#F39EA3;
+  --surface-bg:#F9F9F9;
+  --warning-basic:#F7BF30;
+  --orange-basic:#F18A2B;
+  --green-basic:#6CC4A5;
+  --footer-bg:#262626;
+  --divider:#EAEAEA;
+  --divider-2:#D9D9D9;
+  --divider-3:#E5E5E0;
+  --faq-title:#151515;
+  --faq-body:#696969;
+  --footer-muted:#BFBFBF;
+  --content-width:390px;
+}
+
+/* ===== tokens/tokens-ref.css (verbatim) ===== */
+/* Reference tokens hold raw values only. No semantic or component names. */
+/* Source: Figma "CooiPAHdc175yY1OVVe3Pe — [Web] 基金平台 Design system new", page "Design Guideline",
+   frame "Colors 顏色" (node 148288:1026) + bound Figma Variables. Evidence tier 1 (authored). */
+
+:root {
+  /* ---------------------------------------------------------------------
+   * Color — chromatic families, 7-step light -> dark (100 lightest, 0 darkest).
+   * Step numbers are assigned by measured lightness rank within each family,
+   * not by role name — see TOKEN_ARCHITECTURE.md for the role -> step map.
+   * ------------------------------------------------------------------- */
+
+  /* red (主色紅 Primary) */
+  --cmf-ref-color-red-100: #fce9ea;
+  --cmf-ref-color-red-85: #f8c9cb;
+  --cmf-ref-color-red-70: #f39ea3;
+  --cmf-ref-color-red-55: #e21e28;
+  --cmf-ref-color-red-40: #c01a22;
+  --cmf-ref-color-red-25: #a0151c;
+  --cmf-ref-color-red-10: #811117;
+
+  /* neutral (次要黑 Secondary + 文字.Icon + Surface/Border grays) */
+  --cmf-ref-color-neutral-100: #ffffff;
+  --cmf-ref-color-neutral-95: #f9f9f9;
+  --cmf-ref-color-neutral-92: #f0f0f0;
+  --cmf-ref-color-neutral-90: #edeef1;
+  --cmf-ref-color-neutral-88: #e4e4e4;
+  --cmf-ref-color-neutral-85: #d9dae1;
+  --cmf-ref-color-neutral-84: #d9d9d9;
+  --cmf-ref-color-neutral-75: #bfbfbf;
+  --cmf-ref-color-neutral-60: #959595;
+  --cmf-ref-color-neutral-45: #767676;
+  --cmf-ref-color-neutral-35: #595959;
+  --cmf-ref-color-neutral-15: #262626;
+  --cmf-ref-color-neutral-0: #000000;
+
+  /* danger / loss (危險紅 Danger) — distinct hue from brand red, kept separate (authored vs authored) */
+  --cmf-ref-color-orange-red-100: #feedea;
+  --cmf-ref-color-orange-red-85: #fcd5cc;
+  --cmf-ref-color-orange-red-70: #f9b3a4;
+  --cmf-ref-color-orange-red-55: #f14f2b;
+  --cmf-ref-color-orange-red-40: #d72c0d;
+  --cmf-ref-color-orange-red-25: #ab381f;
+  --cmf-ref-color-orange-red-10: #892d19;
+
+  /* success / gain (成功綠 Success) */
+  --cmf-ref-color-green-100: #e8f6f1;
+  --cmf-ref-color-green-85: #c7e8dd;
+  --cmf-ref-color-green-70: #9bd7c2;
+  --cmf-ref-color-green-55: #16a170;
+  --cmf-ref-color-green-40: #13895f;
+  --cmf-ref-color-green-25: #107250;
+  --cmf-ref-color-green-10: #0d5c40;
+
+  /* link blue (超連結藍色 Link) */
+  --cmf-ref-color-blue-100: #e8f2fb;
+  --cmf-ref-color-blue-85: #c7e1f6;
+  --cmf-ref-color-blue-70: #9ac8ef;
+  --cmf-ref-color-blue-55: #1480d9;
+  --cmf-ref-color-blue-40: #116db8;
+  --cmf-ref-color-blue-25: #0e5b9a;
+  --cmf-ref-color-blue-10: #0b497c;
+
+  /* warning yellow (警告黃 Warning) */
+  --cmf-ref-color-yellow-100: #fef9ea;
+  --cmf-ref-color-yellow-85: #fdf0cd;
+  --cmf-ref-color-yellow-70: #fce3a6;
+  --cmf-ref-color-yellow-55: #f7bf30;
+  --cmf-ref-color-yellow-40: #d2a229;
+  --cmf-ref-color-yellow-25: #af8822;
+  --cmf-ref-color-yellow-10: #8d6d1b;
+
+  /* lime — chart / tag accent color, no semantic role assigned in source */
+  --cmf-ref-color-lime-100: #f7fcec;
+  --cmf-ref-color-lime-85: #ecf8d2;
+  --cmf-ref-color-lime-70: #ddf3af;
+  --cmf-ref-color-lime-55: #b0e245;
+  --cmf-ref-color-lime-40: #96c03b;
+  --cmf-ref-color-lime-25: #7da031;
+  --cmf-ref-color-lime-10: #4f661f;
+
+  /* orange — chart / tag accent color, no semantic role assigned in source */
+  --cmf-ref-color-orange-100: #fef3ea;
+  --cmf-ref-color-orange-85: #fce3cc;
+  --cmf-ref-color-orange-70: #f9cda4;
+  --cmf-ref-color-orange-55: #f18a2b;
+  --cmf-ref-color-orange-40: #cd7525;
+  --cmf-ref-color-orange-25: #ab621f;
+  --cmf-ref-color-orange-10: #6c3e13;
+
+  /* brand accent observed on breakpoint frame only (ETF 藍色/Basic) — low usage evidence, kept as ref only */
+  --cmf-ref-color-brand-blue-40: #194cae;
+
+  /* NAV/performance line-chart color, pixel-sampled from the live production canvas
+     (getImageData on /fund-introduction/[fundCode]/performance-nav, both chart tabs,
+     3 viewports — evidence E49b). Distinct from --cmf-ref-color-blue-55 (#1480d9, Link).
+     Single-observation only — no lighter/darker ramp seen, kept as one ref value at an
+     arbitrary mid-scale step (40) per the --cmf-ref-color-brand-blue-40 precedent above. */
+  --cmf-ref-color-chart-line-blue-40: #4a90e2;
+
+  /* ---------------------------------------------------------------------
+   * Opacity — shared alpha steps, color is always neutral-15. -5 through
+   * -20 back the drop-shadow/elevation scale; -30 backs the surface mask
+   * (scrim) role — "表面Surface/遮罩Mask", figma:CooiPAHdc175yY1OVVe3Pe#580:8799.
+   * ------------------------------------------------------------------- */
+  --cmf-ref-opacity-5: 0.05;
+  --cmf-ref-opacity-10: 0.1;
+  --cmf-ref-opacity-15: 0.15;
+  --cmf-ref-opacity-20: 0.2;
+  --cmf-ref-opacity-30: 0.3;
+
+  /* ---------------------------------------------------------------------
+   * Typography — typeface, raw sizes, weights, line-heights, tracking.
+   * Source: "字級總覽表" (node 3:53695), breakpoint label "Desktop 768+".
+   * No separate sub-768 scale was found in the reviewed evidence — see
+   * DESIGN_EVIDENCE_MAP.md open question.
+   * ------------------------------------------------------------------- */
+  --cmf-ref-typeface-body: "PingFang TC";
+  --cmf-ref-typeface-legacy: "Open Sans"; /* only seen on one stray "Headline/16" variable — not part of the documented scale */
+
+  --cmf-ref-weight-400: 400;
+  --cmf-ref-weight-500: 500;
+  --cmf-ref-weight-600: 600;
+
+  --cmf-ref-size-52: 52px;
+  --cmf-ref-size-40: 40px;
+  --cmf-ref-size-30: 30px;
+  --cmf-ref-size-24: 24px;
+  --cmf-ref-size-20: 20px;
+  --cmf-ref-size-18: 18px;
+  --cmf-ref-size-16: 16px;
+  --cmf-ref-size-14: 14px;
+  --cmf-ref-size-12: 12px;
+
+  --cmf-ref-line-height-64: 64px;
+  --cmf-ref-line-height-48: 48px;
+  --cmf-ref-line-height-36: 36px;
+  --cmf-ref-line-height-32: 32px;
+  --cmf-ref-line-height-28: 28px;
+  --cmf-ref-line-height-24: 24px;
+  --cmf-ref-line-height-20: 20px;
+  --cmf-ref-line-height-16: 16px;
+
+  --cmf-ref-tracking-020: 0.2px;
+  --cmf-ref-tracking-040: 0.4px;
+
+  /* ---------------------------------------------------------------------
+   * Shape — single documented radius value ("Border Radius 圓角", node 197:54313).
+   * A second, smaller radius was confirmed by direct evidence for the
+   * Pagination item boxes (node 148644:25360, 2026-08-25 ui-compare-to-
+   * reference pass) — see tokens-sys.css for the corresponding sys role
+   * and shape.md's "Compact" corner rule.
+   * ------------------------------------------------------------------- */
+  --cmf-ref-radius-12: 12px;
+  --cmf-ref-radius-4: 4px;
+
+  /* A third radius confirmed by direct evidence for the Navigation Bar's
+   * primary-link popover panel (developer-supplied screenshot, 2026-09-07) —
+   * see tokens-comp.css `--cmf-comp-nav-popover-shape` and navigation-bar.md. */
+  --cmf-ref-radius-16: 16px;
+
+  /* ---------------------------------------------------------------------
+   * Spacing — values confirmed on real product frame ("註冊相關頁面", node 621:15563),
+   * breakpoint gutters/margins ("基金平台斷點", node 3:54052), and the Checkbox
+   * box-to-label gap (node 148323:12219, "gap-[8px]"). Fits an 8px unit.
+   * ------------------------------------------------------------------- */
+  --cmf-ref-size-8-space: 8px;
+  --cmf-ref-size-16-space: 16px;
+  --cmf-ref-size-24-space: 24px;
+  --cmf-ref-size-40-space: 40px;
+
+  /* ---------------------------------------------------------------------
+   * Breakpoints — "基金平台斷點 - 斷點 Breakpoint" (node 3:54052).
+   * ------------------------------------------------------------------- */
+  --cmf-ref-breakpoint-small-max: 767px;
+  --cmf-ref-breakpoint-medium-min: 768px;
+  --cmf-ref-breakpoint-medium-max: 1200px;
+  --cmf-ref-breakpoint-large-min: 1201px;
+  --cmf-ref-breakpoint-large-max: 1440px;
+  --cmf-ref-breakpoint-xlarge-min: 1440px;
+  --cmf-ref-content-max-width: 1440px;
+}
+
+
+/* ===== tokens/tokens-sys.css (verbatim) ===== */
+/* System tokens map shared semantic roles to reference tokens only. */
+
+:root {
+  /* ---------------------------------------------------------------------
+   * Color roles — brand / primary (紅 Primary)
+   * ------------------------------------------------------------------- */
+  --cmf-sys-color-primary: var(--cmf-ref-color-red-55);
+  --cmf-sys-color-primary-container: var(--cmf-ref-color-red-100);
+  --cmf-sys-color-primary-focus: var(--cmf-ref-color-red-85);
+  --cmf-sys-color-primary-border: var(--cmf-ref-color-red-70);
+  --cmf-sys-color-primary-display: var(--cmf-ref-color-red-40);
+  --cmf-sys-color-primary-hover: var(--cmf-ref-color-red-25);
+  --cmf-sys-color-primary-active: var(--cmf-ref-color-red-10);
+  --cmf-sys-color-on-primary: var(--cmf-ref-color-neutral-100);
+
+  /* Color roles — secondary (次要黑 Secondary, dark/inverse action surfaces) */
+  --cmf-sys-color-secondary: var(--cmf-ref-color-neutral-35);
+  --cmf-sys-color-secondary-container: var(--cmf-ref-color-neutral-92);
+  --cmf-sys-color-secondary-focus: var(--cmf-ref-color-neutral-88);
+  --cmf-sys-color-secondary-border: var(--cmf-ref-color-neutral-75);
+  --cmf-sys-color-secondary-hover: var(--cmf-ref-color-neutral-45);
+  --cmf-sys-color-secondary-active: var(--cmf-ref-color-neutral-15);
+  --cmf-sys-color-on-secondary: var(--cmf-ref-color-neutral-100);
+
+  /* Color roles — semantic feedback */
+  --cmf-sys-color-success: var(--cmf-ref-color-green-55);
+  --cmf-sys-color-success-container: var(--cmf-ref-color-green-100);
+  --cmf-sys-color-success-border: var(--cmf-ref-color-green-70);
+  --cmf-sys-color-success-hover: var(--cmf-ref-color-green-25);
+  --cmf-sys-color-success-active: var(--cmf-ref-color-green-10);
+  --cmf-sys-color-on-success: var(--cmf-ref-color-neutral-100);
+
+  --cmf-sys-color-danger: var(--cmf-ref-color-orange-red-55);
+  --cmf-sys-color-danger-container: var(--cmf-ref-color-orange-red-100);
+  --cmf-sys-color-danger-border: var(--cmf-ref-color-orange-red-70);
+  --cmf-sys-color-danger-hover: var(--cmf-ref-color-orange-red-25);
+  --cmf-sys-color-danger-active: var(--cmf-ref-color-orange-red-10);
+  --cmf-sys-color-on-danger: var(--cmf-ref-color-neutral-100);
+
+  --cmf-sys-color-warning: var(--cmf-ref-color-yellow-55);
+  --cmf-sys-color-warning-container: var(--cmf-ref-color-yellow-100);
+  --cmf-sys-color-warning-border: var(--cmf-ref-color-yellow-70);
+  --cmf-sys-color-warning-hover: var(--cmf-ref-color-yellow-25);
+  --cmf-sys-color-warning-active: var(--cmf-ref-color-yellow-10);
+  --cmf-sys-color-on-warning: var(--cmf-ref-color-neutral-15);
+
+  --cmf-sys-color-accent-orange-container: var(--cmf-ref-color-orange-100);
+  --cmf-sys-color-on-accent-orange-container: var(--cmf-ref-color-orange-55);
+  --cmf-sys-color-accent-orange-border: var(--cmf-ref-color-orange-70);
+
+  --cmf-sys-color-link: var(--cmf-ref-color-blue-55);
+  --cmf-sys-color-link-hover: var(--cmf-ref-color-blue-25);
+  --cmf-sys-color-link-active: var(--cmf-ref-color-blue-10);
+  --cmf-sys-color-link-container: var(--cmf-ref-color-blue-100);
+  --cmf-sys-color-on-link-container: var(--cmf-ref-color-neutral-15);
+
+  /* Fund/market numeric direction — Taiwan-market convention, INVERTED from form-validation
+     colors below: red = up/gain, green = down/loss (evidence E25-E27, DESIGN_PRINCIPLES.md #2).
+     Never substitute --cmf-sys-color-success/-danger directly for these; keep the dedicated
+     roles so market-direction and validation semantics can't be silently conflated.
+     market-up pixel-sampled from live production DOM as brand Primary red (#e21e28), NOT
+     Danger orange-red (#f14f2b) — corrected from the earlier visual-judgment mapping (E44,
+     resolves OQ-4). */
+  --cmf-sys-color-market-up: var(--cmf-ref-color-red-55);
+  --cmf-sys-color-market-down: var(--cmf-ref-color-green-55);
+
+  /* Chart / tag accent roles (no interactive state evidence beyond a single "Basic" swatch) */
+  --cmf-sys-color-accent-lime: var(--cmf-ref-color-lime-55);
+  --cmf-sys-color-accent-orange: var(--cmf-ref-color-orange-55);
+
+  /* Chart series order, evidence: "Chart" section donut/bar/line examples (E34). Exact
+     per-category color assignment (which fund category always gets which slot) is not
+     confirmed — see components/chart.md Open Question. */
+  --cmf-sys-color-chart-series-1: var(--cmf-ref-color-orange-55);
+  --cmf-sys-color-chart-series-2: var(--cmf-ref-color-green-55);
+  --cmf-sys-color-chart-series-3: var(--cmf-ref-color-blue-55);
+  --cmf-sys-color-chart-series-4: var(--cmf-ref-color-lime-55);
+  --cmf-sys-color-chart-series-5: var(--cmf-ref-color-orange-red-55);
+  --cmf-sys-color-chart-empty: var(--cmf-ref-color-neutral-84);
+
+  /* Single-series NAV/performance line-chart color, pixel-sampled from the live production
+     canvas (evidence E49b) — a distinct blue from --cmf-sys-color-chart-series-3 (#1480d9,
+     the 5-slot donut/bar palette's blue slot, evidence E34). Kept as its own role because the
+     two contexts (multi-series donut/bar vs. single NAV/performance trend line) were never
+     observed to share a color, and conflating them would be an unverified assumption. */
+  --cmf-sys-color-chart-line: var(--cmf-ref-color-chart-line-blue-40);
+
+  /* Color roles — surface / background / text */
+  --cmf-sys-color-background: var(--cmf-ref-color-neutral-95);
+  --cmf-sys-color-surface: var(--cmf-ref-color-neutral-100);
+  --cmf-sys-color-surface-highlight: var(--cmf-ref-color-neutral-92);
+  --cmf-sys-color-surface-default: var(--cmf-ref-color-neutral-88);
+  --cmf-sys-color-surface-pressed: var(--cmf-ref-color-neutral-75);
+  --cmf-sys-color-surface-mask: rgba(38, 38, 38, var(--cmf-ref-opacity-30));
+  --cmf-sys-color-surface-disabled: rgba(38, 38, 38, var(--cmf-ref-opacity-5));
+  --cmf-sys-color-outline: var(--cmf-ref-color-neutral-84);
+
+  --cmf-sys-color-on-surface-primary: var(--cmf-ref-color-neutral-15);
+  --cmf-sys-color-on-surface-secondary: var(--cmf-ref-color-neutral-35);
+  --cmf-sys-color-on-surface-tertiary: var(--cmf-ref-color-neutral-60);
+  --cmf-sys-color-on-surface-disabled: var(--cmf-ref-color-neutral-75);
+  --cmf-sys-color-on-surface-inverse: var(--cmf-ref-color-neutral-100);
+
+  /* background-like role -> required foreground pair (audit "on-*" rule) */
+  --cmf-sys-color-on-background: var(--cmf-ref-color-neutral-15);
+  --cmf-sys-color-on-surface: var(--cmf-ref-color-neutral-15);
+  --cmf-sys-color-on-surface-highlight: var(--cmf-ref-color-neutral-15);
+  --cmf-sys-color-on-surface-default: var(--cmf-ref-color-neutral-15);
+  --cmf-sys-color-on-surface-pressed: var(--cmf-ref-color-neutral-15);
+  --cmf-sys-color-on-surface-mask: var(--cmf-ref-color-neutral-100);
+
+  /* ---------------------------------------------------------------------
+   * Typography roles
+   * ------------------------------------------------------------------- */
+  --cmf-sys-typescale-display-l-font: var(--cmf-ref-typeface-body);
+  --cmf-sys-typescale-display-l-size: var(--cmf-ref-size-52);
+  --cmf-sys-typescale-display-l-line-height: var(--cmf-ref-line-height-64);
+  --cmf-sys-typescale-display-l-weight: var(--cmf-ref-weight-600);
+  --cmf-sys-typescale-display-l-tracking: var(--cmf-ref-tracking-040);
+
+  --cmf-sys-typescale-display-m-size: var(--cmf-ref-size-40);
+  --cmf-sys-typescale-display-m-line-height: var(--cmf-ref-line-height-48);
+  --cmf-sys-typescale-display-m-weight: var(--cmf-ref-weight-600);
+  --cmf-sys-typescale-display-m-tracking: var(--cmf-ref-tracking-040);
+
+  --cmf-sys-typescale-display-s-size: var(--cmf-ref-size-30);
+  --cmf-sys-typescale-display-s-line-height: var(--cmf-ref-line-height-36);
+  --cmf-sys-typescale-display-s-weight: var(--cmf-ref-weight-600);
+  --cmf-sys-typescale-display-s-tracking: var(--cmf-ref-tracking-040);
+
+  --cmf-sys-typescale-heading-1-size: var(--cmf-ref-size-24);
+  --cmf-sys-typescale-heading-1-line-height: var(--cmf-ref-line-height-32);
+  --cmf-sys-typescale-heading-1-weight: var(--cmf-ref-weight-600);
+  --cmf-sys-typescale-heading-1-tracking: var(--cmf-ref-tracking-040);
+
+  --cmf-sys-typescale-heading-2-size: var(--cmf-ref-size-20);
+  --cmf-sys-typescale-heading-2-line-height: var(--cmf-ref-line-height-28);
+  --cmf-sys-typescale-heading-2-weight: var(--cmf-ref-weight-600);
+  --cmf-sys-typescale-heading-2-tracking: var(--cmf-ref-tracking-020);
+
+  --cmf-sys-typescale-heading-3-size: var(--cmf-ref-size-18);
+  --cmf-sys-typescale-heading-3-line-height: var(--cmf-ref-line-height-24);
+  --cmf-sys-typescale-heading-3-weight: var(--cmf-ref-weight-600);
+  --cmf-sys-typescale-heading-3-tracking: var(--cmf-ref-tracking-020);
+
+  --cmf-sys-typescale-heading-4-size: var(--cmf-ref-size-16);
+  --cmf-sys-typescale-heading-4-line-height: var(--cmf-ref-line-height-24);
+  --cmf-sys-typescale-heading-4-weight: var(--cmf-ref-weight-600);
+  --cmf-sys-typescale-heading-4-tracking: var(--cmf-ref-tracking-020);
+
+  --cmf-sys-typescale-heading-5-size: var(--cmf-ref-size-12);
+  --cmf-sys-typescale-heading-5-line-height: var(--cmf-ref-line-height-16);
+  --cmf-sys-typescale-heading-5-weight: var(--cmf-ref-weight-600);
+  --cmf-sys-typescale-heading-5-tracking: var(--cmf-ref-tracking-020);
+
+  --cmf-sys-typescale-body-xl-size: var(--cmf-ref-size-20);
+  --cmf-sys-typescale-body-xl-line-height: var(--cmf-ref-line-height-32);
+  --cmf-sys-typescale-body-xl-weight: var(--cmf-ref-weight-400);
+  --cmf-sys-typescale-body-xl-tracking: var(--cmf-ref-tracking-020);
+
+  --cmf-sys-typescale-body-l-size: var(--cmf-ref-size-16);
+  --cmf-sys-typescale-body-l-line-height: var(--cmf-ref-line-height-24);
+  --cmf-sys-typescale-body-l-weight: var(--cmf-ref-weight-400);
+  --cmf-sys-typescale-body-l-weight-emphasis: var(--cmf-ref-weight-500);
+  --cmf-sys-typescale-body-l-tracking: var(--cmf-ref-tracking-020);
+
+  --cmf-sys-typescale-body-m-size: var(--cmf-ref-size-14);
+  --cmf-sys-typescale-body-m-line-height: var(--cmf-ref-line-height-20);
+  --cmf-sys-typescale-body-m-weight: var(--cmf-ref-weight-400);
+  --cmf-sys-typescale-body-m-weight-emphasis: var(--cmf-ref-weight-500);
+  --cmf-sys-typescale-body-m-tracking: var(--cmf-ref-tracking-020);
+
+  --cmf-sys-typescale-body-s-size: var(--cmf-ref-size-12);
+  --cmf-sys-typescale-body-s-line-height: var(--cmf-ref-line-height-16);
+  --cmf-sys-typescale-body-s-weight: var(--cmf-ref-weight-400);
+  --cmf-sys-typescale-body-s-weight-emphasis: var(--cmf-ref-weight-500);
+  --cmf-sys-typescale-body-s-tracking: var(--cmf-ref-tracking-040);
+
+  --cmf-sys-typescale-label-l-size: var(--cmf-ref-size-16);
+  --cmf-sys-typescale-label-l-line-height: var(--cmf-ref-line-height-24);
+  --cmf-sys-typescale-label-l-weight: var(--cmf-ref-weight-600);
+  --cmf-sys-typescale-label-l-tracking: var(--cmf-ref-tracking-020);
+
+  --cmf-sys-typescale-label-m-size: var(--cmf-ref-size-14);
+  --cmf-sys-typescale-label-m-line-height: var(--cmf-ref-line-height-20);
+  --cmf-sys-typescale-label-m-weight: var(--cmf-ref-weight-600);
+  --cmf-sys-typescale-label-m-tracking: var(--cmf-ref-tracking-020);
+
+  --cmf-sys-typescale-label-s-size: var(--cmf-ref-size-12);
+  --cmf-sys-typescale-label-s-line-height: var(--cmf-ref-line-height-16);
+  --cmf-sys-typescale-label-s-weight: var(--cmf-ref-weight-600);
+  --cmf-sys-typescale-label-s-tracking: var(--cmf-ref-tracking-020);
+
+  /* ---------------------------------------------------------------------
+   * Shape roles — the base radius is reused almost everywhere per source.
+   * `-compact` is a second, narrowly-scoped role confirmed by direct
+   * evidence for small fixed-size controls (Pagination item boxes, node
+   * 148644:25360) — do not reuse it elsewhere without equivalent evidence
+   * per shape.md's own "no second radius scale without new evidence" rule.
+   * ------------------------------------------------------------------- */
+  --cmf-sys-shape-corner-base: var(--cmf-ref-radius-12);
+  --cmf-sys-shape-corner-compact: var(--cmf-ref-radius-4);
+
+  /* ---------------------------------------------------------------------
+   * Spacing roles
+   * ------------------------------------------------------------------- */
+  --cmf-sys-spacing-gap-inline: var(--cmf-ref-size-24-space);
+  --cmf-sys-spacing-gap-inline-compact: var(--cmf-ref-size-8-space);
+  --cmf-sys-spacing-gap-stack: var(--cmf-ref-size-24-space);
+  --cmf-sys-spacing-section-gap: var(--cmf-ref-size-40-space);
+  --cmf-sys-spacing-container-inset: var(--cmf-ref-size-40-space);
+  --cmf-sys-spacing-screen-gutter-compact: var(--cmf-ref-size-16-space);
+  --cmf-sys-spacing-screen-gutter-regular: var(--cmf-ref-size-24-space);
+
+  /* ---------------------------------------------------------------------
+   * Elevation roles — "Shadow & Elevation 陰影" (node 3:54002). Color is
+   * always neutral-15 at varying opacity; two-layer drop shadows.
+   * ------------------------------------------------------------------- */
+  --cmf-sys-elevation-1: 0 0 0 1px rgba(38, 38, 38, var(--cmf-ref-opacity-5)),
+    0 1px 3px 0 rgba(38, 38, 38, var(--cmf-ref-opacity-15));
+  --cmf-sys-elevation-2: 0 1px 0 0 rgba(38, 38, 38, var(--cmf-ref-opacity-5));
+  --cmf-sys-elevation-3: 0 1px 2px 0 rgba(38, 38, 38, var(--cmf-ref-opacity-15)),
+    0 0 5px 0 rgba(38, 38, 38, var(--cmf-ref-opacity-5));
+  --cmf-sys-elevation-4: 0 2px 10px 0 rgba(38, 38, 38, var(--cmf-ref-opacity-10)),
+    0 0 2px 0 rgba(38, 38, 38, var(--cmf-ref-opacity-20));
+  --cmf-sys-elevation-5: 0 26px 80px 0 rgba(38, 38, 38, var(--cmf-ref-opacity-20)),
+    0 0 1px 0 rgba(38, 38, 38, var(--cmf-ref-opacity-20));
+
+  /* ---------------------------------------------------------------------
+   * Breakpoint roles
+   * ------------------------------------------------------------------- */
+  --cmf-sys-breakpoint-small: var(--cmf-ref-breakpoint-small-max);
+  --cmf-sys-breakpoint-medium: var(--cmf-ref-breakpoint-medium-min);
+  --cmf-sys-breakpoint-large: var(--cmf-ref-breakpoint-large-min);
+  --cmf-sys-breakpoint-xlarge: var(--cmf-ref-breakpoint-xlarge-min);
+  --cmf-sys-content-max-width: var(--cmf-ref-content-max-width);
+}
+
+
+/* ===== tokens/tokens-comp.css (verbatim) ===== */
+/* Component tokens map component slots to system tokens only. */
+
+:root {
+  /* =======================================================================
+   * Button — "Button & Checkbox & Radio button" section, node 621:16119.
+   * Three color variants observed: primary (filled red), secondary (dark
+   * outline/fill), light (pale ghost). Radius, elevation, and typography
+   * are shared across all variants and sizes.
+   * ===================================================================== */
+  --cmf-comp-button-shape: var(--cmf-sys-shape-corner-base);
+  --cmf-comp-button-elevation: var(--cmf-sys-elevation-2);
+  --cmf-comp-button-label-font-size-l: var(--cmf-sys-typescale-label-l-size);
+  --cmf-comp-button-label-line-height-l: var(--cmf-sys-typescale-label-l-line-height);
+  --cmf-comp-button-label-font-size-m: var(--cmf-sys-typescale-label-m-size);
+  --cmf-comp-button-label-line-height-m: var(--cmf-sys-typescale-label-m-line-height);
+  --cmf-comp-button-label-font-size-s: var(--cmf-sys-typescale-label-s-size);
+  --cmf-comp-button-label-line-height-s: var(--cmf-sys-typescale-label-s-line-height);
+  --cmf-comp-button-label-weight: var(--cmf-sys-typescale-label-l-weight);
+  --cmf-comp-button-padding-inline: var(--cmf-sys-spacing-gap-inline);
+
+  /* primary (filled red) */
+  --cmf-comp-button-primary-container-color: var(--cmf-sys-color-primary);
+  --cmf-comp-button-primary-label-color: var(--cmf-sys-color-on-primary);
+  --cmf-comp-button-primary-container-color-hover: var(--cmf-sys-color-primary-hover);
+  --cmf-comp-button-primary-container-color-active: var(--cmf-sys-color-primary-active);
+  --cmf-comp-button-primary-container-color-disabled: var(--cmf-sys-color-surface-default);
+  --cmf-comp-button-primary-label-color-disabled: var(--cmf-sys-color-on-surface-disabled);
+
+  /* secondary (dark outline / fill) */
+  --cmf-comp-button-secondary-container-color: var(--cmf-sys-color-surface);
+  --cmf-comp-button-secondary-border-color: var(--cmf-sys-color-primary);
+  --cmf-comp-button-secondary-label-color: var(--cmf-sys-color-primary);
+  --cmf-comp-button-secondary-container-color-hover: var(--cmf-sys-color-primary-container);
+  --cmf-comp-button-secondary-label-color-hover: var(--cmf-sys-color-primary);
+  --cmf-comp-button-secondary-container-color-active: var(--cmf-sys-color-primary-border);
+  --cmf-comp-button-secondary-container-color-disabled: var(--cmf-sys-color-surface-default);
+  --cmf-comp-button-secondary-label-color-disabled: var(--cmf-sys-color-on-surface-disabled);
+
+  /* light (pale ghost, on primary hue) */
+  --cmf-comp-button-light-container-color: var(--cmf-sys-color-primary-container);
+  --cmf-comp-button-light-label-color: var(--cmf-sys-color-primary);
+  --cmf-comp-button-light-container-color-hover: var(--cmf-sys-color-primary-focus);
+  --cmf-comp-button-light-container-color-active: var(--cmf-sys-color-primary-border);
+  --cmf-comp-button-light-container-color-disabled: var(--cmf-sys-color-surface-highlight);
+  --cmf-comp-button-light-label-color-disabled: var(--cmf-sys-color-on-surface-disabled);
+  --cmf-comp-button-tertiary-container-color: transparent;
+  --cmf-comp-button-tertiary-border-color: var(--cmf-sys-color-outline);
+  --cmf-comp-button-tertiary-label-color: var(--cmf-sys-color-secondary);
+  --cmf-comp-button-tertiary-container-color-disabled: var(--cmf-sys-color-surface-disabled);
+  --cmf-comp-button-tertiary-label-color-disabled: var(--cmf-sys-color-on-surface-disabled);
+
+  /* quick-action button (icon + label pill, "快捷按鈕") */
+  --cmf-comp-quick-button-border-color: var(--cmf-sys-color-primary);
+  --cmf-comp-quick-button-label-color: var(--cmf-sys-color-primary);
+  --cmf-comp-quick-button-container-color-hover: var(--cmf-sys-color-primary);
+  --cmf-comp-quick-button-label-color-hover: var(--cmf-sys-color-on-primary);
+  --cmf-comp-quick-button-container-color-active: var(--cmf-sys-color-primary-active);
+
+  /* =======================================================================
+   * Checkbox — node 148323:12219 ("Checkbox/*20260123*").
+   * Uses the secondary (black) color role, not primary (red).
+   * ===================================================================== */
+  --cmf-comp-checkbox-shape: var(--cmf-sys-shape-corner-compact);
+  --cmf-comp-checkbox-gap: var(--cmf-sys-spacing-gap-inline-compact);
+  --cmf-comp-checkbox-border-color: var(--cmf-sys-color-secondary-border);
+  --cmf-comp-checkbox-hover-border-color: var(--cmf-sys-color-secondary-hover);
+  --cmf-comp-checkbox-label-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-checkbox-checked-container-color: var(--cmf-sys-color-secondary-active);
+  --cmf-comp-checkbox-checked-mark-color: var(--cmf-sys-color-on-secondary);
+  --cmf-comp-checkbox-disabled-border-color: var(--cmf-sys-color-surface-disabled);
+  --cmf-comp-checkbox-disabled-label-color: var(--cmf-sys-color-on-surface-disabled);
+
+  /* =======================================================================
+   * Radio button — node 148583:14577 ("Radio button/*20260513*").
+   * Uses the secondary (black) color role, not primary (red) — same role as Checkbox.
+   * ===================================================================== */
+  --cmf-comp-radio-gap: var(--cmf-sys-spacing-gap-inline-compact);
+  --cmf-comp-radio-border-color: var(--cmf-sys-color-secondary-border);
+  --cmf-comp-radio-hover-border-color: var(--cmf-sys-color-secondary-hover);
+  --cmf-comp-radio-label-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-radio-selected-ring-color: var(--cmf-sys-color-secondary-active);
+  --cmf-comp-radio-selected-dot-color: var(--cmf-sys-color-secondary-active);
+  --cmf-comp-radio-disabled-border-color: var(--cmf-sys-color-surface-disabled);
+  --cmf-comp-radio-disabled-label-color: var(--cmf-sys-color-on-surface-disabled);
+  --cmf-comp-radio-disabled-dot-color: var(--cmf-sys-color-on-surface-disabled);
+
+  /* =======================================================================
+   * Input — "input & search bar" section, node 621:16123.
+   * ===================================================================== */
+  --cmf-comp-input-shape: var(--cmf-sys-shape-corner-base);
+  --cmf-comp-input-container-color: var(--cmf-sys-color-surface);
+  --cmf-comp-input-border-color: var(--cmf-sys-color-outline);
+  --cmf-comp-input-border-color-focus: var(--cmf-sys-color-primary);
+  --cmf-comp-input-border-color-error: var(--cmf-sys-color-danger);
+  --cmf-comp-input-text-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-input-placeholder-color: var(--cmf-sys-color-on-surface-tertiary);
+  --cmf-comp-input-helper-color: var(--cmf-sys-color-on-surface-tertiary);
+  --cmf-comp-input-helper-color-error: var(--cmf-sys-color-danger);
+  --cmf-comp-input-helper-color-success: var(--cmf-sys-color-success);
+  --cmf-comp-input-counter-color: var(--cmf-sys-color-on-surface-tertiary);
+  --cmf-comp-input-disabled-container-color: var(--cmf-sys-color-surface-highlight);
+  --cmf-comp-input-disabled-text-color: var(--cmf-sys-color-on-surface-disabled);
+  --cmf-comp-input-prefix-container-color: var(--cmf-sys-color-warning-container);
+  --cmf-comp-input-padding-inline: var(--cmf-sys-spacing-screen-gutter-compact);
+
+  /* =======================================================================
+   * Fund Card — "Card" section, node 621:16124. Covers the fund
+   * application/holdings card family (header + key-value rows + summary
+   * footer) plus the simpler brand-select tile and KYC-upload panel.
+   * ===================================================================== */
+  --cmf-comp-card-shape: var(--cmf-sys-shape-corner-base);
+  --cmf-comp-card-elevation: var(--cmf-sys-elevation-3);
+  --cmf-comp-card-container-color: var(--cmf-sys-color-surface);
+  --cmf-comp-card-divider-color: var(--cmf-sys-color-outline);
+  --cmf-comp-card-code-color: var(--cmf-sys-color-on-surface-tertiary);
+  --cmf-comp-card-name-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-card-row-label-color: var(--cmf-sys-color-on-surface-secondary);
+  --cmf-comp-card-row-value-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-card-row-value-color-up: var(--cmf-sys-color-market-up);
+  --cmf-comp-card-row-value-color-down: var(--cmf-sys-color-market-down);
+  /* Footer summary bar: red = transaction confirmed / document available, neutral = still processing (evidence: card.md) */
+  --cmf-comp-card-footer-confirmed-container-color: var(--cmf-sys-color-primary);
+  --cmf-comp-card-footer-confirmed-text-color: var(--cmf-sys-color-on-primary);
+  --cmf-comp-card-footer-processing-container-color: var(--cmf-sys-color-surface-highlight);
+  --cmf-comp-card-footer-processing-text-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-card-dropzone-container-color: var(--cmf-sys-color-surface-highlight);
+  --cmf-comp-card-dropzone-text-color: var(--cmf-sys-color-on-surface-secondary);
+
+  /* =======================================================================
+   * Data Table / List row — "Table & List" section, node 621:16125.
+   * Shared cell-type building blocks ("Assets/Table list/共用元件") reused
+   * across every fund/order/holdings table variant.
+   *
+   * Correction (2026-08-25, ui-compare-to-reference against node 148644:25235,
+   * the exact 基金總覽/基金績效 table instance): a direct get_design_context
+   * pull returned exact hex values showing a WHITE header (#FFFFFF) with no
+   * row-banding, contradicting this file's earlier inferred tinted-header/
+   * banded-row assumption (which was based on a lower-resolution reading of
+   * the order/transaction table screenshot, table_composed_today.png). This
+   * newer, higher-confidence evidence wins per Token Integration step 2.
+   * `-container-color-alt` is left defined (unused by the default row
+   * styling now) in case a genuinely banded table variant is confirmed later.
+   * Also fixed `-cell-caption-color`: the fund-code text in the same pull
+   * resolves to on-surface-secondary (#595959), not on-surface-tertiary
+   * (#959595) as originally mapped.
+   * ===================================================================== */
+  --cmf-comp-table-header-container-color: var(--cmf-sys-color-background);
+  --cmf-comp-table-header-text-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-table-row-container-color: var(--cmf-sys-color-surface);
+  --cmf-comp-table-row-container-color-alt: var(--cmf-sys-color-surface-highlight);
+  --cmf-comp-table-divider-color: var(--cmf-sys-color-outline);
+  --cmf-comp-table-cell-text-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-table-cell-caption-color: var(--cmf-sys-color-on-surface-secondary);
+  --cmf-comp-table-value-color-up: var(--cmf-sys-color-market-up);
+  --cmf-comp-table-value-color-down: var(--cmf-sys-color-market-down);
+  --cmf-comp-table-status-attention-color: var(--cmf-sys-color-danger);
+  --cmf-comp-table-empty-text-color: var(--cmf-sys-color-on-surface-tertiary);
+
+  /* =======================================================================
+   * Search Bar — variant of Input, "input & search bar" section, 621:16123.
+   * ===================================================================== */
+  --cmf-comp-search-bar-shape: var(--cmf-sys-shape-corner-base);
+  --cmf-comp-search-bar-container-color: var(--cmf-sys-color-surface);
+  --cmf-comp-search-bar-border-color: var(--cmf-sys-color-outline);
+  --cmf-comp-search-bar-icon-color: var(--cmf-sys-color-on-surface-tertiary);
+  --cmf-comp-search-bar-text-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-search-bar-placeholder-color: var(--cmf-sys-color-on-surface-tertiary);
+
+  /* =======================================================================
+   * Navigation Bar — "Navigation" section, node 621:16118 (top shell nav).
+   * ===================================================================== */
+  --cmf-comp-nav-container-color: var(--cmf-sys-color-surface);
+  --cmf-comp-nav-elevation: var(--cmf-sys-elevation-4);
+  --cmf-comp-nav-link-color: var(--cmf-sys-color-on-surface-secondary);
+  --cmf-comp-nav-link-color-active: var(--cmf-sys-color-primary);
+  --cmf-comp-nav-login-container-color: var(--cmf-sys-color-primary-container);
+  --cmf-comp-nav-login-text-color: var(--cmf-sys-color-primary);
+  --cmf-comp-nav-popover-shape: var(--cmf-ref-radius-16);
+  --cmf-comp-nav-popover-item-color-hover: var(--cmf-sys-color-primary-focus);
+  --cmf-comp-nav-popover-item-label-color-hover: var(--cmf-sys-color-primary);
+
+  /* =======================================================================
+   * Mobile Side Menu — "Navigation" section, node 621:16118 (drawer, kept
+   * distinct from the account-settings Sidemenu below).
+   * ===================================================================== */
+  --cmf-comp-sidemenu-nav-header-container-color: var(--cmf-sys-color-primary);
+  --cmf-comp-sidemenu-nav-header-text-color: var(--cmf-sys-color-on-primary);
+  --cmf-comp-sidemenu-nav-container-color: var(--cmf-sys-color-surface);
+  --cmf-comp-sidemenu-nav-group-label-color: var(--cmf-sys-color-on-surface-secondary);
+  --cmf-comp-sidemenu-nav-item-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-sidemenu-nav-item-color-active: var(--cmf-sys-color-primary);
+
+  /* =======================================================================
+   * Tag / Status Chip — "Tag" section, node 148994:16038.
+   * ===================================================================== */
+  --cmf-comp-tag-shape: var(--cmf-sys-shape-corner-base);
+  --cmf-comp-tag-border-color-neutral: var(--cmf-sys-color-outline);
+  --cmf-comp-tag-text-color-neutral: var(--cmf-sys-color-on-surface-secondary);
+  --cmf-comp-tag-border-color-danger: var(--cmf-sys-color-danger-border);
+  --cmf-comp-tag-text-color-danger: var(--cmf-sys-color-danger);
+  --cmf-comp-tag-border-color-success: var(--cmf-sys-color-success-border);
+  --cmf-comp-tag-text-color-success: var(--cmf-sys-color-success);
+  --cmf-comp-tag-border-color-warning: var(--cmf-sys-color-warning-border);
+  --cmf-comp-tag-text-color-warning: var(--cmf-sys-color-warning-hover);
+  --cmf-comp-tag-border-color-link: var(--cmf-sys-color-link);
+  --cmf-comp-tag-text-color-link: var(--cmf-sys-color-link);
+  --cmf-comp-tag-border-color-orange: var(--cmf-sys-color-accent-orange-border);
+  --cmf-comp-tag-text-color-orange: var(--cmf-sys-color-accent-orange);
+  --cmf-comp-tag-status-container-color: var(--cmf-sys-color-surface-highlight);
+  --cmf-comp-tag-status-text-color: var(--cmf-sys-color-on-surface-secondary);
+
+  /* =======================================================================
+   * Switch — "select & switch & dropdown" section, node 148360:13495.
+   * ===================================================================== */
+  --cmf-comp-switch-track-color-off: var(--cmf-sys-color-outline);
+  --cmf-comp-switch-track-color-on: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-switch-thumb-color: var(--cmf-sys-color-surface);
+  --cmf-comp-switch-disabled-track-color: var(--cmf-sys-color-surface-highlight);
+
+  /* =======================================================================
+   * Select / Dropdown — same section, node 148360:13495.
+   * ===================================================================== */
+  --cmf-comp-select-shape: var(--cmf-sys-shape-corner-base);
+  --cmf-comp-select-container-color: var(--cmf-sys-color-surface);
+  --cmf-comp-select-border-color: var(--cmf-sys-color-outline);
+  --cmf-comp-select-border-color-error: var(--cmf-sys-color-danger);
+  --cmf-comp-select-text-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-select-placeholder-color: var(--cmf-sys-color-on-surface-tertiary);
+  --cmf-comp-select-menu-container-color: var(--cmf-sys-color-surface);
+  --cmf-comp-select-menu-elevation: var(--cmf-sys-elevation-4);
+  --cmf-comp-select-menu-item-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-select-menu-item-color-selected: var(--cmf-sys-color-primary);
+
+  /* =======================================================================
+   * Modal / Popup — "Popup & Toast & Alert" section, node 621:16121.
+   * ===================================================================== */
+  --cmf-comp-modal-shape: var(--cmf-sys-shape-corner-base);
+  --cmf-comp-modal-elevation: var(--cmf-sys-elevation-5);
+  --cmf-comp-modal-container-color: var(--cmf-sys-color-surface);
+  --cmf-comp-modal-scrim-color: var(--cmf-sys-color-surface-mask);
+  --cmf-comp-modal-title-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-modal-body-color: var(--cmf-sys-color-on-surface-secondary);
+
+  /* =======================================================================
+   * Toast — same section, node 621:16121.
+   * ===================================================================== */
+  --cmf-comp-toast-shape: var(--cmf-sys-shape-corner-base);
+  --cmf-comp-toast-container-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-toast-text-color: var(--cmf-sys-color-on-surface-inverse);
+  --cmf-comp-toast-icon-color-success: var(--cmf-sys-color-success);
+  --cmf-comp-toast-icon-color-error: var(--cmf-sys-color-danger);
+
+  /* =======================================================================
+   * Alert Banner — same section, node 621:16121.
+   * ===================================================================== */
+  --cmf-comp-alert-shape: var(--cmf-sys-shape-corner-base);
+  --cmf-comp-alert-error-container-color: var(--cmf-sys-color-danger-container);
+  --cmf-comp-alert-error-text-color: var(--cmf-sys-color-danger);
+  --cmf-comp-alert-warning-container-color: var(--cmf-sys-color-warning-container);
+  --cmf-comp-alert-warning-text-color: var(--cmf-sys-color-warning-active);
+  --cmf-comp-alert-info-container-color: var(--cmf-sys-color-link-container);
+  --cmf-comp-alert-info-text-color: var(--cmf-sys-color-link);
+  --cmf-comp-alert-action-text-color: var(--cmf-sys-color-primary);
+
+  /* =======================================================================
+   * Tabs — "Tab bar" section, node 148994:16033 (underline + segmented +
+   * count-badge switcher variants; filter-chip row and icon-tile grid
+   * compose from Button/Tag/Card instead of this component — see tabs.md).
+   * ===================================================================== */
+  --cmf-comp-tabs-label-color: var(--cmf-sys-color-on-surface-tertiary);
+  --cmf-comp-tabs-label-color-active: var(--cmf-sys-color-primary);
+  --cmf-comp-tabs-indicator-color: var(--cmf-sys-color-primary);
+  --cmf-comp-tabs-segmented-track-color: var(--cmf-sys-color-surface-highlight);
+  --cmf-comp-tabs-segmented-container-color: transparent;
+  --cmf-comp-tabs-segmented-container-color-active: var(--cmf-sys-color-primary);
+  --cmf-comp-tabs-segmented-label-color-active: var(--cmf-sys-color-on-primary);
+  --cmf-comp-tabs-outlined-container-color: var(--cmf-sys-color-surface);
+  --cmf-comp-tabs-outlined-border-color: var(--cmf-sys-color-outline);
+  --cmf-comp-tabs-outlined-border-color-active: var(--cmf-sys-color-primary);
+  --cmf-comp-tabs-outlined-label-color: var(--cmf-sys-color-on-surface-tertiary);
+  --cmf-comp-tabs-outlined-label-color-active: var(--cmf-sys-color-primary);
+
+  /* =======================================================================
+   * Account Settings Menu (Sidemenu) — "Sidemenu" section, node 148994:16032.
+   * Kept distinct from the Mobile Side Menu (nav drawer) above.
+   * ===================================================================== */
+  --cmf-comp-settings-nav-item-color: var(--cmf-sys-color-on-surface-secondary);
+  --cmf-comp-settings-nav-item-color-active: var(--cmf-sys-color-primary);
+  --cmf-comp-settings-nav-indicator-color: var(--cmf-sys-color-primary);
+
+  /* =======================================================================
+   * Footer — "Footer" section, node 621:16117.
+   * ===================================================================== */
+  --cmf-comp-footer-container-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-footer-text-color: var(--cmf-sys-color-on-surface-inverse);
+  --cmf-comp-footer-link-color: var(--cmf-sys-color-on-surface-inverse);
+  --cmf-comp-footer-heading-color: var(--cmf-sys-color-on-surface-inverse);
+
+  /* =======================================================================
+   * Logo / Brand Mark — "Logo" section, node 638:13752. Display-only.
+   * ===================================================================== */
+  --cmf-comp-logo-mark-color-light: var(--cmf-sys-color-primary);
+  --cmf-comp-logo-mark-color-dark: var(--cmf-sys-color-on-surface-inverse);
+  --cmf-comp-logo-wordmark-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-logo-wordmark-accent-color: var(--cmf-sys-color-primary);
+
+  /* =======================================================================
+   * Pagination — "pagenation" section, node 638:13749; item box shape and
+   * border color confirmed by direct evidence for the composed instance at
+   * node 148644:25360 (2026-08-25 ui-compare-to-reference pass). The
+   * original extraction pass missed that this component has a visible
+   * item-box border at all, and used the base 12px radius by default
+   * rather than this component's own smaller compact radius.
+   * ===================================================================== */
+  --cmf-comp-pagination-item-shape: var(--cmf-sys-shape-corner-compact);
+  --cmf-comp-pagination-item-border-color: var(--cmf-sys-color-outline);
+  --cmf-comp-pagination-item-color: var(--cmf-sys-color-on-surface-secondary);
+  --cmf-comp-pagination-item-container-color-active: var(--cmf-sys-color-primary);
+  --cmf-comp-pagination-item-text-color-active: var(--cmf-sys-color-on-primary);
+  --cmf-comp-pagination-item-color-disabled: var(--cmf-sys-color-on-surface-disabled);
+
+  /* =======================================================================
+   * Breadcrumb — "Breadcrumb" section, node 148365:14109.
+   * Link/current/separator colors corrected against the exact variant-grid
+   * pull at node 148365:13563 — see breadcrumb.md's Token Contract note.
+   * ===================================================================== */
+  --cmf-comp-breadcrumb-item-color: var(--cmf-sys-color-on-surface-tertiary);
+  --cmf-comp-breadcrumb-item-color-current: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-breadcrumb-item-color-link: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-breadcrumb-separator-color: var(--cmf-sys-color-on-surface-secondary);
+
+  /* =======================================================================
+   * Range Slider — Template section, node 3:17905 (advanced filter panel).
+   * ===================================================================== */
+  --cmf-comp-slider-track-color: var(--cmf-sys-color-outline);
+  --cmf-comp-slider-track-color-active: var(--cmf-sys-color-primary);
+  --cmf-comp-slider-handle-color: var(--cmf-sys-color-surface);
+  --cmf-comp-slider-handle-border-color: var(--cmf-sys-color-primary);
+  --cmf-comp-slider-label-color: var(--cmf-sys-color-on-surface-secondary);
+  --cmf-comp-slider-stepper-color: var(--cmf-sys-color-on-surface-secondary);
+
+  /* =======================================================================
+   * Risk Level Badge (RR1-RR5) — Template section, node 3:17120. One
+   * unified color across all 5 tiers (developer-confirmed) — a Tag
+   * status-pill variant. Only the "RRn" digit and label text vary by tier.
+   * ===================================================================== */
+  --cmf-comp-risk-badge-shape: var(--cmf-sys-shape-corner-compact);
+  --cmf-comp-risk-badge-container-color: var(--cmf-sys-color-danger);
+  --cmf-comp-risk-badge-text-color: var(--cmf-sys-color-on-danger);
+  --cmf-comp-risk-badge-label-color: var(--cmf-sys-color-on-surface-primary);
+
+  /* =======================================================================
+   * Editable Info Section — Template section, node 306:54233.
+   * ===================================================================== */
+  --cmf-comp-info-section-shape: var(--cmf-sys-shape-corner-base);
+  --cmf-comp-info-section-elevation: var(--cmf-sys-elevation-3);
+  --cmf-comp-info-section-label-color: var(--cmf-sys-color-on-surface-secondary);
+  --cmf-comp-info-section-value-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-info-section-verified-icon-color: var(--cmf-sys-color-success);
+  --cmf-comp-info-section-countdown-color: var(--cmf-sys-color-on-surface-tertiary);
+
+  /* =======================================================================
+   * Bank Account Card — Template section, node 633:11503. Related to but
+   * kept distinct from Fund Card (see COMPONENT_INVENTORY.md).
+   * ===================================================================== */
+  --cmf-comp-bank-card-shape: var(--cmf-sys-shape-corner-base);
+  --cmf-comp-bank-card-elevation: var(--cmf-sys-elevation-3);
+  --cmf-comp-bank-card-title-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-bank-card-detail-color: var(--cmf-sys-color-on-surface-secondary);
+  --cmf-comp-bank-card-pending-container-color: var(--cmf-sys-color-danger-container);
+  --cmf-comp-bank-card-pending-text-color: var(--cmf-sys-color-danger);
+  --cmf-comp-bank-card-change-action-color: var(--cmf-sys-color-primary);
+  --cmf-comp-bank-card-change-action-color-disabled: var(--cmf-sys-color-on-surface-disabled);
+
+  /* =======================================================================
+   * Selection Action Bar ("Tool bar" section, node 148994:16709) — appears
+   * once one or more Data Table rows are checkbox-selected.
+   * ===================================================================== */
+  --cmf-comp-action-bar-container-color: var(--cmf-sys-color-surface);
+  --cmf-comp-action-bar-elevation: var(--cmf-sys-elevation-4);
+  --cmf-comp-action-bar-text-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-action-bar-count-color: var(--cmf-sys-color-primary);
+
+  /* =======================================================================
+   * Chart — "Chart" section, node 621:16122.
+   * ===================================================================== */
+  --cmf-comp-chart-empty-color: var(--cmf-sys-color-chart-empty);
+  --cmf-comp-chart-series-1: var(--cmf-sys-color-chart-series-1);
+  --cmf-comp-chart-series-2: var(--cmf-sys-color-chart-series-2);
+  --cmf-comp-chart-series-3: var(--cmf-sys-color-chart-series-3);
+  --cmf-comp-chart-series-4: var(--cmf-sys-color-chart-series-4);
+  --cmf-comp-chart-series-5: var(--cmf-sys-color-chart-series-5);
+  --cmf-comp-chart-center-value-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-chart-legend-text-color: var(--cmf-sys-color-on-surface-secondary);
+  --cmf-comp-chart-line-color: var(--cmf-sys-color-chart-line);
+  --cmf-comp-chart-bar-color: var(--cmf-sys-color-primary);
+  --cmf-comp-chart-card-title-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-chart-card-date-label-color: var(--cmf-sys-color-on-surface-tertiary);
+
+  --cmf-comp-kicker-value-card-kicker-color: var(--cmf-sys-color-primary-hover);
+  --cmf-comp-kicker-value-card-date-label-color: var(--cmf-sys-color-on-surface-tertiary);
+  --cmf-comp-kicker-value-card-value-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-kicker-value-card-description-color: var(--cmf-sys-color-on-surface-primary);
+
+  --cmf-comp-info-list-title-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-info-list-label-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-info-list-value-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-info-list-row-divider-color: var(--cmf-sys-color-surface-highlight);
+
+  /* =======================================================================
+   * Tooltip — "Tooltip" section, node 148994:16023.
+   * ===================================================================== */
+  --cmf-comp-tooltip-container-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-tooltip-text-color: var(--cmf-sys-color-on-surface-inverse);
+  --cmf-comp-tooltip-shape: var(--cmf-sys-shape-corner-base);
+
+  /* =======================================================================
+   * Loading Indicator — "Loading" section, node 148994:16011.
+   * ===================================================================== */
+  --cmf-comp-loading-spinner-color: var(--cmf-sys-color-on-surface-tertiary);
+  --cmf-comp-loading-spinner-color-active-arc: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-loading-label-color: var(--cmf-sys-color-on-surface-secondary);
+
+  /* =======================================================================
+   * Step Progress Indicator — account-opening flow header, node
+   * 149064:19234 ("component/進度條_new" symbol set).
+   * ===================================================================== */
+  --cmf-comp-step-progress-icon-color: var(--cmf-sys-color-primary);
+  --cmf-comp-step-progress-title-color: var(--cmf-sys-color-primary);
+  --cmf-comp-step-progress-description-color: var(--cmf-sys-color-on-surface-secondary);
+  --cmf-comp-step-progress-percentage-color: var(--cmf-sys-color-primary);
+  --cmf-comp-step-progress-segment-color-filled: var(--cmf-sys-color-primary);
+  --cmf-comp-step-progress-segment-color-track: var(--cmf-sys-color-outline);
+  --cmf-comp-step-progress-segment-shape: var(--cmf-sys-shape-corner-compact);
+
+  /* =======================================================================
+   * File Upload — account-opening "資料上傳" step, nodes 149064:58973 /
+   * 149064:60087 / 149064:63642.
+   * ===================================================================== */
+  --cmf-comp-file-upload-border-color: var(--cmf-sys-color-outline);
+  --cmf-comp-file-upload-container-color: var(--cmf-sys-color-surface-highlight);
+  --cmf-comp-file-upload-icon-color: var(--cmf-sys-color-on-surface-tertiary);
+  --cmf-comp-file-upload-prompt-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-file-upload-hint-color: var(--cmf-sys-color-on-surface-secondary);
+  --cmf-comp-file-upload-label-color: var(--cmf-sys-color-on-surface-primary);
+  --cmf-comp-file-upload-shape: var(--cmf-sys-shape-corner-base);
+}
+
+
+/* ===== component-source/base.css (verbatim) ===== */
+/*
+ * Minimal global page setup required for NavigationBar/Footer to match
+ * Storybook's rendering exactly. NavigationBar.css / Footer.css only set
+ * component-scoped styles that reference tokens.css's custom properties —
+ * they never touch `body`/`:root` directly, since page-level resets aren't a
+ * component's job. In the source app, this same setup lives in
+ * app/src/styles/storybook.css, mixed in with a lot of Storybook-docs-only
+ * chrome that has no equivalent here — this file pulls out just the two
+ * page-level rules a standalone consumer actually needs.
+ *
+ * Load once, globally, after tokens.css and before rendering either
+ * component.
+ */
+
+:root {
+  font-family: var(--cmf-ref-typeface-body), sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+
+/* ===== component-source/components/navigation-bar/NavigationBar.css (verbatim) ===== */
+.cmf-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  box-sizing: border-box;
+  inline-size: 100%;
+  block-size: 4.5rem;
+  padding-inline: var(--cmf-sys-spacing-screen-gutter-regular);
+  background: var(--cmf-comp-nav-container-color);
+  box-shadow: var(--cmf-comp-nav-elevation);
+}
+
+.cmf-nav[data-layout="mobile"] {
+  block-size: 4rem;
+  padding-inline: var(--cmf-sys-spacing-screen-gutter-compact);
+}
+
+.cmf-nav__brand {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.cmf-nav__links {
+  display: flex;
+  flex: 1;
+  align-items: stretch;
+  block-size: 100%;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cmf-nav__link-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cmf-nav__link-item:hover .cmf-nav__link {
+  background: var(--cmf-sys-color-surface-highlight);
+  color: var(--cmf-sys-color-primary);
+}
+
+.cmf-nav__link-item[data-has-popover]:hover .cmf-nav__popover {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cmf-nav__spacer {
+  flex: 1;
+}
+
+.cmf-nav__link {
+  display: inline-flex;
+  align-items: center;
+  block-size: 100%;
+  padding-inline: 1rem;
+  border-radius: var(--cmf-sys-shape-corner-compact);
+  color: var(--cmf-comp-nav-link-color);
+  font-size: var(--cmf-sys-typescale-label-l-size);
+  font-weight: var(--cmf-sys-typescale-label-l-weight);
+  line-height: var(--cmf-sys-typescale-label-l-line-height);
+  letter-spacing: var(--cmf-sys-typescale-label-l-tracking);
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.cmf-nav__link[data-active] {
+  color: var(--cmf-comp-nav-link-color-active);
+}
+
+.cmf-nav__popover {
+  position: absolute;
+  inset-block-start: calc(100% + 0.5rem);
+  inset-inline-start: 0;
+  inline-size: 100%;
+  min-inline-size: 12rem;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-0.25rem);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+  padding: 0.5rem;
+  background: var(--cmf-sys-color-surface);
+  border: 1px solid var(--cmf-sys-color-outline);
+  border-radius: var(--cmf-comp-nav-popover-shape);
+  box-shadow: var(--cmf-sys-elevation-4);
+}
+
+.cmf-nav__popover-list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cmf-nav__popover-item {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: var(--cmf-sys-color-on-surface-primary);
+  font-size: var(--cmf-sys-typescale-label-l-size);
+  font-weight: var(--cmf-sys-typescale-label-l-weight);
+  line-height: var(--cmf-sys-typescale-label-l-line-height);
+  letter-spacing: var(--cmf-sys-typescale-label-l-tracking);
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: var(--cmf-sys-shape-corner-compact);
+  transition: background-color 0.15s ease;
+}
+
+.cmf-nav__popover-item:hover {
+  background: var(--cmf-comp-nav-popover-item-color-hover);
+  color: var(--cmf-comp-nav-popover-item-label-color-hover);
+}
+
+.cmf-nav__utility {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cmf-nav__icon-button {
+  display: inline-flex;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--cmf-sys-color-on-surface-primary);
+  cursor: pointer;
+}
+
+.cmf-nav__utility-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  border-radius: var(--cmf-sys-shape-corner-compact);
+  color: var(--cmf-sys-color-on-surface-secondary);
+  font-size: var(--cmf-sys-typescale-label-l-size);
+  font-weight: var(--cmf-sys-typescale-label-l-weight);
+  line-height: var(--cmf-sys-typescale-label-l-line-height);
+  letter-spacing: var(--cmf-sys-typescale-label-l-tracking);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.cmf-nav__utility .cmf-button {
+  padding-inline: var(--cmf-ref-size-16-space);
+}
+
+.cmf-nav__profile {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--cmf-sys-color-on-surface-primary);
+  font-size: var(--cmf-sys-typescale-label-l-size);
+  font-weight: var(--cmf-sys-typescale-label-l-weight);
+}
+
+.cmf-nav__avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 2rem;
+  block-size: 2rem;
+  border-radius: 50%;
+  background: var(--cmf-sys-color-primary-focus);
+  color: var(--cmf-sys-color-primary);
+}
+
+
+/* ===== component-source/components/logo/Logo.css (verbatim) ===== */
+.cmf-logo {
+  display: block;
+  height: 2rem;
+  width: auto;
+}
+
+.cmf-logo[data-variant^="favicon-"] {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+
+/* ===== component-source/components/button/Button.css (verbatim) ===== */
+.cmf-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  box-sizing: border-box;
+  min-block-size: 2.75rem;
+  padding-inline: calc(var(--cmf-comp-button-padding-inline) * 1.5);
+  border: 1px solid transparent;
+  border-radius: var(--cmf-comp-button-shape);
+  box-shadow: var(--cmf-comp-button-elevation);
+  font-weight: var(--cmf-comp-button-label-weight);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.cmf-button[data-size="l"] {
+  font-size: var(--cmf-comp-button-label-font-size-l);
+  line-height: var(--cmf-comp-button-label-line-height-l);
+}
+
+.cmf-button[data-size="m"] {
+  min-block-size: 2.5rem;
+  font-size: var(--cmf-comp-button-label-font-size-m);
+  line-height: var(--cmf-comp-button-label-line-height-m);
+}
+
+.cmf-button[data-size="s"] {
+  min-block-size: 2.25rem;
+  padding-inline: var(--cmf-comp-button-padding-inline);
+  font-size: var(--cmf-comp-button-label-font-size-s);
+  line-height: var(--cmf-comp-button-label-line-height-s);
+}
+
+.cmf-button:focus-visible {
+  outline: 2px solid var(--cmf-sys-color-primary-border);
+  outline-offset: 2px;
+}
+
+.cmf-button[data-variant="primary"] {
+  background: var(--cmf-comp-button-primary-container-color);
+  color: var(--cmf-comp-button-primary-label-color);
+}
+
+.cmf-button[data-variant="primary"]:hover:not(:disabled) {
+  background: var(--cmf-comp-button-primary-container-color-hover);
+}
+
+.cmf-button[data-variant="primary"]:active:not(:disabled) {
+  background: var(--cmf-comp-button-primary-container-color-active);
+}
+
+.cmf-button[data-variant="primary"]:disabled {
+  background: var(--cmf-comp-button-primary-container-color-disabled);
+  color: var(--cmf-comp-button-primary-label-color-disabled);
+}
+
+.cmf-button[data-variant="secondary"] {
+  background: var(--cmf-comp-button-secondary-container-color);
+  border-color: var(--cmf-comp-button-secondary-border-color);
+  color: var(--cmf-comp-button-secondary-label-color);
+}
+
+.cmf-button[data-variant="secondary"]:hover:not(:disabled) {
+  background: var(--cmf-comp-button-secondary-container-color-hover);
+  color: var(--cmf-comp-button-secondary-label-color-hover);
+}
+
+.cmf-button[data-variant="secondary"]:active:not(:disabled) {
+  background: var(--cmf-comp-button-secondary-container-color-active);
+  color: var(--cmf-comp-button-secondary-label-color-hover);
+}
+
+.cmf-button[data-variant="secondary"]:disabled {
+  background: var(--cmf-comp-button-secondary-container-color-disabled);
+  border-color: transparent;
+  color: var(--cmf-comp-button-secondary-label-color-disabled);
+}
+
+.cmf-button[data-variant="light"] {
+  background: var(--cmf-comp-button-light-container-color);
+  color: var(--cmf-comp-button-light-label-color);
+}
+
+.cmf-button[data-variant="light"]:hover:not(:disabled) {
+  background: var(--cmf-comp-button-light-container-color-hover);
+}
+
+.cmf-button[data-variant="light"]:active:not(:disabled) {
+  background: var(--cmf-comp-button-light-container-color-active);
+}
+
+.cmf-button[data-variant="light"]:disabled {
+  background: var(--cmf-comp-button-light-container-color-disabled);
+  color: var(--cmf-comp-button-light-label-color-disabled);
+}
+
+.cmf-button[data-variant="tertiary"] {
+  background: var(--cmf-comp-button-tertiary-container-color);
+  border-color: var(--cmf-comp-button-tertiary-border-color);
+  color: var(--cmf-comp-button-tertiary-label-color);
+  box-shadow: none;
+}
+
+.cmf-button[data-variant="tertiary"]:disabled {
+  background: var(--cmf-comp-button-tertiary-container-color-disabled);
+  border-color: transparent;
+  color: var(--cmf-comp-button-tertiary-label-color-disabled);
+}
+
+.cmf-button[data-variant="quick-action"] {
+  background: transparent;
+  border-color: var(--cmf-comp-quick-button-border-color);
+  color: var(--cmf-comp-quick-button-label-color);
+  border-radius: 999px;
+  box-shadow: none;
+}
+
+.cmf-button[data-variant="quick-action"]:hover:not(:disabled) {
+  background: var(--cmf-comp-quick-button-container-color-hover);
+  color: var(--cmf-comp-quick-button-label-color-hover);
+}
+
+.cmf-button[data-variant="quick-action"]:active:not(:disabled) {
+  background: var(--cmf-comp-quick-button-container-color-active);
+  color: var(--cmf-comp-quick-button-label-color-hover);
+}
+
+.cmf-button[data-variant="quick-action"]:disabled {
+  border-color: var(--cmf-sys-color-outline);
+  color: var(--cmf-sys-color-on-surface-disabled);
+}
+
+.cmf-button:disabled {
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.cmf-button__icon {
+  display: inline-flex;
+  flex: none;
+}
+
+.cmf-button__visually-hidden-label {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.cmf-button[data-icon-only] {
+  inline-size: 2.75rem;
+  min-block-size: 2.75rem;
+  padding-inline: 0;
+  border-radius: 50%;
+}
+
+.cmf-button[data-icon-only][data-size="m"] {
+  inline-size: 2.5rem;
+}
+
+.cmf-button[data-icon-only][data-size="s"] {
+  inline-size: 2.25rem;
+}
+
+
+/* ===== component-source/components/breadcrumb/Breadcrumb.css (verbatim) ===== */
+.cmf-breadcrumb__list {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+}
+
+.cmf-breadcrumb__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  white-space: nowrap;
+}
+
+.cmf-breadcrumb__home-icon {
+  display: inline-flex;
+  color: var(--cmf-comp-breadcrumb-item-color-link);
+}
+
+.cmf-breadcrumb__label,
+.cmf-breadcrumb__link {
+  font-size: var(--cmf-sys-typescale-body-s-size);
+  line-height: var(--cmf-sys-typescale-body-s-line-height);
+}
+
+.cmf-breadcrumb__label {
+  color: var(--cmf-comp-breadcrumb-item-color);
+}
+
+.cmf-breadcrumb__label[data-current] {
+  color: var(--cmf-comp-breadcrumb-item-color-current);
+}
+
+.cmf-breadcrumb__link {
+  color: var(--cmf-comp-breadcrumb-item-color-link);
+  text-decoration: underline;
+}
+
+
+/* ===== component-source/components/mobile-side-menu/MobileSideMenu.css (verbatim) ===== */
+.cmf-sidemenu {
+  display: flex;
+  flex-direction: column;
+  inline-size: min(100vw, 22rem);
+  block-size: 100vh;
+  background: var(--cmf-comp-sidemenu-nav-container-color);
+  overflow: hidden;
+}
+
+.cmf-sidemenu__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: none;
+  box-sizing: border-box;
+  padding: 1rem;
+  background: var(--cmf-comp-sidemenu-nav-header-container-color);
+  color: var(--cmf-comp-sidemenu-nav-header-text-color);
+}
+
+.cmf-sidemenu__auth-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.cmf-sidemenu__profile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cmf-sidemenu__avatar {
+  inline-size: 2rem;
+  block-size: 2rem;
+  border-radius: 50%;
+  background: var(--cmf-comp-sidemenu-nav-header-text-color);
+  opacity: 0.85;
+}
+
+.cmf-sidemenu__name {
+  font-size: var(--cmf-sys-typescale-body-m-size);
+  font-weight: var(--cmf-sys-typescale-body-m-weight-emphasis);
+}
+
+.cmf-sidemenu__logout {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--cmf-comp-sidemenu-nav-header-text-color);
+  font-size: var(--cmf-sys-typescale-body-s-size);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.cmf-sidemenu__close {
+  display: inline-flex;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--cmf-comp-sidemenu-nav-header-text-color);
+  cursor: pointer;
+}
+
+.cmf-sidemenu__nav {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.cmf-sidemenu__group {
+  border-block-end: 1px solid var(--cmf-sys-color-outline);
+}
+
+.cmf-sidemenu__group-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  inline-size: 100%;
+  box-sizing: border-box;
+  padding: 0.875rem 1rem;
+  border: 0;
+  background: transparent;
+  color: var(--cmf-comp-sidemenu-nav-group-label-color);
+  font-size: var(--cmf-sys-typescale-body-m-size);
+  font-weight: var(--cmf-sys-typescale-body-m-weight-emphasis);
+  cursor: pointer;
+}
+
+.cmf-sidemenu__item-list {
+  margin: 0;
+  padding: 0 1rem 0.5rem;
+  list-style: none;
+}
+
+.cmf-sidemenu__item {
+  display: block;
+  padding: 0.625rem 0.5rem;
+  color: var(--cmf-comp-sidemenu-nav-item-color);
+  font-size: var(--cmf-sys-typescale-body-m-size);
+  line-height: var(--cmf-sys-typescale-body-m-line-height);
+  text-decoration: none;
+}
+
+.cmf-sidemenu__item[data-active] {
+  color: var(--cmf-comp-sidemenu-nav-item-color-active);
+  font-weight: var(--cmf-sys-typescale-body-m-weight-emphasis);
+}
+
+
+/* ===== component-source/components/search-bar/SearchBar.css (verbatim) ===== */
+.cmf-search-bar {
+  inline-size: 100%;
+  box-sizing: border-box;
+}
+
+.cmf-search-bar__visually-hidden-label {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.cmf-search-bar__container {
+  display: flex;
+  align-items: center;
+  gap: var(--cmf-sys-spacing-gap-inline);
+  box-sizing: border-box;
+  inline-size: 100%;
+  block-size: 2.5rem;
+  padding-inline: var(--cmf-comp-input-padding-inline);
+  background: var(--cmf-comp-search-bar-container-color);
+  border: 1px solid var(--cmf-comp-search-bar-border-color);
+  border-radius: var(--cmf-comp-search-bar-shape);
+}
+
+.cmf-search-bar__container:focus-within {
+  border-color: var(--cmf-sys-color-primary);
+}
+
+.cmf-search-bar__container[data-disabled] {
+  background: var(--cmf-sys-color-surface-highlight);
+}
+
+.cmf-search-bar__field {
+  flex: 1;
+  min-inline-size: 0;
+  border: 0;
+  background: transparent;
+  color: var(--cmf-comp-search-bar-text-color);
+  font-size: var(--cmf-sys-typescale-body-l-size);
+  line-height: var(--cmf-sys-typescale-body-l-line-height);
+}
+
+.cmf-search-bar__field:focus {
+  outline: none;
+}
+
+.cmf-search-bar__field::placeholder {
+  color: var(--cmf-comp-search-bar-placeholder-color);
+}
+
+.cmf-search-bar__field::-webkit-search-cancel-button {
+  display: none;
+}
+
+.cmf-search-bar__icon,
+.cmf-search-bar__icon-button {
+  flex: none;
+  display: inline-flex;
+  color: var(--cmf-comp-search-bar-icon-color);
+}
+
+.cmf-search-bar__icon-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+
+/* ===== component-source/components/tag/Tag.css (verbatim) ===== */
+.cmf-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  box-sizing: border-box;
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--cmf-comp-tag-shape);
+  font-size: var(--cmf-sys-typescale-body-s-size);
+  line-height: var(--cmf-sys-typescale-body-s-line-height);
+  white-space: nowrap;
+}
+
+.cmf-tag[data-variant="outline"] {
+  border: 1px solid transparent;
+  background: transparent;
+}
+
+.cmf-tag[data-variant="outline"][data-hue="neutral"] {
+  border-color: var(--cmf-comp-tag-border-color-neutral);
+  color: var(--cmf-comp-tag-text-color-neutral);
+}
+
+.cmf-tag[data-variant="outline"][data-hue="danger"] {
+  border-color: var(--cmf-comp-tag-border-color-danger);
+  color: var(--cmf-comp-tag-text-color-danger);
+}
+
+.cmf-tag[data-variant="outline"][data-hue="success"] {
+  border-color: var(--cmf-comp-tag-border-color-success);
+  color: var(--cmf-comp-tag-text-color-success);
+}
+
+.cmf-tag[data-variant="outline"][data-hue="warning"] {
+  border-color: var(--cmf-comp-tag-border-color-warning);
+  color: var(--cmf-comp-tag-text-color-warning);
+}
+
+.cmf-tag[data-variant="outline"][data-hue="link"] {
+  border-color: var(--cmf-comp-tag-border-color-link);
+  color: var(--cmf-comp-tag-text-color-link);
+}
+
+.cmf-tag[data-variant="outline"][data-hue="orange"] {
+  border-color: var(--cmf-comp-tag-border-color-orange);
+  color: var(--cmf-comp-tag-text-color-orange);
+}
+
+.cmf-tag[data-variant="status"] {
+  background: var(--cmf-comp-tag-status-container-color);
+  color: var(--cmf-comp-tag-status-text-color);
+}
+
+.cmf-tag[data-variant="compact"] {
+  padding: 0.125rem 0.5rem;
+  border: 1px solid var(--cmf-comp-tag-border-color-danger);
+  color: var(--cmf-comp-tag-text-color-danger);
+  background: transparent;
+}
+
+.cmf-tag__icon {
+  display: inline-flex;
+  flex: none;
+}
+
+.cmf-tag__remove {
+  display: inline-flex;
+  flex: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+
+/* ===== component-source/components/data-table/DataTable.css (verbatim) ===== */
+.cmf-data-table {
+  inline-size: 100%;
+  border-collapse: collapse;
+  border-radius: var(--cmf-sys-shape-corner-base);
+  overflow: hidden;
+}
+
+.cmf-data-table thead th {
+  box-sizing: border-box;
+  block-size: 4.5rem;
+  padding-inline: 0.75rem;
+  border-block-end: 1px solid var(--cmf-comp-table-divider-color);
+  background: var(--cmf-comp-table-header-container-color);
+  color: var(--cmf-comp-table-header-text-color);
+  font-size: var(--cmf-sys-typescale-body-l-size);
+  font-weight: var(--cmf-sys-typescale-body-l-weight-emphasis);
+  line-height: var(--cmf-sys-typescale-body-l-line-height);
+  text-align: left;
+}
+
+.cmf-data-table thead th[data-align="right"] {
+  text-align: right;
+}
+
+.cmf-data-table thead th[data-align="center"] {
+  text-align: center;
+}
+
+.cmf-data-table__header-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.cmf-data-table__header-button:disabled {
+  cursor: default;
+}
+
+.cmf-data-table tbody td {
+  box-sizing: border-box;
+  padding: 1rem 0.75rem;
+  border-block-end: 1px solid var(--cmf-comp-table-divider-color);
+  color: var(--cmf-comp-table-cell-text-color);
+  font-size: var(--cmf-sys-typescale-body-m-size);
+  line-height: var(--cmf-sys-typescale-body-m-line-height);
+  vertical-align: middle;
+}
+
+.cmf-data-table tbody td[data-align="right"] {
+  text-align: right;
+}
+
+.cmf-data-table tbody td[data-align="center"] {
+  text-align: center;
+}
+
+.cmf-data-table tbody tr {
+  background: var(--cmf-comp-table-row-container-color);
+}
+
+.cmf-data-table tbody tr[data-band="alt"] {
+  background: var(--cmf-comp-table-row-container-color-alt);
+}
+
+.cmf-data-table[data-density="large"] tbody td {
+  padding-block: 1.5rem;
+}
+
+.cmf-data-table__empty {
+  padding-block: 2.5rem;
+  text-align: center;
+  color: var(--cmf-comp-table-empty-text-color);
+}
+
+
+/* ===== component-source/components/data-table/cells.css (verbatim) ===== */
+.cmf-table-fund-name {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.cmf-table-fund-name__status {
+  align-self: flex-start;
+  padding: 0.0625rem 0.375rem;
+  border-radius: 999px;
+  background: var(--cmf-sys-color-surface-highlight);
+  color: var(--cmf-sys-color-on-surface-secondary);
+  font-size: var(--cmf-sys-typescale-body-s-size);
+}
+
+.cmf-table-fund-name__code {
+  color: var(--cmf-comp-table-cell-caption-color);
+  font-size: var(--cmf-sys-typescale-body-m-size);
+  font-weight: var(--cmf-sys-typescale-body-m-weight);
+  line-height: var(--cmf-sys-typescale-body-m-line-height);
+}
+
+.cmf-table-fund-name__name {
+  color: var(--cmf-comp-table-cell-text-color);
+  font-size: var(--cmf-sys-typescale-body-l-size);
+  font-weight: var(--cmf-sys-typescale-body-l-weight);
+  line-height: var(--cmf-sys-typescale-body-l-line-height);
+}
+
+.cmf-table-value {
+  color: var(--cmf-comp-table-cell-text-color);
+  font-size: var(--cmf-sys-typescale-body-l-size);
+  font-weight: var(--cmf-sys-typescale-body-l-weight);
+  line-height: var(--cmf-sys-typescale-body-l-line-height);
+}
+
+.cmf-table-value[data-direction="up"] {
+  color: var(--cmf-comp-table-value-color-up);
+}
+
+.cmf-table-value[data-direction="down"] {
+  color: var(--cmf-comp-table-value-color-down);
+}
+
+.cmf-table-text-caption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.cmf-table-text-caption__text {
+  color: var(--cmf-comp-table-cell-text-color);
+  font-size: var(--cmf-sys-typescale-body-m-size);
+}
+
+.cmf-table-text-caption__caption {
+  color: var(--cmf-comp-table-cell-caption-color);
+  font-size: var(--cmf-sys-typescale-body-s-size);
+}
+
+
+/* ===== component-source/components/pagination/Pagination.css (verbatim) ===== */
+.cmf-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--cmf-sys-spacing-gap-inline);
+  box-sizing: border-box;
+  inline-size: 100%;
+  padding: 1rem 1rem 1.5rem;
+  border-block-start: 1px solid var(--cmf-sys-color-outline);
+}
+
+.cmf-pagination__group {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.cmf-pagination__list {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cmf-pagination__item,
+.cmf-pagination__ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 2.25rem;
+  block-size: 2.25rem;
+  box-sizing: border-box;
+  border: 1px solid var(--cmf-comp-pagination-item-border-color);
+  border-radius: var(--cmf-comp-pagination-item-shape);
+  background: var(--cmf-sys-color-surface);
+  color: var(--cmf-comp-pagination-item-color);
+  font-size: var(--cmf-sys-typescale-body-l-size);
+  line-height: var(--cmf-sys-typescale-body-l-line-height);
+}
+
+.cmf-pagination__item {
+  border: 1px solid var(--cmf-comp-pagination-item-border-color);
+  cursor: pointer;
+}
+
+.cmf-pagination__item[data-active] {
+  background: var(--cmf-comp-pagination-item-container-color-active);
+  border-color: var(--cmf-comp-pagination-item-container-color-active);
+  color: var(--cmf-comp-pagination-item-text-color-active);
+  font-weight: var(--cmf-sys-typescale-body-l-weight-emphasis);
+}
+
+.cmf-pagination__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 2.25rem;
+  block-size: 2.25rem;
+  box-sizing: border-box;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--cmf-comp-pagination-item-color);
+  cursor: pointer;
+}
+
+.cmf-pagination__arrow:disabled {
+  color: var(--cmf-comp-pagination-item-color-disabled);
+  cursor: not-allowed;
+}
+
+.cmf-pagination__page-size {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cmf-pagination__page-size-label {
+  flex: none;
+  color: var(--cmf-comp-pagination-item-color);
+  font-size: var(--cmf-sys-typescale-body-l-size);
+  line-height: var(--cmf-sys-typescale-body-l-line-height);
+  white-space: nowrap;
+}
+
+.cmf-pagination__page-size .cmf-select {
+  min-inline-size: 5.5rem;
+}
+
+.cmf-pagination__page-size .cmf-select__label {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+
+/* ===== component-source/components/select-dropdown/SelectDropdown.css (verbatim) ===== */
+.cmf-select {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cmf-sys-spacing-gap-inline);
+  inline-size: 100%;
+  box-sizing: border-box;
+}
+
+.cmf-select__label {
+  color: var(--cmf-sys-color-on-surface-secondary);
+  font-size: var(--cmf-sys-typescale-body-s-size);
+  font-weight: var(--cmf-sys-typescale-body-s-weight-emphasis);
+  line-height: var(--cmf-sys-typescale-body-s-line-height);
+}
+
+.cmf-select__wrapper {
+  position: relative;
+}
+
+.cmf-select__field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--cmf-sys-spacing-gap-inline);
+  box-sizing: border-box;
+  inline-size: 100%;
+  min-block-size: 2.5rem;
+  padding-inline: var(--cmf-comp-input-padding-inline);
+  background: var(--cmf-comp-select-container-color);
+  border: 1px solid var(--cmf-comp-select-border-color);
+  border-radius: var(--cmf-comp-select-shape);
+  color: var(--cmf-comp-select-text-color);
+  font: inherit;
+  cursor: pointer;
+}
+
+.cmf-select__field:focus-visible {
+  outline: 2px solid var(--cmf-sys-color-primary-focus);
+  outline-offset: 1px;
+}
+
+.cmf-select__field[data-tone="error"] {
+  border-color: var(--cmf-comp-select-border-color-error);
+}
+
+.cmf-select__field[data-disabled] {
+  cursor: not-allowed;
+  color: var(--cmf-sys-color-on-surface-disabled);
+}
+
+.cmf-select__value {
+  flex: 1;
+  min-inline-size: 0;
+  text-align: left;
+  font-size: var(--cmf-sys-typescale-body-l-size);
+  line-height: var(--cmf-sys-typescale-body-l-line-height);
+}
+
+.cmf-select__placeholder {
+  flex: 1;
+  min-inline-size: 0;
+  text-align: left;
+  color: var(--cmf-comp-select-placeholder-color);
+  font-size: var(--cmf-sys-typescale-body-l-size);
+  line-height: var(--cmf-sys-typescale-body-l-line-height);
+}
+
+.cmf-select__chevron {
+  flex: none;
+  display: inline-flex;
+  color: var(--cmf-sys-color-on-surface-tertiary);
+  transition: transform 0.15s ease;
+}
+
+.cmf-select__chips {
+  flex: 1;
+  min-inline-size: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  padding-block: 0.375rem;
+}
+
+.cmf-select__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: calc(var(--cmf-comp-select-shape) / 2);
+  background: var(--cmf-sys-color-primary-container);
+  color: var(--cmf-sys-color-on-surface-primary);
+  font-size: var(--cmf-sys-typescale-body-s-size);
+  line-height: var(--cmf-sys-typescale-body-s-line-height);
+}
+
+.cmf-select__chip-remove {
+  display: inline-flex;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.cmf-select__menu {
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: calc(100% + 0.25rem);
+  z-index: 10;
+  min-inline-size: 100%;
+}
+
+.cmf-select__helper {
+  color: var(--cmf-comp-select-placeholder-color);
+  font-size: var(--cmf-sys-typescale-body-s-size);
+  line-height: var(--cmf-sys-typescale-body-s-line-height);
+}
+
+.cmf-select__helper[data-tone="error"] {
+  color: var(--cmf-comp-select-border-color-error);
+}
+
+
+/* ===== component-source/components/select-dropdown/DropdownMenu.css (verbatim) ===== */
+.cmf-dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0.25rem;
+  list-style: none;
+  box-sizing: border-box;
+  min-inline-size: 12rem;
+  background: var(--cmf-comp-select-menu-container-color);
+  border-radius: var(--cmf-comp-select-shape);
+  box-shadow: var(--cmf-comp-select-menu-elevation);
+}
+
+.cmf-dropdown-menu__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--cmf-sys-spacing-gap-inline);
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.625rem 0.75rem;
+  border: 0;
+  border-radius: calc(var(--cmf-comp-select-shape) / 2);
+  background: transparent;
+  color: var(--cmf-comp-select-menu-item-color);
+  font-size: var(--cmf-sys-typescale-body-l-size);
+  line-height: var(--cmf-sys-typescale-body-l-line-height);
+  text-align: left;
+  cursor: pointer;
+}
+
+.cmf-dropdown-menu__item:hover {
+  background: var(--cmf-sys-color-surface-highlight);
+}
+
+.cmf-dropdown-menu__item[data-selected] {
+  color: var(--cmf-comp-select-menu-item-color-selected);
+}
+
+.cmf-dropdown-menu__chevron {
+  flex: none;
+  display: inline-flex;
+  color: var(--cmf-sys-color-on-surface-tertiary);
+}
+
+
+/* ===== component-source/components/footer/Footer.css (verbatim) ===== */
+.cmf-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-sizing: border-box;
+  inline-size: 100%;
+  padding: 2.5rem var(--cmf-sys-spacing-screen-gutter-regular);
+  background: var(--cmf-comp-footer-container-color);
+  color: var(--cmf-comp-footer-text-color);
+}
+
+.cmf-footer__top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.cmf-footer__brand {
+  flex: 1;
+  min-inline-size: 20rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.cmf-footer__logo {
+  inline-size: 126px;
+  block-size: 38px;
+}
+
+.cmf-footer__tagline {
+  margin: 0;
+  color: var(--cmf-comp-footer-heading-color);
+  font-size: var(--cmf-sys-typescale-heading-4-size);
+  font-weight: var(--cmf-sys-typescale-heading-4-weight);
+  line-height: var(--cmf-sys-typescale-heading-4-line-height);
+}
+
+.cmf-footer__info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(14rem, 1fr));
+  gap: 0.25rem 2rem;
+}
+
+.cmf-footer__info-grid p {
+  margin: 0;
+  color: var(--cmf-comp-footer-text-color);
+  font-size: var(--cmf-sys-typescale-body-s-size);
+  line-height: var(--cmf-sys-typescale-body-s-line-height);
+}
+
+.cmf-footer__info-grid a {
+  color: var(--cmf-comp-footer-link-color);
+}
+
+.cmf-footer__aside {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+.cmf-footer__social {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.cmf-footer__social-link {
+  display: inline-flex;
+  inline-size: 2rem;
+  block-size: 2rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.cmf-footer__social-link img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+.cmf-footer__social-link--reserved {
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed var(--cmf-sys-color-outline);
+  color: var(--cmf-sys-color-on-surface-tertiary);
+}
+
+.cmf-footer__badges {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.cmf-footer__badge {
+  display: inline-flex;
+  block-size: 3rem;
+  inline-size: auto;
+  max-inline-size: 8rem;
+  border-radius: var(--cmf-sys-shape-corner-compact);
+  object-fit: contain;
+}
+
+.cmf-footer__badge--reserved {
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed var(--cmf-sys-color-outline);
+  color: var(--cmf-sys-color-on-surface-tertiary);
+}
+
+.cmf-footer__disclosure {
+  margin: 0;
+  padding-inline-start: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cmf-footer__disclosure li {
+  color: var(--cmf-comp-footer-text-color);
+  font-size: var(--cmf-sys-typescale-body-s-size);
+  line-height: var(--cmf-sys-typescale-body-s-line-height);
+}
+
+.cmf-footer__disclosure li[data-tone="attention"] {
+  color: var(--cmf-sys-color-danger-border);
+}
+
+.cmf-footer__disclosure-sub {
+  margin: 0.25rem 0 0;
+  padding-inline-start: 1.25rem;
+  list-style: lower-alpha;
+}
+
+.cmf-footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block-start: 1rem;
+  border-block-start: 1px solid var(--cmf-sys-color-outline);
+}
+
+.cmf-footer__copyright {
+  color: var(--cmf-comp-footer-text-color);
+  font-size: var(--cmf-sys-typescale-body-s-size);
+}
+
+.cmf-footer__legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cmf-footer__legal-links a {
+  color: var(--cmf-comp-footer-link-color);
+  font-size: var(--cmf-sys-typescale-body-s-size);
+  text-decoration: underline;
+}
+
+
+
+.page-shell{ background:var(--cmf-sys-color-background); min-height:100vh; }
+.page-container{ box-sizing:border-box; max-width:var(--cmf-sys-content-max-width); margin-inline:auto; padding-inline:var(--cmf-sys-spacing-screen-gutter-regular); }
+@media (max-width:767px){ .page-container{ padding-inline:var(--cmf-sys-spacing-screen-gutter-compact); } }
+.breadcrumb-row{ padding-block:var(--cmf-ref-size-16-space); }
+.page-title{ margin:0 0 var(--cmf-sys-spacing-gap-stack); color:var(--cmf-sys-color-on-surface-primary); font-size:var(--cmf-sys-typescale-display-s-size); line-height:var(--cmf-sys-typescale-display-s-line-height); font-weight:var(--cmf-sys-typescale-display-s-weight); }
+.filter-card{ background:var(--cmf-sys-color-surface); border-radius:var(--cmf-sys-shape-corner-base); box-shadow:var(--cmf-sys-elevation-3); padding:var(--cmf-sys-spacing-container-inset); margin-bottom:var(--cmf-sys-spacing-section-gap); }
+@media (max-width:767px){ .filter-card{ padding:var(--cmf-ref-size-24-space) var(--cmf-sys-spacing-screen-gutter-compact); } }
+.filter-subheading{ margin:0 0 var(--cmf-ref-size-16-space); color:var(--cmf-sys-color-primary); font-size:var(--cmf-sys-typescale-heading-1-size); font-weight:var(--cmf-sys-typescale-heading-1-weight); line-height:var(--cmf-sys-typescale-heading-1-line-height); }
+.filter-block + .filter-block{ margin-top:var(--cmf-sys-spacing-gap-stack); }
+.filter-label{ display:block; margin-bottom:var(--cmf-ref-size-8-space); color:var(--cmf-sys-color-on-surface-secondary); font-size:var(--cmf-sys-typescale-body-m-size); font-weight:var(--cmf-sys-typescale-body-m-weight-emphasis); }
+.trending-row{ display:flex; flex-wrap:wrap; gap:var(--cmf-ref-size-8-space); }
+.trending-tag{ cursor:pointer; border:1px solid var(--cmf-comp-tag-border-color-neutral); background:transparent; position:relative; }
+.trending-tag:hover{ background:var(--cmf-sys-color-surface-highlight); }
+.trending-tag[data-active]{ background:var(--cmf-sys-color-primary); border-color:var(--cmf-sys-color-primary); }
+.trending-tag[data-active] .cmf-tag__label{ color:var(--cmf-sys-color-on-primary); }
+.trending-tag__new{ margin-left:0.25rem; padding:0 0.25rem; border-radius:999px; background:var(--cmf-sys-color-danger); color:#fff; font-size:9px; font-weight:700; line-height:1.4; vertical-align:2px; }
+.search-row{ display:flex; gap:var(--cmf-ref-size-16-space); align-items:flex-start; flex-wrap:wrap; }
+.search-row .cmf-search-bar{ flex:1; min-width:14rem; }
+.active-filter-row{ display:none; align-items:center; gap:var(--cmf-ref-size-8-space); margin-top:var(--cmf-ref-size-16-space); flex-wrap:wrap; }
+.active-filter-row[data-visible="true"]{ display:flex; }
+.active-filter-row__label{ color:var(--cmf-sys-color-on-surface-secondary); font-size:var(--cmf-sys-typescale-body-m-size); }
+.active-filter-chip{ display:inline-flex; align-items:center; gap:0.375rem; }
+
+.result-bar{ display:flex; align-items:center; justify-content:space-between; margin-bottom:var(--cmf-ref-size-16-space); flex-wrap:wrap; gap:var(--cmf-ref-size-8-space); }
+.result-count{ color:var(--cmf-sys-color-on-surface-secondary); font-size:var(--cmf-sys-typescale-body-l-size); }
+.result-count strong{ color:var(--cmf-sys-color-on-surface-primary); }
+
+.table-card{ background:var(--cmf-comp-card-container-color); border-radius:var(--cmf-comp-card-shape); box-shadow:var(--cmf-comp-card-elevation); overflow:hidden; }
+.table-scroll{ overflow-x:auto; }
+.table-scroll .cmf-data-table{ min-width:920px; }
+.table-empty{ padding:3rem 1rem; text-align:center; color:var(--cmf-sys-color-on-surface-tertiary); font-size:var(--cmf-sys-typescale-body-l-size); }
+.demo-pill{ display:inline-block; padding:0.0625rem 0.375rem; border-radius:999px; background:var(--cmf-sys-color-warning-container); color:var(--cmf-sys-color-warning-active); font-size:var(--cmf-sys-typescale-body-s-size); font-weight:600; margin-right:0.375rem; }
+.table-footnote{ padding:var(--cmf-ref-size-16-space) var(--cmf-sys-spacing-container-inset) 0; color:var(--cmf-sys-color-on-surface-tertiary); font-size:var(--cmf-sys-typescale-body-s-size); line-height:var(--cmf-sys-typescale-body-s-line-height); }
+.demo-note{ padding:0 var(--cmf-sys-spacing-container-inset) var(--cmf-ref-size-16-space); color:var(--cmf-sys-color-on-surface-tertiary); font-size:var(--cmf-sys-typescale-body-s-size); }
+
+tr[data-under1000]{ }
+.js-hidden-row{ display:none !important; }
+
+.cmf-nav__icon-button{ display:none; }
+@media (max-width:767px){
+  .cmf-nav__links{ display:none; }
+  .cmf-nav__icon-button{ display:inline-flex; }
+  .cmf-nav__utility .cmf-button[data-variant="secondary"], .cmf-nav__utility-link{ display:none; }
+}
+@media (min-width:768px){
+  .cmf-nav__mobile-cart{ display:none; }
+  .cmf-nav__hamburger{ display:none; }
+}
+.sidemenu-overlay{ position:fixed; inset:0; background:var(--cmf-sys-color-surface-mask); z-index:40; display:none; }
+.sidemenu-overlay[data-open="true"]{ display:block; }
+.sidemenu-drawer{ position:fixed; inset-block:0; inset-inline-start:0; z-index:41; transform:translateX(-100%); transition:transform .2s ease; box-shadow:var(--cmf-sys-elevation-5); }
+.sidemenu-drawer[data-open="true"]{ transform:translateX(0); }
+
+.hero{
+  position:relative;
+  background:var(--primary-light);
+  overflow:hidden;
+  padding-top:40px;
+}
+.hero__art{
+  position:relative; width:100%; height:281px; overflow:hidden;
+  margin-top:20px;
+  pointer-events:none;
+}
+.hero__art img{ position:absolute; left:0; top:-178px; width:100%; display:block; }
+.hero__art-rect{
+  position:absolute; left:-40px; top:347px; width:470px; height:121px;
+  pointer-events:none;
+}
+.hero__art-rect img{ width:100%; height:100%; object-fit:cover; }
+.hero__content{ position:relative; z-index:1; padding:0 16px; }
+.hero__tagline{ text-align:center; }
+.hero__kicker{
+  margin:0; color:var(--primary-display);
+  font-weight:600; font-size:24px; line-height:32px; letter-spacing:0.096px;
+}
+.hero__headline{
+  margin:12px 0 0; font-weight:600; font-size:30px; line-height:36px; letter-spacing:0.12px;
+}
+.hero__headline em{ font-style:normal; color:var(--primary-display); }
+.hero__sub{
+  margin:12px 0 0; color:var(--text-secondary);
+  font-weight:400; font-size:16px; line-height:24px; letter-spacing:0.032px;
+}
+.hero__stats-block{ position:relative; z-index:1; padding:16px; padding-top:0; margin-top:8px; }
+.hero-stats{ display:flex; align-items:center; gap:8px; }
+.hero-stats__item{ flex:1; text-align:center; }
+.hero-stats__value{ margin:0; color:var(--primary-basic); font-weight:600; font-size:20px; line-height:28px; letter-spacing:0.04px; white-space:nowrap; }
+.hero-stats__label{ margin:4px 0 0; color:var(--text-secondary); font-weight:500; font-size:14px; line-height:20px; letter-spacing:0.028px; white-space:nowrap; }
+.hero-stats__divider{ width:1px; height:32px; background:var(--divider-2); flex:none; }
+.hero__buttons{ display:flex; flex-direction:column; gap:12px; margin-top:26px; }
+.btn{
+  display:flex; align-items:center; justify-content:center; gap:4px;
+  height:48px; border-radius:12px; font-weight:600; font-size:16px; line-height:24px; letter-spacing:0.032px;
+  cursor:pointer; border:1px solid transparent; text-decoration:none; width:100%;
+}
+.btn-primary{ background:var(--primary-basic); color:var(--white); }
+.btn-outline{ background:transparent; border-color:var(--primary-basic); color:var(--primary-basic); }
+.btn-ghost-link{ display:inline-flex; align-items:center; gap:4px; background:transparent; border:0; color:var(--primary-basic); font-weight:500; font-size:16px; line-height:24px; letter-spacing:0.032px; padding:8px 0 8px 16px; cursor:pointer; width:auto; }
+.btn-ghost-link img{ width:20px; height:20px; }
+.calc-section{ background:var(--primary-light); padding:40px 16px; display:flex; flex-direction:column; gap:24px; }
+.section-header{ text-align:center; }
+.section-header__title{ margin:0; color:var(--primary-display); font-weight:600; font-size:24px; line-height:32px; letter-spacing:0.096px; }
+.section-header__sub{ margin:8px 0 0; color:var(--text-secondary); font-weight:400; font-size:16px; line-height:24px; letter-spacing:0.032px; }
+.calc-illustration{ height:160px; display:flex; align-items:flex-end; justify-content:center; position:relative; }
+.calc-illustration img{ height:160px; width:auto; }
+.calc-illustration .ellipse{ position:absolute; bottom:12px; }
+.calc-illustration .ellipse1{ left:calc(50% - 20px); width:110px; }
+.calc-illustration .ellipse2{ left:calc(50% + 55px); width:82px; }
+.calc-card{
+  background:var(--white); border-radius:24px; padding:16px;
+  box-shadow:0 0 2.5px rgba(38,38,38,0.05), 0 1px 1px rgba(38,38,38,0.15);
+  display:flex; flex-direction:column; gap:24px;
+}
+.calc-card__label{ margin:0; font-weight:600; font-size:20px; line-height:28px; letter-spacing:0.04px; }
+.amount-row{ display:flex; gap:8px; height:40px; }
+.amount-btn{
+  flex:1; border-radius:24px; border:1px solid var(--divider-2); background:var(--white);
+  color:var(--text-secondary); font-weight:600; font-size:16px; line-height:24px; letter-spacing:0.032px;
+  cursor:pointer;
+}
+.amount-btn.is-active{ background:var(--primary-basic); border-color:var(--primary-basic); color:var(--white); }
+.estimate-box{ background:var(--primary-light); border-radius:12px; padding:20px; display:flex; flex-direction:column; gap:12px; }
+.estimate-box__label{ margin:0; font-weight:500; font-size:14px; line-height:20px; letter-spacing:0.028px; }
+.estimate-box__value{ margin:0; color:var(--primary-display); font-weight:600; font-size:30px; line-height:36px; letter-spacing:0.12px; }
+.estimate-box__breakdown{ display:flex; align-items:center; gap:12px; font-weight:500; font-size:12px; line-height:16px; letter-spacing:0.048px; }
+.estimate-box__breakdown .principal{ color:var(--text-secondary); }
+.estimate-box__breakdown .gain{ color:var(--primary-basic); }
+.estimate-box__dot{ width:4px; height:4px; border-radius:2px; background:var(--primary-basic); }
+.bars-row{ display:flex; align-items:flex-end; justify-content:space-between; height: 148px;}
+.bar-col{ display:flex; flex-direction:column; align-items:center; gap:6px; width:48px; justify-content:flex-end;}
+.bar-figure{ text-align:center; font-weight:500; font-size:12px; line-height:16px; letter-spacing:0.048px; color:var(--text-primary); white-space:nowrap;}
+.bar-figure.is-final{ color:var(--primary-basic); }
+.bar{ width:40px; border-radius:8px 8px 0 0; background:var(--primary-border); height:0; transition:height 0.7s cubic-bezier(.22,1,.36,1); }
+.bar-figure, .bar-year{ opacity:0; transition:opacity 0.4s ease; }
+.bar-figure.is-visible, .bar-year.is-visible{ opacity:1; }
+.bar.is-final{ background:var(--primary-basic); }
+.bar-year{ font-weight:600; font-size:12px; line-height:16px; letter-spacing:0.024px; color:var(--text-secondary); }
+.bar-year.is-final{ color:var(--primary-basic); }
+.alert-note{ background:var(--surface-bg); border-radius:4px; padding:8px 12px; display:flex; gap:8px; align-items:flex-start; }
+.alert-note img{ width:20px; height:20px; flex:none; }
+.alert-note p{ margin:0; color:var(--text-secondary); font-weight:400; font-size:14px; line-height:20px; letter-spacing:0.028px; }
+.portfolio-section{ background:var(--primary-light); padding:40px 16px; display:flex; flex-direction:column; align-items:center; gap:28px; }
+.portfolio-list{ display:flex; flex-direction:column; gap:16px; width:100%; }
+.portfolio-card{
+  background:var(--white); border:1px solid var(--divider); border-radius:16px; padding:20px;
+  display:flex; flex-direction:column; gap:16px; width:100%;
+}
+.portfolio-card__title{ margin:0; text-align:center; color:var(--primary-display); font-weight:600; font-size:24px; line-height:32px; letter-spacing:0.096px; }
+.portfolio-card__desc{ margin:6.65px 0 0; text-align:center; color:#5D5D5D; font-weight:400; font-size:14px; line-height:20px; letter-spacing:0.028px; }
+.chart-area{ display:flex; gap:16px; align-items:center; }
+.chart-area__pie{ width:56px; height:56px; flex:none; border-radius:50%; }
+.chart-area__legend{ display:flex; flex-direction:column; gap:4px; }
+.legend-row{ display:flex; align-items:center; gap:8px; }
+.legend-swatch{ width:4px; height:16px; flex:none; }
+.legend-label{ color:var(--text-secondary); font-weight:500; font-size:12px; line-height:16px; letter-spacing:0.048px; white-space:nowrap; }
+.yield-row-wrap{ display:flex; align-items:center; justify-content:space-between; }
+.yield-row{ background:var(--primary-light); color:var(--primary-basic); border-radius:8px; padding:4px 12px; display:flex; gap:12px; align-items:center; }
+.yield-row__label{ margin:0; font-weight:500; font-size:14px; line-height:20px; letter-spacing:0.028px; }
+.yield-row__value{ margin:0; font-weight:600; font-size:16px; line-height:24px; letter-spacing:0.032px; }
+.why-section{ position:relative; background:var(--primary-light) url('assets/aboutus.png') top center / 100% auto no-repeat; overflow:hidden; padding-bottom:40px; }
+.why-section__bg{ position:relative; height:270px; overflow:hidden; }
+.why-section__bg .ellipse3{ position:absolute; left:50%; top:151px; width:887px; transform:translateX(-50%); }
+.why-section__content{ position:relative; z-index:1; padding:0 16px; margin-top:-15px; display:flex; flex-direction:column; align-items:center; gap:24px; }
+.why-section__title{ margin:0; text-align:center; color:var(--primary-display); font-weight:600; font-size:24px; line-height:32px; letter-spacing:0.096px; }
+.why-card{ background:var(--white); border-radius:24px; box-shadow:0 4px 20px rgba(0,0,0,0.08); width:100%; overflow:hidden; }
+.why-row{ display:flex; gap:12px; align-items:flex-start; padding:16px; }
+.why-row{ border-top:1px solid var(--divider); padding-top:12px; padding-bottom:0; margin-top:0;}
+.why-icon{ width:48px; height:48px; border-radius:6px; flex:none; object-fit:cover; }
+.why-text-title{ margin:0; color:#1A1A1A; font-weight:600; font-size:18px; line-height:24px; letter-spacing:0.036px; }
+.why-text-desc{ margin:4px 0 0; color:#666666; font-weight:400; font-size:14px; line-height:20px; letter-spacing:0.028px; }
+.faq-section{ background:var(--white); padding:40px 16px; display:flex; flex-direction:column; gap:20px; }
+.faq-kicker{ margin:0; color:var(--primary-basic); font-weight:600; font-size:12px; line-height:16px; letter-spacing:0.024px; }
+.faq-title{ margin:8px 0 0; color:var(--text-primary); font-weight:600; font-size:24px; line-height:32px; letter-spacing:0.096px; }
+.faq-list{ display:flex; flex-direction:column; }
+.faq-item{ border-bottom:1px solid rgba(38,38,38,0.07); }
+.faq-item summary{ list-style:none; cursor:pointer; display:flex; align-items:center; gap:16px; padding:16px 0; }
+.faq-item summary::-webkit-details-marker{ display:none; }
+.faq-item summary p{ margin:0; flex:1; color:var(--faq-title); font-weight:600; font-size:16px; line-height:24px; letter-spacing:0.032px; }
+.faq-item summary img{ width:20px; height:20px; flex:none; }
+.faq-item .faq-answer{ padding:0 0 16px; color:var(--faq-body); font-weight:400; font-size:14px; line-height:20px; letter-spacing:0.028px; }
+.faq-icon-add{ display:block; }
+.faq-icon-remove{ display:none; }
+.faq-icon-add{ display:none; }
+.faq-icon-remove{ display:block; }
+.amount-btn{ font-size:14px; }
+.app .cmf-nav { box-shadow: 0 0 1px rgba(38,38,38,0.2), 0 2px 5px rgba(38,38,38,0.1); }
+
+/* ===== Portfolio detail page — page-specific components ===== */
+.pd-nav{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:8px 16px; background:var(--white); box-shadow:0 0 1px rgba(38,38,38,.2),0 2px 5px rgba(38,38,38,.1); position:sticky; top:0; z-index:50; }
+.pd-nav__logo{ height:32px; width:auto; display:block; }
+.pd-back-btn{ display:inline-flex; align-items:center; justify-content:center; padding:8px 16px; border:1px solid var(--primary-basic); border-radius:12px; color:var(--primary-basic); font-weight:600; font-size:16px; line-height:24px; text-decoration:none; white-space:nowrap; flex:none; }
+
+.pd-hero{ background:var(--primary-light); padding:40px 16px; display:flex; flex-direction:column; align-items:center; gap:16px; }
+.pd-hero__art{ width:240px; max-width:100%; height:auto; display:block; }
+.pd-hero__heading{ display:flex; flex-direction:column; align-items:center; gap:12px; width:100%; }
+.pd-hero__title{ margin:0; color:var(--primary-display); font-weight:600; font-size:24px; line-height:32px; letter-spacing:.096px; text-align:center; }
+.pd-tags{ display:flex; gap:8px; }
+.pd-tag{ border:1px solid var(--primary-basic); color:var(--primary-basic); border-radius:4px; padding:4px 8px; font-size:12px; line-height:16px; font-weight:400; background:transparent; }
+.pd-info-box{ background:rgba(248,201,203,.5); border-radius:16px; padding:12px 16px; width:100%; text-align:center; box-sizing:border-box; }
+.pd-info-box__title{ margin:0; color:var(--primary-display); font-weight:700; font-size:16px; line-height:25.6px; }
+.pd-info-box__desc{ margin:0; color:var(--text-primary); font-weight:300; font-size:16px; line-height:25.6px; }
+
+.pd-section{ padding:20px 16px; display:flex; flex-direction:column; gap:16px; }
+.pd-section__title{ margin:0; color:var(--text-primary); font-weight:600; font-size:20px; line-height:28px; letter-spacing:.04px; }
+
+.pd-donut-row{ display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap; }
+.pd-donut{ width:180px; height:180px; flex:none; border-radius:50%; display:flex; align-items:center; justify-content:center; }
+.pd-donut__center{ width:60%; height:60%; background:var(--white); border-radius:50%; display:flex; align-items:center; justify-content:center; text-align:center; color:#595959; font-weight:600; font-size:18px; }
+.pd-legend{ display:flex; flex-direction:column; gap:8px; }
+.pd-legend-row{ display:flex; align-items:center; justify-content:space-between; gap:24px; }
+.pd-legend-label{ display:flex; align-items:center; gap:8px; }
+.pd-legend-swatch{ width:12px; height:12px; border-radius:2px; flex:none; }
+.pd-legend-name{ color:var(--text-primary); font-weight:500; font-size:14px; }
+.pd-legend-pct{ color:var(--text-primary); font-weight:500; font-size:14px; }
+
+.pd-fund-card{ display:flex; flex-direction:column; gap:12px; background:var(--white); border:1px solid rgba(38,38,38,.07); border-radius:12px; padding:16px; text-decoration:none; color:inherit; }
+.pd-fund-card__meta{ display:flex; align-items:center; gap:8px; color:#666; font-weight:500; font-size:14px; }
+.pd-fund-card__meta .sep{ width:1px; height:16px; background:#d9d9d9; flex:none; }
+.pd-fund-card__name{ margin:0; color:var(--text-primary); font-weight:600; font-size:16px; line-height:24px; }
+.pd-fund-card__perf{ display:flex; gap:16px; border-top:1px solid #f0eef0; padding-top:8px; }
+.pd-perf-item{ display:flex; flex-direction:column; gap:2px; flex:1; }
+.pd-perf-item__label{ color:#959595; font-size:12px; font-weight:600; }
+.pd-perf-item__value{ color:var(--primary-basic); font-size:16px; font-weight:500; }
+
+.pd-sub-card{ background:var(--white); border:1px solid rgba(38,38,38,.07); border-radius:16px; padding:20px 16px; display:flex; flex-direction:column; gap:16px; }
+.pd-alloc-detail{ background:var(--surface-bg); border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:8px; }
+.pd-alloc-detail__head p{ margin:0; color:#595959; }
+.pd-alloc-detail__head p:first-child{ font-weight:600; font-size:12px; }
+.pd-alloc-detail__head p:last-child{ font-weight:400; font-size:12px; margin-top:2px; }
+.pd-alloc-divider{ height:1px; background:#e4e4e4; }
+.pd-alloc-row{ display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.pd-alloc-row__name{ color:var(--text-primary); font-size:12px; }
+.pd-alloc-row__amt{ color:var(--primary-basic); font-size:14px; font-weight:500; white-space:nowrap; }
+
+.pd-disclaimer{ padding:16px; color:#666; font-size:12px; line-height:1.5; }
+.pd-related{ background:var(--surface-bg); padding:40px 16px; display:flex; flex-direction:column; gap:20px; }
+.pd-related__title{ margin:0; color:#333; font-weight:600; font-size:20px; line-height:28px; }
+
+.app{ max-width:390px; margin:0 auto; background:var(--white); min-height:100vh; position:relative; overflow-x:hidden; }
+
+</style>
+</head>
+<body>
+<div class="app">
+
+  <nav class="pd-nav">
+    <a href="1000-invest-landing.html" aria-label="口袋基金 CMoneyFund"><img class="pd-nav__logo" src="assets/logo.png" alt="CMoneyFund"></a>
+    <a class="pd-back-btn" href="1000-invest-landing.html">回到首頁</a>
+  </nav>
+
+  <main>
+    <section class="pd-hero">
+      <img class="pd-hero__art" src="assets/portfolio-hero-diversified.png" alt="">
+      <div class="pd-hero__heading">
+        <p class="pd-hero__title">全球多元分散組合</p>
+        <div class="pd-tags"><span class="pd-tag">#全球佈局</span><span class="pd-tag">#分散風險</span></div>
+      </div>
+      <div class="pd-info-box">
+        <p class="pd-info-box__title">給想分散風險的你</p>
+        <p class="pd-info-box__desc">每月1,000元起，股債匯多元配置，打造抗震投資組合，安心長期持有</p>
+      </div>
+    </section>
+
+    <section class="pd-section">
+      <p class="pd-section__title">資產配置</p>
+      <div class="pd-donut-row">
+        <div class="pd-donut" style="background:conic-gradient(var(--orange-basic) 0% 33.3%, var(--warning-basic) 33.3% 66.6%, var(--green-basic) 66.6% 100%);">
+          <div class="pd-donut__center">投資組合</div>
+        </div>
+        <div class="pd-legend">
+          <div class="pd-legend-row"><span class="pd-legend-label"><span class="pd-legend-swatch" style="background:var(--orange-basic)"></span><span class="pd-legend-name">股票型</span></span><span class="pd-legend-pct">33.3%</span></div>
+          <div class="pd-legend-row"><span class="pd-legend-label"><span class="pd-legend-swatch" style="background:var(--warning-basic)"></span><span class="pd-legend-name">平衡型</span></span><span class="pd-legend-pct">33.3%</span></div>
+          <div class="pd-legend-row"><span class="pd-legend-label"><span class="pd-legend-swatch" style="background:var(--green-basic)"></span><span class="pd-legend-name">債券型</span></span><span class="pd-legend-pct">33.3%</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pd-section">
+      <p class="pd-section__title">組合配置</p>
+        <a href="fund-detail.html" class="pd-fund-card">
+          <div class="pd-fund-card__header">
+            <div class="pd-fund-card__meta">
+              <span>股票型</span>
+              <span class="sep"></span>
+              <span>RR4</span>
+            </div>
+            <p class="pd-fund-card__name">貝萊德世界礦業基金</p>
+          </div>
+          <div class="pd-fund-card__perf">
+            <div class="pd-perf-item">
+              <p class="pd-perf-item__label">三個月</p>
+              <p class="pd-perf-item__value">16.17%</p>
+            </div>
+            <div class="pd-perf-item">
+              <p class="pd-perf-item__label">六個月</p>
+              <p class="pd-perf-item__value">25.70%</p>
+            </div>
+            <div class="pd-perf-item">
+              <p class="pd-perf-item__label">一年</p>
+              <p class="pd-perf-item__value">72.42%</p>
+            </div>
+          </div>
+        </a>
+        <a href="fund-detail.html" class="pd-fund-card">
+          <div class="pd-fund-card__header">
+            <div class="pd-fund-card__meta">
+              <span>平衡型</span>
+              <span class="sep"></span>
+              <span>RR4</span>
+            </div>
+            <p class="pd-fund-card__name">摩根士丹利環球機會基金</p>
+          </div>
+          <div class="pd-fund-card__perf">
+            <div class="pd-perf-item">
+              <p class="pd-perf-item__label">三個月</p>
+              <p class="pd-perf-item__value">16.17%</p>
+            </div>
+            <div class="pd-perf-item">
+              <p class="pd-perf-item__label">六個月</p>
+              <p class="pd-perf-item__value">25.70%</p>
+            </div>
+            <div class="pd-perf-item">
+              <p class="pd-perf-item__label">一年</p>
+              <p class="pd-perf-item__value">72.42%</p>
+            </div>
+          </div>
+        </a>
+        <a href="fund-detail.html" class="pd-fund-card">
+          <div class="pd-fund-card__header">
+            <div class="pd-fund-card__meta">
+              <span>債券型</span>
+              <span class="sep"></span>
+              <span>RR3</span>
+            </div>
+            <p class="pd-fund-card__name">富蘭克林坦伯頓全球債券基金</p>
+          </div>
+          <div class="pd-fund-card__perf">
+            <div class="pd-perf-item">
+              <p class="pd-perf-item__label">三個月</p>
+              <p class="pd-perf-item__value">16.17%</p>
+            </div>
+            <div class="pd-perf-item">
+              <p class="pd-perf-item__label">六個月</p>
+              <p class="pd-perf-item__value">25.70%</p>
+            </div>
+            <div class="pd-perf-item">
+              <p class="pd-perf-item__label">一年</p>
+              <p class="pd-perf-item__value">72.42%</p>
+            </div>
+          </div>
+        </a>
+    </section>
+
+    <section class="pd-section">
+      <p class="pd-section__title">選擇申購金額</p>
+      <div class="pd-sub-card">
+        <div class="amount-row">
+          <button type="button" class="amount-btn is-active" data-amount="3000">NT$ 3,000</button>
+          <button type="button" class="amount-btn" data-amount="6000">NT$ 6,000</button>
+          <button type="button" class="amount-btn" data-amount="9000">NT$ 9,000</button>
+        </div>
+        <div class="pd-alloc-detail">
+          <div class="pd-alloc-detail__head">
+            <p>按配置比例分配</p>
+            <p>單檔基金 最低申購金額為NT$1,000 (級距為NT$1,000)</p>
+          </div>
+          <div class="pd-alloc-divider"></div>
+            <div class="pd-alloc-row">
+              <p class="pd-alloc-row__name">貝萊德世界礦業基金</p>
+              <p class="pd-alloc-row__amt">NT$ 1,000 (33.3%)</p>
+            </div>
+            <div class="pd-alloc-row">
+              <p class="pd-alloc-row__name">摩根士丹利環球機會基金</p>
+              <p class="pd-alloc-row__amt">NT$ 1,000 (33.3%)</p>
+            </div>
+            <div class="pd-alloc-row">
+              <p class="pd-alloc-row__name">富蘭克林坦伯頓全球債券基金</p>
+              <p class="pd-alloc-row__amt">NT$ 1,000 (33.3%)</p>
+            </div>
+        </div>
+        <a href="open-account.html" class="btn btn-primary">立即申購</a>
+      </div>
+    </section>
+
+    <p class="pd-disclaimer">資料來源：嘉實資訊、中華民國證券投資信託暨顧問商業同業公會、基金資訊觀測站。統計截止日：各基金最新公布淨值日，詳見基金代碼下方。計算區間：今年以來、近三個月、近六個月、近一年、近二年、近三年及成立至今；績效以原幣計算，並將基金配息還原計入報酬率。過去績效不代表未來收益。</p>
+
+    <section class="pd-related">
+      <p class="pd-related__title">或許你也想參考...</p>
+      <div class="portfolio-list">
+        <div class="portfolio-card">
+          <div>
+            <p class="portfolio-card__title">全球科技成長組合</p>
+            <p class="portfolio-card__desc">看好AI、半導體等科技趨勢？一次佈局全球成長產業，掌握未來商機</p>
+          </div>
+          <div class="chart-area">
+            <span class="chart-area__pie" role="img" aria-label="資產配置圖"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true" style="display:block;width:100%;height:100%;"><circle cx="10" cy="10" r="9" fill="#F18A2B"/><path d="M10 10 L10 1 A9 9 0 0 1 17.79 14.5 Z" fill="#F7BF30"/><path d="M10 10 L17.79 14.5 A9 9 0 0 1 2.21 14.5 Z" fill="#6CC4A5"/><circle cx="10" cy="10" r="5.2" fill="#FFFFFF"/></svg></span>
+            <div class="chart-area__legend">
+              <div class="legend-row"><span class="legend-swatch" style="background:var(--orange-basic)"></span><span class="legend-label">股票 33.3%</span></div>
+              <div class="legend-row"><span class="legend-swatch" style="background:var(--warning-basic)"></span><span class="legend-label">平衡 33.3%</span></div>
+              <div class="legend-row"><span class="legend-swatch" style="background:var(--green-basic)"></span><span class="legend-label">債券 33.3%</span></div>
+            </div>
+          </div>
+          <div class="yield-row-wrap">
+            <div class="yield-row">
+              <p class="yield-row__label">預估年化報酬率</p>
+              <p class="yield-row__value">15%</p>
+            </div>
+            <a href="portfolio-global-tech.html" class="view-portfolio">
+              <span>查看組合</span>
+              <span style="display:inline-block;width:20px;height:20px;"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true" style="display:block;width:100%;height:100%;"><path d="M7.5 4.5L13 10l-5.5 5.5" stroke="#E21E28" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </a>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <div>
+            <p class="portfolio-card__title">小資穩健入門組合</p>
+            <p class="portfolio-card__desc">每月1,000元起，幫你配好股債比例，不用自己選基金，輕鬆開始第一筆投資</p>
+          </div>
+          <div class="chart-area">
+            <span class="chart-area__pie" role="img" aria-label="資產配置圖"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true" style="display:block;width:100%;height:100%;"><circle cx="10" cy="10" r="9" fill="#F18A2B"/><path d="M10 10 L10 1 A9 9 0 0 1 17.79 14.5 Z" fill="#F7BF30"/><path d="M10 10 L17.79 14.5 A9 9 0 0 1 2.21 14.5 Z" fill="#6CC4A5"/><circle cx="10" cy="10" r="5.2" fill="#FFFFFF"/></svg></span>
+            <div class="chart-area__legend">
+              <div class="legend-row"><span class="legend-swatch" style="background:var(--orange-basic)"></span><span class="legend-label">股票 33.3%</span></div>
+              <div class="legend-row"><span class="legend-swatch" style="background:var(--warning-basic)"></span><span class="legend-label">平衡 33.3%</span></div>
+              <div class="legend-row"><span class="legend-swatch" style="background:var(--green-basic)"></span><span class="legend-label">債券 33.3%</span></div>
+            </div>
+          </div>
+          <div class="yield-row-wrap">
+            <div class="yield-row">
+              <p class="yield-row__label">預估年化報酬率</p>
+              <p class="yield-row__value">15%</p>
+            </div>
+            <a href="portfolio-small-balance.html" class="view-portfolio">
+              <span>查看組合</span>
+              <span style="display:inline-block;width:20px;height:20px;"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true" style="display:block;width:100%;height:100%;"><path d="M7.5 4.5L13 10l-5.5 5.5" stroke="#E21E28" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="cmf-footer" data-component="footer">
+      <div class="cmf-footer__top">
+        <div class="cmf-footer__brand">
+          <img class="cmf-footer__logo" src="assets/footer-logo.png" alt="CMoneyFund 口袋基金 ETF 策略">
+          <div class="cmf-footer__info-grid">
+            <p>公司名稱：口袋證券投資顧問股份有限公司</p>
+            <p>地址：220 新北市板橋區文化路一段266號11樓之3</p>
+            <p>金管會核准字號：114年金管投顧新字第029號</p>
+            <p>電話：02-7755-3308</p>
+            <p>服務時間：09:00–17:00</p>
+            <p>電子郵件：<a href="mailto:service@cmoneyfund.com.tw">service@cmoneyfund.com.tw</a></p>
+          </div>
+        </div>
+        <div class="cmf-footer__aside">
+          <div class="cmf-footer__social" role="list" aria-label="Social media"><a class="cmf-footer__social-link" href="https://www.facebook.com/aipocket.tw" target="_blank" rel="noreferrer" aria-label="Facebook"><img src="assets/footer-icon-2.png" alt="" style="width:100%;height:100%;"></a><span class="cmf-footer__social-link" aria-label="Instagram (link not yet confirmed)" title="Instagram — icon confirmed, link not yet confirmed"><img src="assets/footer-icon-3.png" alt="" style="width:100%;height:100%;"></span><a class="cmf-footer__social-link" href="https://lin.ee/do3j2t6" target="_blank" rel="noreferrer" aria-label="LINE"><img src="assets/footer-icon-4.png" alt="" style="width:100%;height:100%;"></a></div>
+          <div class="cmf-footer__badges"><img class="cmf-footer__badge" src="assets/footer-icon-5.gif" alt="財團法人金融消費評議中心"><img class="cmf-footer__badge" src="assets/footer-icon-6.gif" alt="TWCA Secured"></div>
+        </div>
+      </div>
+      <ul class="cmf-footer__disclosure"><li data-tone="default">各基金經金管會核准或同意生效，惟不表示絕無風險。基金經理公司以往之經理績效不保證基金之最低投資收益；基金經理公司除盡善良管理人之注意義務外，不負責本基金之盈虧，亦不保證最低之收益，投資人申購前應詳閱投資人須知或/與基金公開說明書。</li><li data-tone="default">有關基金應負擔之費用（含分銷費用）已揭露於基金公開說明書及投資人須知，投資人可至公開資訊觀測站或境外基金資訊觀測站中查詢。</li><li data-tone="default">依金融消費者保護法最新相關規定，您於本公司網站完成「風險屬性評估表」，本公司將依客戶屬性做商品適合度規範並至少每年請您更新一次，若未能完成風險屬性評估屆時將會影響您的交易。</li><li data-tone="default">鑑於目前國際政治及經濟情勢多變，對於所投資之外國證券市場，應注意該外國證券交易市場國家主權評等變動情形，以確保自身投資權益。</li><li data-tone="default">本基金涉及投資新興市場部份，因其波動性與風險程度可能較高，且其政治與經濟情勢穩定度可能低於已開發國家，也可能使資產價值受不同程度之影響。依金管會規定：<ol class="cmf-footer__disclosure-sub"><li>投信基金直接投資大陸地區有價證券僅限掛牌上市有價證券，投資人須留意中國市場特定政治、經濟與市場等投資風險。</li><li>境外基金投資大陸地區有價證券不得超過該基金資產淨值之20%，投資人須留意中國市場特定政治、經濟與市場等投資風險。</li></ol></li><li data-tone="attention">由於非投資等級債券之信用評等未達投資等級或未經信用評等，且對利率變動的敏感度甚高，故非投資等級債券基金可能會因利率上升、市場流動性下降，或債券發行機構違約不支付本金、利息或破產而蒙受虧損。非投資等級債券基金不適合無法承擔相關風險之投資人，投資人投資以非投資等級債券為訴求之基金不宜占其投資組合過高之比重。部份基金或所投資之債券子基金，可能投資美國Rule144A債券，該等債券屬私募性質，較可能發生流動性不足，財務訊息揭露不完整或因價格不透明導致波動性較大之風險，投資人須留意相關風險。</li><li data-tone="default">外幣計價之基金，投資人須承擔取得收益分配或贖回價金時轉換回新臺幣可能產生之匯率風險。若轉換當時之新臺幣兌換外幣匯率相較於原始投資日之匯率升值時，投資人將承受匯兌損失。</li><li data-tone="default">各基金所採用之「公平價格調整」（或「反稀釋」）、短線交易及「價格調整機制（或「擺動定價」）」等機制，相關說明請詳各基金公開說明書。投資人應遵守基金公開說明書所列相關交易規定與限制。</li><li data-tone="default">基金配息率不代表基金報酬率，且過去配息率不代表未來配息率；基金淨值可能因市場因素而上下波動。部分基金配息前未先扣除應負擔之相關費用。基金的配息可能由基金的收益或本金中支付。任何涉及由本金支出的部份，可能導致原始投資金額減損。各基金由本金支付配息之相關資料，投資人可至各投信基金公司及總代理人網站查詢。</li><li data-tone="default">投資人因不同時間進場，將有不同之投資績效，過去之績效亦不代表未來績效之保證，本文提及之經濟走勢預測不必然代表基金之績效，基金投資風險請詳閱基金公開說明書。</li><li data-tone="default">投資人應注意貨幣基金投資之風險包括利率風險、債券交易市場流動性不足之風險及投資無擔保公司債之風險；本基金或有因利率變動、債券交易市場流動性不足及定期存單提前解約而影響基金淨值下跌之風險，同時或有受益人大量贖回時，至延遲給付贖回價款之可能。</li><li data-tone="default">風險報酬等級係依基金類型、投資區域或主要投資標的／產業，由低至高，區分為RR1~RR5五個風險報酬等級。計算過去五年基金淨值波動度標準差，以標準差區間予以分類等級，基金成立未滿五年，將以較短區間或適當參考標的作為評估標準。此等級分類係基於一般市場狀況反映市場價格波動風險，無法涵蓋所有風險，亦不宜作為投資唯一依據，投資人應充分評估基金之投資風險。基金主要相關投資風險已揭露於基金公開說明書或投資人須知。</li><li data-tone="default">有關基金之ESG資訊，投資人應於申購前詳閱基金公開說明書或投資人須知所載之基金所有特色或目標等資訊。相關資訊請至基金資訊觀測站-ESG基金專區查詢。</li><li data-tone="default">本公司與所推介分析之個別有價證券無不當之財務利益關係，本公司提供資訊僅供參考，投資人應獨立判斷，審慎評估並自負投資風險。</li><li data-tone="default">為提供投資人更為穩定的瀏覽體驗，建議您將以下瀏覽器更新至最新版本：Google Chrome、Microsoft Edge、Firefox、Safari。</li></ul>
+      <div class="cmf-footer__bottom">
+        <span class="cmf-footer__copyright">©2024口袋投顧版權所有</span>
+        <ul class="cmf-footer__legal-links"><li><a href="https://www.cmoneyfund.com.tw/api/v1.0/File/Download/ec6f98f6-e37c-4940-b579-1489a186639f" target="_blank" rel="noreferrer">會員服務條款</a></li><li><a href="https://www.cmoneyfund.com.tw/api/v1.0/File/Download/6a8dc59e-eb7e-47dd-966c-3f8766ff9c79" target="_blank" rel="noreferrer">隱私權及網站安全政策</a></li><li><a href="https://www.cmoneyfund.com.tw/api/v1.0/File/Download/446641d2-c6d6-4987-b36b-3bf1b03dcc15" target="_blank" rel="noreferrer">防制洗錢及打擊資恐</a></li><li><a href="https://www.cmoneyfund.com.tw/api/v1.0/File/Download/40d2b4bb-d84f-4ded-bc0b-76a4bd5f450e" target="_blank" rel="noreferrer">內部控制制度聲明書</a></li><li><a href="https://www.foi.org.tw/index.aspx?lang=1" target="_blank" rel="noreferrer">金融消費爭議專區</a></li><li><a href="https://www.cmoneyfund.com.tw/api/v1.0/File/Download/8e94b385-8802-4d76-9bf8-f6a48001e3bd" target="_blank" rel="noreferrer">金融友善服務措施</a></li><li><a href="https://www.cmoneyfund.com.tw/api/v1.0/File/Download/ed27f6f9-ac99-4c5b-aed6-fe5738f54c16" target="_blank" rel="noreferrer">個人資料保護法</a></li></ul>
+      </div>
+    </footer>
+
+</div>
+<script>
+  document.querySelectorAll('.amount-btn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.amount-btn').forEach(function (x) { x.classList.remove('is-active'); });
+      b.classList.add('is-active');
+    });
+  });
+</script>
+</body>
+</html>
