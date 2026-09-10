@@ -39,6 +39,7 @@ body{
   font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;
   color:var(--text-primary);
   -webkit-font-smoothing:antialiased;
+  overflow-x:clip;
 }
 
 .app{
@@ -47,7 +48,6 @@ body{
   background:var(--white);
   min-height:100vh;
   position:relative;
-  overflow-x:hidden;
 }
 
 .reveal{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
@@ -1182,6 +1182,9 @@ body {
   padding-inline: var(--cmf-sys-spacing-screen-gutter-regular);
   background: var(--cmf-comp-nav-container-color);
   box-shadow: var(--cmf-comp-nav-elevation);
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 
 .cmf-nav[data-layout="mobile"] {
@@ -2231,7 +2234,7 @@ body {
             <img class="why-icon" src="assets/ab-1.png" alt="" aria-hidden="true">
             <div>
               <p class="why-text-title">0元手續費</p>
-              <p class="why-text-desc">申購0手續費，獲利全歸你</p>
+              <p class="why-text-desc">申購手續費 0 元</p>
             </div>
           </div>
           
@@ -2239,7 +2242,7 @@ body {
             <img class="why-icon" src="assets/ab-2.png" alt="" aria-hidden="true">
             <div>
               <p class="why-text-title">1,000+檔任你選</p>
-              <p class="why-text-desc">債券、股票、ETF，想投什麼都有</p>
+              <p class="why-text-desc">股票型、債券型等，滿足不同投資需求</p>
             </div>
           </div>
           
