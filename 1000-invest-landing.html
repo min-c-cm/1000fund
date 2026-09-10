@@ -50,6 +50,9 @@ body{
   overflow-x:hidden;
 }
 
+.reveal{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
+.reveal.is-visible{ opacity:1; transform:translateY(0); }
+
 /* ---------- Navigation bar ---------- */
 .navbar{
   position:sticky; top:0; z-index:50;
@@ -178,8 +181,8 @@ body{
   background:var(--white); border:1px solid var(--divider); border-radius:16px; padding:20px;
   display:flex; flex-direction:column; gap:16px; width:100%;
 }
-.portfolio-card__title{ margin:0; text-align:center; color:var(--primary-display); font-weight:600; font-size:24px; line-height:32px; letter-spacing:0.096px; }
-.portfolio-card__desc{ margin:6.65px 0 0; text-align:center; color:#5D5D5D; font-weight:400; font-size:14px; line-height:20px; letter-spacing:0.028px; }
+.portfolio-card__title{ margin:0; text-align:left; color:var(--primary-display); font-weight:600; font-size:20px; line-height:28px; letter-spacing:0.04px; }
+.portfolio-card__desc{ margin:6.65px 0 0; text-align:left; color:#5D5D5D; font-weight:400; font-size:14px; line-height:20px; letter-spacing:0.028px; }
 .chart-area{ display:flex; gap:16px; align-items:center; }
 .chart-area__pie{ width:56px; height:56px; flex:none; border-radius:50%; }
 .chart-area__legend{ display:flex; flex-direction:column; gap:4px; }
@@ -206,8 +209,10 @@ body{
 .pd-perf-item{ display:flex; flex-direction:column; gap:2px; flex:1; }
 .pd-perf-item__label{ margin:0; color:#959595; font-weight:600; font-size:12px; line-height:16px; letter-spacing:0.024px; }
 .pd-perf-item__value{ margin:0; color:var(--primary-basic); font-weight:500; font-size:16px; line-height:24px; letter-spacing:0.032px; }
-.portfolio-card__cart-btn{ display:flex; gap:8px; align-items:center; justify-content:center; width:100%; background:var(--primary-basic); color:var(--white); border:0; border-radius:12px; padding:12px 16px; font-family:inherit; font-weight:500; font-size:16px; line-height:24px; letter-spacing:0.032px; cursor:pointer; }
+.portfolio-card__cart-btn{ display:flex; gap:8px; align-items:center; justify-content:center; width:100%; background:var(--primary-basic); color:var(--white); border:1px solid var(--primary-basic); border-radius:12px; padding:12px 16px; font-family:inherit; font-weight:500; font-size:16px; line-height:24px; letter-spacing:0.032px; cursor:pointer; }
 .portfolio-card__cart-btn img{ width:20px; height:20px; }
+.portfolio-card__cart-btn.is-added{ background:var(--white); color:var(--primary-basic); }
+.portfolio-card__cart-btn.is-added img{ filter:invert(23%) sepia(89%) saturate(2000%) hue-rotate(340deg) brightness(95%) contrast(95%); }
 
 /* ---------- Why choose us ---------- */
 .why-section{ position:relative; background:var(--primary-light) url('assets/aboutus.png') top center / 100% auto no-repeat; overflow:hidden; padding-bottom:40px; }
@@ -1299,7 +1304,13 @@ body {
   background: transparent;
   color: var(--cmf-sys-color-on-surface-primary);
   cursor: pointer;
+  position: relative;
 }
+.cmf-nav__icon-button__badge{
+  position:absolute; top:-2px; right:-2px; width:8px; height:8px; border-radius:50%;
+  background:var(--primary-basic); border:1.5px solid var(--white); display:none;
+}
+.cmf-nav__icon-button__badge.is-visible{ display:block; }
 
 .cmf-nav__utility-link {
   display: inline-flex;
@@ -1887,7 +1898,7 @@ body {
       </a>
       <div class="cmf-nav__spacer"></div>
       <div class="cmf-nav__utility">
-        <button type="button" class="cmf-nav__icon-button" aria-label="購物車"><svg viewBox="0 0 20 20" width="24" height="24" fill="none" aria-hidden="true"><path d="M2 3h1.5l1.6 9.6a1.5 1.5 0 001.5 1.4h7.3a1.5 1.5 0 001.5-1.2L17 6.5H4.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="17" r="1" fill="currentColor" stroke="none"/><circle cx="14" cy="17" r="1" fill="currentColor" stroke="none"/></svg></button>
+        <button type="button" class="cmf-nav__icon-button" aria-label="購物車" id="nav-cart-btn"><svg viewBox="0 0 20 20" width="24" height="24" fill="none" aria-hidden="true"><path d="M2 3h1.5l1.6 9.6a1.5 1.5 0 001.5 1.4h7.3a1.5 1.5 0 001.5-1.2L17 6.5H4.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="17" r="1" fill="currentColor" stroke="none"/><circle cx="14" cy="17" r="1" fill="currentColor" stroke="none"/></svg><span class="cmf-nav__icon-button__badge" id="nav-cart-badge"></span></button>
         <button type="button" class="cmf-nav__icon-button" aria-label="Open menu" aria-expanded="false" id="hamburger-btn"><svg viewBox="0 0 20 20" width="24" height="24" fill="none" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
       </div>
     </nav>
@@ -1940,7 +1951,7 @@ body {
     <!-- Hero -->
     <section class="hero">
       <div class="hero__content">
-        <div class="hero__tagline">
+        <div class="hero__tagline reveal">
           <p class="hero__kicker">從今天的一小筆開始</p>
           <p class="hero__headline"><em>1,000元</em> 就能買基金</p>
           <p class="hero__sub">小額也能布局全球，讓未來多一種可能！</p>
@@ -1974,8 +1985,8 @@ body {
 
     <!-- Calculator -->
     <section class="calc-section" id="calculator" style="scroll-margin-top:64px;">
-      <div class="section-header">
-        <p class="section-header__title">每月存入一點小錢，<br>10年後能累積多少？</p>
+      <div class="section-header reveal">
+        <p class="section-header__title">每月投入一點，10年累積多少？</p>
         <p class="section-header__sub">選個金額試算看看，小額投資的累積力量超乎想像！</p>
       </div>
       <div class="calc-illustration">
@@ -2020,7 +2031,7 @@ body {
 
     <!-- Recommended portfolios -->
     <section class="portfolio-section">
-      <div class="section-header">
+      <div class="section-header reveal">
         <p class="section-header__title">不知道從哪裡開始？<br>試試我們的推薦組合</p>
         <p class="section-header__sub">最難的選股與把關，我們都幫你解決了，<br>現在只要決定你的神隊友！</p>
       </div>
@@ -2041,7 +2052,7 @@ body {
           </div>
           <div class="yield-row-wrap">
             <div class="yield-row">
-              <p class="yield-row__label">預估年化報酬率</p>
+              <p class="yield-row__label">歷史模擬年化報酬率</p>
               <p class="yield-row__value">15%</p>
             </div>
             <button type="button" class="view-portfolio js-portfolio-toggle" aria-expanded="false">
@@ -2078,7 +2089,7 @@ body {
                   <div class="pd-perf-item"><p class="pd-perf-item__label">一年</p><p class="pd-perf-item__value">72.42%</p></div>
                 </div>
               </a>
-              <button type="button" class="portfolio-card__cart-btn">
+              <button type="button" class="portfolio-card__cart-btn js-add-to-cart" data-fund-count="3">
                 <img src="assets/shopping-cart.svg" alt="" aria-hidden="true">
                 <span>一鍵加入購物車</span>
               </button>
@@ -2101,7 +2112,7 @@ body {
           </div>
           <div class="yield-row-wrap">
             <div class="yield-row">
-              <p class="yield-row__label">預估年化報酬率</p>
+              <p class="yield-row__label">歷史模擬年化報酬率</p>
               <p class="yield-row__value">15%</p>
             </div>
             <button type="button" class="view-portfolio js-portfolio-toggle" aria-expanded="false">
@@ -2138,7 +2149,7 @@ body {
                   <div class="pd-perf-item"><p class="pd-perf-item__label">一年</p><p class="pd-perf-item__value">72.42%</p></div>
                 </div>
               </a>
-              <button type="button" class="portfolio-card__cart-btn">
+              <button type="button" class="portfolio-card__cart-btn js-add-to-cart" data-fund-count="3">
                 <img src="assets/shopping-cart.svg" alt="" aria-hidden="true">
                 <span>一鍵加入購物車</span>
               </button>
@@ -2161,7 +2172,7 @@ body {
           </div>
           <div class="yield-row-wrap">
             <div class="yield-row">
-              <p class="yield-row__label">預估年化報酬率</p>
+              <p class="yield-row__label">歷史模擬年化報酬率</p>
               <p class="yield-row__value">15%</p>
             </div>
             <button type="button" class="view-portfolio js-portfolio-toggle" aria-expanded="false">
@@ -2198,7 +2209,7 @@ body {
                   <div class="pd-perf-item"><p class="pd-perf-item__label">一年</p><p class="pd-perf-item__value">72.42%</p></div>
                 </div>
               </a>
-              <button type="button" class="portfolio-card__cart-btn">
+              <button type="button" class="portfolio-card__cart-btn js-add-to-cart" data-fund-count="3">
                 <img src="assets/shopping-cart.svg" alt="" aria-hidden="true">
                 <span>一鍵加入購物車</span>
               </button>
@@ -2213,7 +2224,7 @@ body {
     <section class="why-section">
       <div class="why-section__bg"></div>
       <div class="why-section__content">
-        <p class="why-section__title">為什麼選擇口袋基金？</p>
+        <p class="why-section__title reveal">為什麼選擇口袋基金？</p>
         <div class="why-card">
           
           <div class="why-row">
@@ -2254,7 +2265,7 @@ body {
 
     <!-- FAQ -->
     <section class="faq-section">
-      <div>
+      <div class="reveal">
         <p class="faq-kicker">FAQ</p>
         <p class="faq-title">常見問題</p>
       </div>
@@ -2326,7 +2337,7 @@ body {
     </footer>
 
     <div class="sticky-cta">
-      <p class="sticky-cta__text">準備好開始投資了嗎？</p>
+      <p class="sticky-cta__text" id="sticky-cta-text">準備好開始投資了嗎？</p>
       <a href="#" class="sticky-cta__btn js-open-account">立即開戶</a>
     </div>
 
@@ -2652,13 +2663,55 @@ body {
     e.preventDefault();
   });
 
-  // ---- Sticky bottom CTA: only show after scrolling past 1600px ----
+  // ---- Section headings: fade + rise in as they scroll into view ----
+  var revealEls = document.querySelectorAll('.reveal');
+  if (revealEls.length) {
+    if ('IntersectionObserver' in window) {
+      var revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      revealEls.forEach(function (el) { revealObserver.observe(el); });
+    } else {
+      revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+    }
+  }
+
+  // ---- Sticky bottom CTA: only show after scrolling past 1600px (or once something's added to cart) ----
   var stickyCta = document.querySelector('.sticky-cta');
+  var selectedCount = 0;
   function updateStickyCtaVisibility() {
-    stickyCta.classList.toggle('is-visible', window.scrollY > 1600);
+    stickyCta.classList.toggle('is-visible', window.scrollY > 1600 || selectedCount > 0);
   }
   window.addEventListener('scroll', updateStickyCtaVisibility, { passive: true });
   updateStickyCtaVisibility();
+
+  // ---- Add-to-cart buttons: track selection, reflect it in the sticky CTA text + nav badge ----
+  var stickyCtaText = document.getElementById('sticky-cta-text');
+  var navCartBadge = document.getElementById('nav-cart-badge');
+  function updateStickyCtaText() {
+    stickyCtaText.textContent = selectedCount > 0
+      ? '您已選擇 ' + selectedCount + ' 個組合（' + (selectedCount * 3) + '檔基金）！'
+      : '準備好開始投資了嗎？';
+  }
+  function updateNavCartBadge() {
+    navCartBadge.classList.toggle('is-visible', selectedCount > 0);
+  }
+  document.querySelectorAll('.js-add-to-cart').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var span = btn.querySelector('span');
+      var nowAdded = btn.classList.toggle('is-added');
+      selectedCount += nowAdded ? 1 : -1;
+      span.textContent = nowAdded ? '已加入購物車' : '一鍵加入購物車';
+      updateStickyCtaText();
+      updateStickyCtaVisibility();
+      updateNavCartBadge();
+    });
+  });
 })();
 </script>
 </body>
