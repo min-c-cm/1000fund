@@ -2366,33 +2366,40 @@ tr[data-under1000]{ }
 .app{ max-width:390px; margin:0 auto; background:var(--white); min-height:100vh; position:relative; overflow-x:hidden; }
 .fd-main{ padding:16px; display:flex; flex-direction:column; gap:20px; }
 
-.fd-header-card{ background:var(--white); border:1px solid rgba(38,38,38,.07); border-radius:16px; padding:20px 16px; box-shadow:0 0 2.5px rgba(38,38,38,.05), 0 1px 1px rgba(38,38,38,.15); display:flex; flex-direction:column; gap:16px; }
-.fd-fund-name{ margin:0; color:var(--text-primary); font-weight:600; font-size:20px; line-height:28px; }
-.fd-fund-code{ margin:4px 0 0; color:#959595; font-weight:400; font-size:13px; }
+.fd-hero{ margin-inline:-16px; padding:0 16px 40px; background:linear-gradient(180deg, var(--primary-light) 0%, rgba(252,233,234,0) 100%); }
+.fd-hero__title{ margin-top:16px; }
+.fd-hero__name{ margin:0; color:var(--text-primary); font-weight:600; font-size:24px; line-height:36px; }
+.fd-hero__code{ margin:4px 0 0; color:var(--text-secondary); font-weight:400; font-size:14px; line-height:20px; letter-spacing:0.028px; }
+
+.fd-header-card{ background:var(--white); border-radius:12px; padding:16px; box-shadow:0 0 0 1px rgba(38,38,38,.05), 0 1px 3px rgba(38,38,38,.15); display:flex; flex-direction:column; gap:16px; margin-top:-24px; position:relative; z-index:1; }
 .fd-nav-block{ display:flex; flex-direction:column; gap:4px; }
-.fd-nav-label{ margin:0; color:#959595; font-size:12px; }
-.fd-nav-value{ margin:0; color:var(--text-primary); font-weight:700; font-size:32px; line-height:1.2; }
-.fd-nav-value sup{ font-size:14px; font-weight:500; color:#959595; margin-left:4px; }
-.fd-change-label{ margin:0 0 2px; color:#959595; font-size:12px; }
-.fd-change{ margin:0; font-weight:600; font-size:18px; }
+.fd-nav-label{ margin:0; color:#959595; font-size:14px; line-height:20px; letter-spacing:0.028px; }
+.fd-nav-value{ margin:0; display:flex; align-items:flex-end; gap:4px; color:var(--text-primary); font-weight:600; font-size:40px; line-height:48px; letter-spacing:0.16px; }
+.fd-nav-value .unit{ font-size:20px; font-weight:600; line-height:28px; letter-spacing:0.04px; }
+.fd-change-label{ margin:0 0 4px; color:#959595; font-size:14px; line-height:20px; letter-spacing:0.028px; }
+.fd-change{ margin:0; display:flex; align-items:center; gap:8px; font-weight:600; font-size:20px; line-height:28px; letter-spacing:0.04px; }
 .fd-change[data-dir="up"]{ color:var(--primary-basic); }
 .fd-change[data-dir="down"]{ color:#16A170; }
+.fd-change__item{ display:inline-flex; align-items:center; gap:2px; }
+.fd-change__item svg{ width:20px; height:20px; }
 .fd-risk-row{ display:flex; align-items:center; gap:8px; }
 .fd-risk-row p{ margin:0; color:#959595; font-size:12px; }
-.fd-action-row{ display:flex; gap:8px; }
-.fd-action-row .cmf-button{ flex:1; }
+.fd-risk-row .cmf-tag[data-variant="compact"]{ background:var(--cmf-sys-color-danger); border-color:var(--cmf-sys-color-danger); color:var(--cmf-sys-color-on-danger); }
+.fd-action-row{ display:flex; gap:16px; }
+.fd-action-row .cmf-button[data-variant="primary"]{ flex:1; }
 
-.fd-tabs{ display:flex; gap:20px; overflow-x:auto; border-bottom:1px solid var(--divider); padding:0 2px; -ms-overflow-style:none; scrollbar-width:none; }
+.fd-tabs{ display:flex; gap:16px; overflow-x:auto; border-bottom:1px solid var(--divider); padding:0 2px; -ms-overflow-style:none; scrollbar-width:none; }
 .fd-tabs::-webkit-scrollbar{ display:none; }
-.fd-tab-btn{ flex:none; background:none; border:0; padding:12px 2px; font-size:16px; font-weight:600; color:#767676; cursor:pointer; border-bottom:2px solid transparent; white-space:nowrap; }
-.fd-tab-btn[aria-selected="true"]{ color:var(--primary-basic); border-bottom-color:var(--primary-basic); }
+.fd-tab-btn{ flex:none; background:none; border:0; padding:12px 2px; font-size:16px; font-weight:500; color:#595959; cursor:pointer; border-bottom:2px solid transparent; white-space:nowrap; }
+.fd-tab-btn[aria-selected="true"]{ color:var(--primary-display); border-bottom-color:var(--cmf-ref-color-red-25); }
 .fd-tab-panel{ display:none; flex-direction:column; gap:20px; }
 .fd-tab-panel.is-active{ display:flex; }
 
-.fd-interval-row{ display:flex; gap:8px; overflow-x:auto; -ms-overflow-style:none; scrollbar-width:none; }
+.fd-interval-row{ display:flex; align-items:center; gap:8px; overflow-x:auto; -ms-overflow-style:none; scrollbar-width:none; }
 .fd-interval-row::-webkit-scrollbar{ display:none; }
-.fd-interval-btn{ flex:none; padding:6px 14px; border-radius:20px; border:1px solid var(--divider-2, #d9d9d9); background:var(--white); color:#595959; font-size:14px; font-weight:500; cursor:pointer; }
-.fd-interval-btn[data-active]{ background:var(--primary-basic); border-color:var(--primary-basic); color:var(--white); }
+.fd-interval-label{ flex:none; color:var(--text-primary); font-size:16px; line-height:24px; font-weight:400; letter-spacing:0.032px; }
+.fd-interval-btn{ flex:none; padding:6px 12px; border-radius:12px; border:1px solid var(--divider-2, #d9d9d9); background:var(--white); color:#595959; font-size:16px; font-weight:400; line-height:24px; letter-spacing:0.032px; cursor:pointer; }
+.fd-interval-btn[data-active]{ background:var(--white); border-color:var(--primary-basic); color:var(--primary-basic); }
 
 .fd-chart-card{ display:flex; flex-direction:column; gap:8px; }
 .fd-chart-legend{ display:flex; gap:16px; font-size:12px; color:#959595; }
@@ -2400,7 +2407,10 @@ tr[data-under1000]{ }
 .fd-chart-legend i{ width:14px; height:2px; display:inline-block; }
 .fd-chart-note{ margin:0; color:#bfbfbf; font-size:11px; line-height:1.6; }
 
-.fd-section-title{ margin:0; color:var(--text-primary); font-weight:600; font-size:16px; }
+.fd-section-title{ margin:0; color:var(--text-primary); font-weight:600; font-size:18px; line-height:24px; }
+@media (max-width:767px){
+  .fd-tab-panel .table-scroll .cmf-data-table{ min-width:0; width:100%; }
+}
 
 .fd-stat-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
 .fd-stat-box{ background:var(--surface-bg); border-radius:12px; padding:12px; }
@@ -2490,26 +2500,32 @@ tr[data-under1000]{ }
 
   <main>
     <div class="fd-main">
-      <nav aria-label="Breadcrumb" class="cmf-breadcrumb" data-component="breadcrumb">
-        <ol class="cmf-breadcrumb__list">
-          <li class="cmf-breadcrumb__item"><a class="cmf-breadcrumb__link" href="1000-invest-landing.html">首頁</a></li>
-          <li class="cmf-breadcrumb__item"><span class="cmf-breadcrumb__separator" aria-hidden="true"><svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7.5 4.5L13 10l-5.5 5.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><a class="cmf-breadcrumb__link" href="fund-overview-performance.html">基金總覽</a></li>
-          <li class="cmf-breadcrumb__item"><span class="cmf-breadcrumb__separator" aria-hidden="true"><svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7.5 4.5L13 10l-5.5 5.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="cmf-breadcrumb__label" data-current aria-current="page">基金介紹</span></li>
-        </ol>
-      </nav>
+      <div class="fd-hero">
+        <nav aria-label="Breadcrumb" class="cmf-breadcrumb" data-component="breadcrumb">
+          <ol class="cmf-breadcrumb__list">
+            <li class="cmf-breadcrumb__item"><a class="cmf-breadcrumb__link" href="1000-invest-landing.html">首頁</a></li>
+            <li class="cmf-breadcrumb__item"><span class="cmf-breadcrumb__separator" aria-hidden="true"><svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7.5 4.5L13 10l-5.5 5.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><a class="cmf-breadcrumb__link" href="fund-overview-performance.html">基金總覽</a></li>
+            <li class="cmf-breadcrumb__item"><span class="cmf-breadcrumb__separator" aria-hidden="true"><svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7.5 4.5L13 10l-5.5 5.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="cmf-breadcrumb__label" data-current aria-current="page">基金介紹</span></li>
+          </ol>
+        </nav>
+        <div class="fd-hero__title">
+          <p class="fd-hero__name">復華高成長基金</p>
+          <p class="fd-hero__code">FH048 | Fuh Hwa High Growth TWD</p>
+        </div>
+      </div>
 
       <section class="fd-header-card">
-        <div>
-          <p class="fd-fund-name">復華高成長基金</p>
-          <p class="fd-fund-code">FH048 | Fuh Hwa High Growth TWD</p>
-        </div>
         <div class="fd-nav-block">
           <p class="fd-nav-label">最新淨值 2024/07/29</p>
-          <p class="fd-nav-value">175.03 <sup>TWD</sup></p>
+          <p class="fd-nav-value">175.03<span class="unit">TWD</span></p>
         </div>
         <div class="fd-change-label-block">
           <p class="fd-change-label">漲跌 / 漲跌幅</p>
-          <p class="fd-change" data-dir="up">+0.71 / +0.41%</p>
+          <p class="fd-change" data-dir="up">
+            <span class="fd-change__item"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 5l5.5 9H4.5L10 5z"/></svg>0.71</span>
+            <span>/</span>
+            <span class="fd-change__item"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 5l5.5 9H4.5L10 5z"/></svg>0.41%</span>
+          </p>
         </div>
         <div class="fd-risk-row">
           <span class="cmf-tag" data-component="tag" data-variant="compact">RR4</span>
@@ -2533,6 +2549,7 @@ tr[data-under1000]{ }
       <section class="fd-tab-panel is-active" data-panel="nav">
         <p class="fd-section-title">淨值走勢圖</p>
         <div class="fd-interval-row">
+          <span class="fd-interval-label">區間</span>
           <button type="button" class="fd-interval-btn" data-active>今年以來</button>
           <button type="button" class="fd-interval-btn">三個月</button>
           <button type="button" class="fd-interval-btn">六個月</button>

@@ -2202,6 +2202,49 @@ tr[data-under1000]{ }
 .sidemenu-drawer{ position:fixed; inset-block:0; inset-inline-start:0; z-index:41; transform:translateX(-100%); transition:transform .2s ease; box-shadow:var(--cmf-sys-elevation-5); }
 .sidemenu-drawer[data-open="true"]{ transform:translateX(0); }
 
+/* ===== Mobile fund-overview redesign (390w Figma spec) ===== */
+.fov-segment-tabs{ display:none; }
+.fov-sort-row{ display:none; }
+.fund-card-list{ display:none; }
+@media (max-width:767px){
+  .page-title{ font-size:40px; line-height:48px; font-weight:600; }
+  .filter-subheading{ color:var(--cmf-sys-color-primary-display); }
+  .filter-label{ font-size:16px; line-height:24px; font-weight:600; color:var(--cmf-sys-color-on-surface-primary); }
+  .trending-tag{ height:36px; padding:8px 16px; border-radius:24px; font-weight:600; font-size:14px; line-height:20px; }
+  .active-filter-chip{ background:var(--cmf-sys-color-primary-container); border-color:transparent; border-radius:24px; padding:8px 16px; }
+  .active-filter-chip .cmf-tag__label{ color:var(--cmf-sys-color-primary); font-weight:600; }
+  .filter-adv-btn{ width:48px !important; height:48px !important; min-block-size:48px !important; padding:0 !important; border-radius:12px !important; background:var(--cmf-sys-color-primary) !important; border-color:var(--cmf-sys-color-primary) !important; color:#fff !important; flex:none; }
+  .filter-adv-btn .cmf-button__label{ display:none; }
+
+  .fov-segment-tabs{ display:flex; gap:0; overflow-x:auto; border-bottom:1px solid var(--divider); -ms-overflow-style:none; scrollbar-width:none; margin-bottom:12px; }
+  .fov-segment-tabs::-webkit-scrollbar{ display:none; }
+  .fov-segment-btn{ flex:none; background:none; border:0; padding:8px 16px; font-size:16px; line-height:24px; color:var(--text-primary); cursor:pointer; border-bottom:2px solid transparent; white-space:nowrap; }
+  .fov-segment-btn[aria-selected="true"]{ color:var(--cmf-ref-color-red-25); font-weight:600; border-bottom-color:var(--cmf-ref-color-red-25); }
+
+  .fov-sort-row{ display:flex; align-items:center; gap:8px; margin-bottom:16px; }
+  .fov-sort-label{ flex:none; font-size:16px; line-height:24px; color:var(--text-primary); }
+  .fov-sort-scroll{ display:flex; gap:8px; overflow-x:auto; -ms-overflow-style:none; scrollbar-width:none; }
+  .fov-sort-scroll::-webkit-scrollbar{ display:none; }
+  .fov-sort-chip{ flex:none; display:inline-flex; align-items:center; gap:4px; padding:8px 12px; border-radius:12px; border:1px solid var(--divider-2,#d9d9d9); background:var(--white); color:#595959; font-size:16px; line-height:24px; cursor:pointer; }
+  .fov-sort-chip[data-active]{ border-color:var(--primary-basic); color:var(--primary-basic); }
+  .fov-sort-chip svg{ width:16px; height:16px; opacity:.7; flex:none; }
+
+  .table-card{ background:transparent; box-shadow:none; border-radius:0; }
+  .table-card .table-scroll{ display:none; }
+  .fund-card-list{ display:flex; flex-direction:column; gap:16px; }
+}
+
+.fov-card{ background:var(--cmf-sys-color-surface); border:1px solid var(--cmf-sys-color-outline); border-radius:var(--cmf-sys-shape-corner-base); padding:16px; display:flex; flex-direction:column; gap:16px; }
+.fov-card__link{ display:flex; flex-direction:column; gap:16px; color:inherit; text-decoration:none; }
+.fov-card__code{ margin:0; color:var(--cmf-sys-color-on-surface-secondary); font-size:14px; line-height:21px; }
+.fov-card__name{ margin:4px 0 0; color:var(--cmf-sys-color-on-surface-primary); font-size:16px; line-height:24px; }
+.fov-card__metrics{ display:flex; flex-direction:column; }
+.fov-card__row{ display:flex; align-items:center; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--cmf-sys-color-outline); font-size:16px; line-height:24px; }
+.fov-card__row span:first-child{ color:var(--cmf-sys-color-on-surface-primary); }
+.fov-card__actions{ display:flex; gap:8px; }
+.fov-card__actions .cmf-button[data-variant="secondary"]{ flex:none; width:98px; }
+.fov-card__actions .cmf-button[data-variant="primary"]{ flex:1; }
+
 </style>
 </head>
 <body>
@@ -2311,7 +2354,7 @@ tr[data-under1000]{ }
                 <span class="cmf-search-bar__icon" aria-hidden="true"><svg viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M17 17l-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
               </div>
             </div>
-            <button type="button" class="cmf-button" data-component="button" data-variant="tertiary" data-size="m">
+            <button type="button" class="cmf-button filter-adv-btn" data-component="button" data-variant="tertiary" data-size="m">
               <span class="cmf-button__icon" aria-hidden="true"><svg viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true"><path d="M3 4h14l-5.5 6.5v5L8.5 17v-6.5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
               <span class="cmf-button__label">進階篩選</span>
             </button>
@@ -2326,6 +2369,27 @@ tr[data-under1000]{ }
 
       <div class="result-bar">
         <p class="result-count">共 <strong id="result-count">1,656</strong> 筆</p>
+      </div>
+
+      <div class="fov-segment-tabs" role="tablist" aria-label="基金列表分類">
+        <button type="button" class="fov-segment-btn" role="tab" aria-selected="true" data-segment="performance">基金績效</button>
+        <button type="button" class="fov-segment-btn" role="tab" aria-selected="false" data-segment="nav">基金淨值</button>
+        <button type="button" class="fov-segment-btn" role="tab" aria-selected="false" data-segment="dividend">基金配息</button>
+        <button type="button" class="fov-segment-btn" role="tab" aria-selected="false" data-segment="risk">基金風險</button>
+      </div>
+
+      <div class="fov-sort-row">
+        <span class="fov-sort-label">排序</span>
+        <div class="fov-sort-scroll" id="fov-sort-scroll">
+          <button type="button" class="fov-sort-chip" data-sort-key="name">基金代碼/名稱<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2l5 6H5l5-6zM10 18l-5-6h10l-5 6z" fill="currentColor"/></svg></button>
+          <button type="button" class="fov-sort-chip" data-sort-key="ytd">今年以來<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2l5 6H5l5-6zM10 18l-5-6h10l-5 6z" fill="currentColor"/></svg></button>
+          <button type="button" class="fov-sort-chip" data-sort-key="m3">三個月<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2l5 6H5l5-6zM10 18l-5-6h10l-5 6z" fill="currentColor"/></svg></button>
+          <button type="button" class="fov-sort-chip" data-sort-key="m6">六個月<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2l5 6H5l5-6zM10 18l-5-6h10l-5 6z" fill="currentColor"/></svg></button>
+          <button type="button" class="fov-sort-chip" data-sort-key="y1">一年<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2l5 6H5l5-6zM10 18l-5-6h10l-5 6z" fill="currentColor"/></svg></button>
+          <button type="button" class="fov-sort-chip" data-sort-key="y2">二年<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2l5 6H5l5-6zM10 18l-5-6h10l-5 6z" fill="currentColor"/></svg></button>
+          <button type="button" class="fov-sort-chip" data-sort-key="y3">三年<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2l5 6H5l5-6zM10 18l-5-6h10l-5 6z" fill="currentColor"/></svg></button>
+          <button type="button" class="fov-sort-chip" data-sort-key="since">成立至今<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2l5 6H5l5-6zM10 18l-5-6h10l-5 6z" fill="currentColor"/></svg></button>
+        </div>
       </div>
 
       <section class="table-card">
@@ -2471,6 +2535,7 @@ tr[data-under1000]{ }
         </tr></tbody>
           </table>
         </div>
+        <div class="fund-card-list" id="fund-card-list"></div>
         <p class="table-empty js-hidden-row" id="table-empty-state">找不到符合篩選條件的基金</p>
         
       <nav aria-label="Pagination" class="cmf-pagination" data-component="pagination" data-with-page-size id="pagination">
@@ -2580,7 +2645,64 @@ tr[data-under1000]{ }
     });
     emptyState.classList.toggle('js-hidden-row', visible > 0);
     resultCountEl.textContent = activeTagId ? visible.toLocaleString('en-US') : TOTAL_LIVE_COUNT.toLocaleString('en-US');
+    renderMobileCards();
   }
+
+  // ---- mobile card list (390w Figma spec): mirrors the same table rows as
+  //      stacked cards, kept in sync with applyFilter() so filtering (and any
+  //      future sort) updates both layouts from one source of truth ----
+  var cardList = document.getElementById('fund-card-list');
+  var METRIC_LABELS = ['今年以來', '三個月', '六個月', '一年', '二年', '三年', '成立至今'];
+  function renderMobileCards() {
+    if (!cardList) return;
+    var rows = tableBody.querySelectorAll('tr:not(.js-hidden-row)');
+    var html = '';
+    rows.forEach(function (row) {
+      var cells = row.querySelectorAll('td');
+      var nameLink = cells[0].querySelector('a');
+      var codeEl = cells[0].querySelector('.cmf-table-fund-name__code');
+      var nameEl = cells[0].querySelector('.cmf-table-fund-name__name');
+      var href = nameLink ? nameLink.getAttribute('href') : '#';
+      var metricsHtml = '';
+      for (var i = 0; i < METRIC_LABELS.length; i++) {
+        var valueEl = cells[i + 1] ? cells[i + 1].querySelector('.cmf-table-value') : null;
+        var val = valueEl ? valueEl.textContent : '--';
+        var dir = valueEl ? valueEl.getAttribute('data-direction') : null;
+        metricsHtml += '<div class="fov-card__row"><span>' + METRIC_LABELS[i] + '</span>' +
+          '<span class="cmf-table-value"' + (dir ? ' data-direction="' + dir + '"' : '') + '>' + val + '</span></div>';
+      }
+      html += '<div class="fov-card">' +
+        '<a class="fov-card__link" href="' + href + '">' +
+          '<div><p class="fov-card__code">' + codeEl.innerHTML + '</p><p class="fov-card__name">' + nameEl.textContent + '</p></div>' +
+          '<div class="fov-card__metrics">' + metricsHtml + '</div>' +
+        '</a>' +
+        '<div class="fov-card__actions">' +
+          '<button type="button" class="cmf-button" data-component="button" data-variant="secondary" data-size="m"><span class="cmf-button__label">加購物車</span></button>' +
+          '<button type="button" class="cmf-button" data-component="button" data-variant="primary" data-size="m"><span class="cmf-button__label">立即申購</span></button>' +
+        '</div>' +
+      '</div>';
+    });
+    cardList.innerHTML = html;
+  }
+  renderMobileCards();
+
+  // ---- segmented tabs (基金績效/基金淨值/基金配息/基金風險): this demo only
+  //      has performance-metric data loaded, so switching tabs updates the
+  //      active style (matching the design) without swapping in data that
+  //      doesn't exist yet ----
+  document.querySelectorAll('.fov-segment-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.fov-segment-btn').forEach(function (b) { b.setAttribute('aria-selected', String(b === btn)); });
+    });
+  });
+
+  // ---- sort chips: visual affordance only, matching the (also unwired)
+  //      desktop column-header sort buttons this demo already ships with ----
+  document.querySelectorAll('.fov-sort-chip').forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      document.querySelectorAll('.fov-sort-chip').forEach(function (c) { c.toggleAttribute('data-active', c === chip); });
+    });
+  });
 
   function setActiveTag(tagId, label) {
     activeTagId = tagId;
